@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMGT 240IS Business Analytics — Fall 2026 Syllabus</title>
+<style>
+  @page { size: letter; margin: 0.7in 0.75in; }
+
+  /* ============ Tokens: light (also the un-stamped default) ============ */
+  :root {
+    --ground:      #f6f7f9;
+    --surface:     #ffffff;
+    --ink:         #131a23;
+    --muted:       #5c687a;
+    --rule:        #d5dbe3;
+    --rule-soft:   #e7ebf0;
+    --accent:      #0e3160;
+    --accent-soft: #e8edf5;
+    --brass:       #8a6a16;
+    --brass-soft:  #f5efdf;
+    --exam:        #8e2f3a;
+    --exam-soft:   #f7ecee;
+    --lab:         #1d5e52;
+    --shadow:      0 1px 2px rgba(19, 26, 35, .06), 0 1px 12px rgba(19, 26, 35, .04);
+
+    --f-display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
+    --f-body:    "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --f-data:    Consolas, "Cascadia Mono", "SF Mono", ui-monospace, "Liberation Mono", monospace;
+  }
+
+  /* System-dark, unless the viewer explicitly chose light */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0f1318;
+      --surface:     #161b22;
+      --ink:         #e4e9ef;
+      --muted:       #94a1b2;
+      --rule:        #29313b;
+      --rule-soft:   #1f262e;
+      --accent:      #8cb3e6;
+      --accent-soft: #1a2432;
+      --brass:       #d3b063;
+      --brass-soft:  #241f14;
+      --exam:        #e09098;
+      --exam-soft:   #2a1c1f;
+      --lab:         #6fc3af;
+      --shadow:      0 1px 2px rgba(0, 0, 0, .4);
+    }
+  }
+  /* Explicit dark choice wins over a light OS */
+  :root[data-theme="dark"] {
+    --ground:      #0f1318;
+    --surface:     #161b22;
+    --ink:         #e4e9ef;
+    --muted:       #94a1b2;
+    --rule:        #29313b;
+    --rule-soft:   #1f262e;
+    --accent:      #8cb3e6;
+    --accent-soft: #1a2432;
+    --brass:       #d3b063;
+    --brass-soft:  #241f14;
+    --exam:        #e09098;
+    --exam-soft:   #2a1c1f;
+    --lab:         #6fc3af;
+    --shadow:      0 1px 2px rgba(0, 0, 0, .4);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--f-body);
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--ground);
+    margin: 0;
+    padding: 0;
+  }
+
+  .sheet {
+    max-width: 7.6in;
+    margin: 0 auto;
+    padding: 0.85in 0.8in 0.7in;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  /* ============ Blocks ============ */
+  p, li { orphans: 3; widows: 3; }
+  p { margin: 0 0 0.55rem; max-width: 34em; }
+  ul, ol { margin: 0 0 0.7rem; padding-left: 1.35rem; max-width: 34em; }
+  li { margin: 0.18rem 0; }
+  strong { font-weight: 600; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  code, .num {
+    font-family: var(--f-data);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.92em;
+  }
+
+  /* ============ Screen-only PDF instructions ============ */
+  .howto {
+    max-width: 7.6in;
+    margin: 1.1rem auto 0;
+    padding: 0.7rem 0.95rem;
+    background: var(--brass-soft);
+    border: 1px solid var(--brass);
+    font-size: 9.5pt;
+    line-height: 1.45;
+  }
+  .howto b { font-family: var(--f-data); font-size: 8.5pt; letter-spacing: .1em;
+             text-transform: uppercase; color: var(--brass); display: block; margin-bottom: .3rem; }
+  .howto ol { margin: 0; max-width: none; }
+
+  /* ============ Masthead ============ */
+  .masthead { border-bottom: 1px solid var(--ink); padding-bottom: 0.85rem; margin-bottom: 1.3rem; }
+  .eyebrow {
+    font-family: var(--f-data);
+    font-size: 8pt;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+    max-width: none;
+  }
+  .masthead h1 {
+    font-family: var(--f-display);
+    font-size: 25pt;
+    font-weight: normal;
+    line-height: 1.12;
+    letter-spacing: -0.008em;
+    text-wrap: balance;
+    margin: 0 0 0.3rem;
+    color: var(--ink);
+  }
+  .masthead .term {
+    font-family: var(--f-data);
+    font-size: 10pt;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  /* ============ Facts grid ============ */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2.05in, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 1.6rem;
+  }
+  .fact { background: var(--surface); padding: 0.5rem 0.65rem; }
+  .fact dt {
+    font-family: var(--f-data);
+    font-size: 7.5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+  }
+  .fact dd { margin: 0; font-size: 10pt; line-height: 1.35; }
+  .fact dd em { color: var(--muted); }
+
+  /* ============ Sections ============ */
+  section { margin: 0 0 1.9rem; }
+  h2 {
+    font-family: var(--f-display);
+    font-size: 15.5pt;
+    font-weight: normal;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+    color: var(--ink);
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--rule);
+    break-after: avoid; page-break-after: avoid;
+  }
+  h3 {
+    font-family: var(--f-body);
+    font-size: 10.5pt;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    color: var(--accent);
+    margin: 1.15rem 0 0.4rem;
+    break-after: avoid; page-break-after: avoid;
+  }
+  h4 {
+    font-family: var(--f-data);
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1rem 0 0.35rem;
+    break-after: avoid; page-break-after: avoid;
+  }
+
+  /* ============ Tables ============ */
+  .tw { overflow-x: auto; margin: 0.55rem 0 1rem; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    line-height: 1.4;
+  }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  th, td {
+    border-bottom: 1px solid var(--rule-soft);
+    padding: 0.32rem 0.5rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  thead th {
+    font-family: var(--f-data);
+    font-size: 7.5pt;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--ink);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+
+  /* Figures column: mono + right aligned */
+  .fig { font-family: var(--f-data); font-variant-numeric: tabular-nums;
+         text-align: right; white-space: nowrap; }
+  th.fig { text-align: right; }
+
+  /* Objectives */
+  table.obj td:first-child, table.obj th:first-child {
+    font-family: var(--f-data); width: 5%; text-align: right; color: var(--muted);
+  }
+  table.obj td:nth-child(3), table.obj td:nth-child(4) { white-space: nowrap; font-size: 9pt; }
+
+  /* Key/value tables */
+  table.kv td:first-child { width: 27%; font-weight: 600; }
+
+  /* Weights */
+  table.weights tr.total td { font-weight: 700; border-top: 1px solid var(--ink);
+                              border-bottom: 1px solid var(--ink); }
+
+  /* Grade scale: paired columns */
+  table.scale td, table.scale th { font-size: 9pt; }
+  table.scale td:nth-child(1), table.scale td:nth-child(5) { font-weight: 600; width: 8%; }
+  table.scale td:nth-child(2), table.scale td:nth-child(3),
+  table.scale td:nth-child(6), table.scale td:nth-child(7) {
+    font-family: var(--f-data); font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  table.scale td.gutter, table.scale th.gutter {
+    border-bottom: none; width: 3.5%; border-right: 1px solid var(--rule-soft);
+  }
+
+  /* ============ Schedule ============ */
+  .unit { margin: 1.35rem 0 0; }
+  .unit-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.55rem;
+    border-bottom: 1px solid var(--ink); padding-bottom: 0.28rem;
+    break-after: avoid; page-break-after: avoid;
+  }
+  .unit-tag {
+    font-family: var(--f-data); font-size: 8pt; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--brass);
+  }
+  .unit-name { font-family: var(--f-display); font-size: 12.5pt; margin: 0; font-weight: normal; }
+  .unit-read { font-family: var(--f-data); font-size: 8.5pt; color: var(--muted); margin-left: auto; }
+
+  table.sched { font-size: 9pt; }
+  table.sched thead th { border-bottom: 1px solid var(--rule); }
+  table.sched td:nth-child(1), table.sched th:nth-child(1) {
+    font-family: var(--f-data); font-variant-numeric: tabular-nums;
+    width: 4%; text-align: right; color: var(--muted); padding-right: 0.35rem;
+  }
+  table.sched td:nth-child(2), table.sched th:nth-child(2) {
+    font-family: var(--f-data); width: 12.5%; white-space: nowrap;
+  }
+  table.sched td:nth-child(3) { width: 55%; }
+  table.sched td:nth-child(4), table.sched th:nth-child(4) {
+    font-family: var(--f-data); width: 8.5%; white-space: nowrap; color: var(--muted);
+  }
+  table.sched td:nth-child(5) { width: 20%; font-size: 8.5pt; }
+
+  /* Row type stripe — carried on the first cell so it survives border-collapse and print */
+  table.sched td:first-child { border-left: 3px solid transparent; }
+  table.sched tr.r-lab   td:first-child { border-left-color: var(--lab); }
+  table.sched tr.r-due   td:first-child { border-left-color: var(--brass); }
+  table.sched tr.r-exam  td:first-child { border-left-color: var(--exam); }
+  table.sched tr.r-exam  td { background: var(--exam-soft); }
+  table.sched tr.r-exam  td:nth-child(3) { font-weight: 600; }
+  table.sched tr.r-break td { background: var(--accent-soft); color: var(--muted); font-style: italic; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 0.9rem;
+    font-family: var(--f-data); font-size: 8pt; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--muted);
+    margin: 0.6rem 0 0;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .legend i { width: 12px; height: 3px; display: inline-block; }
+
+  /* ============ Callouts ============ */
+  .note {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 0.55rem 0.8rem;
+    margin: 0.8rem 0;
+    font-size: 10pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .note p:last-child { margin-bottom: 0; }
+  .note .lbl {
+    font-family: var(--f-data); font-size: 8pt; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.2rem;
+  }
+
+  /* Start Here: numbered because the five items are an orientation sequence */
+  ol.start { counter-reset: s; list-style: none; padding: 0; max-width: none; }
+  ol.start > li {
+    counter-increment: s;
+    display: grid; grid-template-columns: 1.6rem 1fr; gap: 0.55rem;
+    margin: 0 0 0.6rem; max-width: 36em;
+  }
+  ol.start > li::before {
+    content: counter(s);
+    font-family: var(--f-data); font-size: 12pt; font-variant-numeric: tabular-nums;
+    color: var(--brass); line-height: 1.15; text-align: right;
+  }
+
+  .habits { display: grid; gap: 0.7rem; }
+  .habits p { margin: 0; }
+
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 1.9rem 0; }
+
+  .colophon {
+    margin-top: 1.8rem; padding-top: 0.6rem; border-top: 1px solid var(--rule);
+    font-size: 8.5pt; color: var(--muted); max-width: none;
+  }
+
+  .pbreak { break-before: page; page-break-before: always; }
+
+  /* ============ Print: force the light set, drop screen chrome ============ */
+  @media print {
+    :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+      --ground:      #ffffff;
+      --surface:     #ffffff;
+      --ink:         #131a23;
+      --muted:       #55606f;
+      --rule:        #c9d0d9;
+      --rule-soft:   #e2e6ec;
+      --accent:      #0e3160;
+      --accent-soft: #eef1f7;
+      --brass:       #8a6a16;
+      --brass-soft:  #f5efdf;
+      --exam:        #8e2f3a;
+      --exam-soft:   #f6edee;
+      --lab:         #1d5e52;
+      --shadow:      none;
+    }
+    body { font-size: 9.5pt; background: #fff; }
+    .sheet { max-width: none; padding: 0; box-shadow: none; }
+    .howto { display: none; }
+    a { color: var(--ink); border-bottom: none; }
+    section { margin-bottom: 1.4rem; }
+    th, td, tr.r-exam td, tr.r-break td, .note, .howto, .facts, .fact {
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+  }
+
+  @media (max-width: 40em) {
+    .sheet { padding: 1.4rem 1.1rem; }
+    .masthead h1 { font-size: 20pt; }
+    p, ul, ol { max-width: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <b>Saving this as the handout PDF</b>
+  <ol>
+    <li>Press <code>Ctrl</code>&nbsp;+&nbsp;<code>P</code> — the page is already set for US Letter with 0.7&nbsp;inch margins.</li>
+    <li>Set <em>Destination</em> to <strong>Save as PDF</strong>.</li>
+    <li>Leave scale at <strong>Default / 100%</strong> and turn <strong>Background graphics ON</strong>, or the exam rows and unit rules will print flat.</li>
+    <li>Save as <code>BMGT 240IS Business Analytics — Fall 2026 Syllabus.pdf</code>.</li>
+  </ol>
+  <p style="margin:.4rem 0 0">Printing forces the light palette regardless of your screen theme. This box does not print.</p>
+</div>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <p class="eyebrow">Jake Jabs College of Business &amp; Entrepreneurship &middot; Montana State University&ndash;Bozeman</p>
+    <h1>BMGT 240IS &mdash; Business Analytics</h1>
+    <p class="term">Fall 2026 &middot; Section 002 &middot; CRN 23266</p>
+  </header>
+
+  <dl class="facts">
+    <div class="fact"><dt>Meets</dt><dd>Tue &amp; Thu, 12:15&ndash;1:30 pm</dd></div>
+    <div class="fact"><dt>Location</dt><dd>JABS 215</dd></div>
+    <div class="fact"><dt>Term</dt><dd>Aug 27 &ndash; Dec 17, 2026</dd></div>
+    <div class="fact"><dt>Credits</dt><dd>3 &middot; traditional letter grade</dd></div>
+    <div class="fact"><dt>Instructor</dt><dd>Xuying W. Swift</dd></div>
+    <div class="fact"><dt>Email</dt><dd><a href="mailto:xuying.swift@montana.edu">xuying.swift@montana.edu</a></dd></div>
+    <div class="fact"><dt>Office hours</dt><dd><em>TBD &mdash; posted on Canvas in week 1</em></dd></div>
+    <div class="fact"><dt>Course site</dt><dd>Canvas</dd></div>
+  </dl>
+
+  <section>
+    <h2>Start Here</h2>
+    <ol class="start">
+      <li>
+        <div><strong>The week has a shape.</strong> Tuesdays introduce a method. Thursdays practice it and open with a quiz. Everything you hand in is due on a Tuesday; every quiz happens on a Thursday. You should never have to hunt through this document to find out what is due when.</div>
+      </li>
+      <li>
+        <div><strong>Bring a laptop.</strong> Roughly half of our meetings include a hands-on Excel lab. Sessions marked <strong>Lab</strong> in the schedule are ones where you will be working, not watching.</div>
+      </li>
+      <li>
+        <div><strong>Interpretation is the graded skill.</strong> On every project, a correct number with no business meaning attached earns partial credit at best. Excel will do the arithmetic. Your job is to say what it means to a decision-maker.</div>
+      </li>
+      <li>
+        <div><strong>The lowest quiz is dropped.</strong> Eleven quizzes are given and only your best ten count. That drop is the make-up policy &mdash; plan around it rather than asking for an exception later.</div>
+      </li>
+      <li>
+        <div><strong>The final project needs a team and a question.</strong> It is assigned Oct&nbsp;29 and runs to the last week of class. Start noticing business questions you are actually curious about now.</div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Course Description</h2>
+    <p>The fundamental purpose of this course is to enable you to understand basic statistical concepts and techniques, and how modern managers apply them in business. The course builds your statistical background and gives you the skills that industry and real-world decision problems demand. Emphasis is on statistical reasoning, problem-solving, computer applications, and interpretation of results.</p>
+    <p>The through-line is a single question asked in progressively harder forms: <strong>what can I responsibly conclude from imperfect data?</strong> In the first month, the answer comes from describing what you have. By December, it comes from modeling relationships among several variables and knowing how much confidence that model deserves.</p>
+  </section>
+
+  <section>
+    <h2>Learning Objectives</h2>
+    <p>By the end of this course you will be able to do the following. The right-hand columns show where each objective is taught and how it is assessed, so you can see that nothing on this list is decorative.</p>
+    <div class="tw">
+      <table class="obj">
+        <thead><tr><th>#</th><th>You will be able to&hellip;</th><th>Taught in</th><th>Assessed by</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Gather, clean, describe, and summarize data using Excel</td><td>Unit 1</td><td>Quizzes 1&ndash;3 &middot; Project 1 &middot; Exam 1</td></tr>
+          <tr><td>2</td><td>Take samples and estimate unknown parameters</td><td>Unit 3</td><td>Quizzes 5&ndash;6 &middot; Exam 2</td></tr>
+          <tr><td>3</td><td>Formulate and test hypotheses</td><td>Unit 4</td><td>Quizzes 7&ndash;9 &middot; Project 2 &middot; Exam 2</td></tr>
+          <tr><td>4</td><td>Understand the basic principles of statistical process control</td><td>Unit 5</td><td>Quiz 11 &middot; Final Exam</td></tr>
+          <tr><td>5</td><td>Use multiple regression to analyze data</td><td>Unit 5</td><td>Quizzes 10&ndash;11 &middot; Final Project</td></tr>
+          <tr><td>6</td><td>Successfully complete a research project</td><td>Units 1&ndash;5</td><td>Final Project</td></tr>
+          <tr><td>7</td><td>Design and conduct research in the future</td><td>Project milestones</td><td>Proposal &middot; Report</td></tr>
+          <tr><td>8</td><td>Use sound quantitative reasoning to analyze business problems</td><td>Every session</td><td>All projects and exams</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Unit 2 &mdash; probability and discrete distributions &mdash; does not map to its own objective. It is the machinery that makes objectives 2 and 3 possible, which is why it sits where it does.</p>
+  </section>
+
+  <section>
+    <h2>Materials</h2>
+    <h3>Textbook &mdash; recommended, not required</h3>
+    <p>David P. Doane and Lori E. Seward, <em>Applied Statistics in Business and Economics</em>, 7th edition. Everything required is presented in class and posted to Canvas. The chapter references in the schedule are there for students who want extra reading, worked examples, and practice problems; <strong>you can succeed in this course without buying the book.</strong></p>
+    <h3>Technology</h3>
+    <ul>
+      <li><strong>Microsoft Excel, desktop version</strong>, with the <strong>Analysis ToolPak</strong> add-in enabled. Excel is free to MSU students through Microsoft&nbsp;365. The browser version will <em>not</em> run several tools we depend on &mdash; install the desktop application.</li>
+      <li>A <strong>laptop brought to class</strong> on the days marked <strong>Lab</strong>. If access to a laptop is a problem, tell me in week&nbsp;1 and we will solve it quietly.</li>
+      <li>Reliable access to <strong>Canvas</strong> for readings, data files, quizzes, grades, and submissions.</li>
+    </ul>
+    <p>We set Excel up together in session 2. Do not spend the first week fighting the installation alone.</p>
+  </section>
+
+  <section>
+    <h2>How the Course Runs</h2>
+    <div class="tw">
+      <table class="kv">
+        <tbody>
+          <tr><td>Tuesdays</td><td>A method is introduced: where it comes from, what it assumes, what it is for.</td></tr>
+          <tr><td>Thursdays</td><td>Class opens with a quiz on the previous week, then we put the method to work &mdash; usually in Excel, on real data.</td></tr>
+          <tr><td>Every deliverable</td><td>Due Tuesday at the start of class, submitted on Canvas.</td></tr>
+          <tr><td>Every quiz</td><td>First 10 minutes of Thursday's class, in class, on paper.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The exceptions are the three Thursdays that hold Exam&nbsp;1, Exam&nbsp;2, and the last day of class. Those have no quiz.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Assessment</h2>
+
+    <h4>Weights and points</h4>
+    <div class="tw">
+      <table class="weights">
+        <thead><tr><th>Component</th><th class="fig">Weight</th><th class="fig">Points</th></tr></thead>
+        <tbody>
+          <tr><td>Quizzes &mdash; 11 given, lowest dropped (10 &times; 20 pts)</td><td class="fig">20%</td><td class="fig">200</td></tr>
+          <tr><td>Small Project 1</td><td class="fig">7.5%</td><td class="fig">75</td></tr>
+          <tr><td>Small Project 2</td><td class="fig">7.5%</td><td class="fig">75</td></tr>
+          <tr><td>Final Project</td><td class="fig">15%</td><td class="fig">150</td></tr>
+          <tr><td>Exam 1</td><td class="fig">10%</td><td class="fig">100</td></tr>
+          <tr><td>Exam 2</td><td class="fig">15%</td><td class="fig">150</td></tr>
+          <tr><td>Final Exam &mdash; cumulative</td><td class="fig">25%</td><td class="fig">250</td></tr>
+          <tr class="total"><td>Total</td><td class="fig">100%</td><td class="fig">1000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Grade scale</h4>
+    <div class="tw">
+      <table class="scale">
+        <thead>
+          <tr><th>Grade</th><th class="fig">Percent</th><th class="fig">Points</th><th class="gutter"></th><th>Grade</th><th class="fig">Percent</th><th class="fig">Points</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>93&ndash;100%</td><td>930&ndash;1000</td><td class="gutter"></td><td>C</td><td>73&ndash;76%</td><td>730&ndash;769</td></tr>
+          <tr><td>A&minus;</td><td>90&ndash;92%</td><td>900&ndash;929</td><td class="gutter"></td><td>C&minus;</td><td>70&ndash;72%</td><td>700&ndash;729</td></tr>
+          <tr><td>B+</td><td>87&ndash;89%</td><td>870&ndash;899</td><td class="gutter"></td><td>D+</td><td>67&ndash;69%</td><td>670&ndash;699</td></tr>
+          <tr><td>B</td><td>83&ndash;86%</td><td>830&ndash;869</td><td class="gutter"></td><td>D</td><td>64&ndash;66%</td><td>640&ndash;669</td></tr>
+          <tr><td>B&minus;</td><td>80&ndash;82%</td><td>800&ndash;829</td><td class="gutter"></td><td>D&minus;</td><td>60&ndash;63%</td><td>600&ndash;639</td></tr>
+          <tr><td>C+</td><td>77&ndash;79%</td><td>770&ndash;799</td><td class="gutter"></td><td>F</td><td>below 60%</td><td>599 and below</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Points are what count; the percentage column is a convenience. Final percentages are <strong>not</strong> rounded up across a grade boundary &mdash; <span class="num">929</span> points is an A&minus;.</p>
+
+    <h3>Quizzes &middot; 200 points</h3>
+    <p>Five short questions in the first ten minutes of Thursday's class, covering the previous week. They exist to keep the course honest: statistics compounds, and a week of quiet confusion is expensive by November.</p>
+    <p>Eleven quizzes are given and the <strong>lowest is dropped</strong>. That drop covers illness, travel, a bad morning, and a forgotten date. Because it exists, there are no make-up quizzes and no individually excused quizzes. If you will miss more than one Thursday for a documented reason &mdash; a university-sanctioned activity, an extended illness &mdash; talk to me in advance and we will arrange something.</p>
+
+    <h3>Small Projects &middot; 75 points each</h3>
+    <p>Two applied projects, each submitted as <strong>one Excel workbook plus a written interpretation of at most two pages</strong>.</p>
+    <ul>
+      <li><strong>Small Project 1</strong> &mdash; assigned Sep 17, due Sep 29. Clean a real, messy dataset and produce a descriptive and visual summary that a manager could act on.</li>
+      <li><strong>Small Project 2</strong> &mdash; assigned Oct 22, due Nov 3. Estimate a parameter and test a claim about it, then say what the result licenses you to conclude.</li>
+    </ul>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Each project is scored on</th><th class="fig">Points</th></tr></thead>
+        <tbody>
+          <tr><td>Correct analysis &mdash; right method, right execution</td><td class="fig">30</td></tr>
+          <tr><td>Written interpretation &mdash; what it means, what it does not mean, what you would do</td><td class="fig">35</td></tr>
+          <tr><td>A workbook someone else could follow &mdash; labeled sheets, live formulas rather than typed-in numbers, documented sources</td><td class="fig">10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Note where the weight sits. Half the points are for correctness and reproducibility; the other half is for thinking. Small projects are <strong>individual work</strong>.</p>
+
+    <h3>Final Project &middot; 150 points</h3>
+    <p>A small piece of real research, in <strong>teams of four</strong>, on a business question you choose. Pose the question, obtain data, analyze it with the methods of this course &mdash; <strong>multiple regression must be part of the analysis</strong> &mdash; and report what you found.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Milestone</th><th>Due</th><th class="fig">Points</th></tr></thead>
+        <tbody>
+          <tr><td>Topic proposal &mdash; one page: the question, the data you will use, the method you expect to need</td><td class="num">Tue, Nov 10</td><td class="fig">15</td></tr>
+          <tr><td>Written report + workbook</td><td class="num">Tue, Dec 8</td><td class="fig">100</td></tr>
+          <tr><td>In-class presentation &mdash; 10 minutes plus questions</td><td class="num">Dec 8 or 10</td><td class="fig">35</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Teams are formed in class the week of Oct 29. All ten reports are due Tuesday, Dec&nbsp;8, regardless of which day your team presents, so no team gains extra days by presenting later.</p>
+    <p><strong>Peer evaluation.</strong> At the end of the project every member submits a confidential evaluation of their teammates' contributions. These can adjust an individual's project score by up to <strong>&plusmn;10%</strong>. A team member who does not contribute does not receive the team's grade.</p>
+    <div class="note">
+      <span class="lbl">Why the proposal matters more than 15 points suggests</span>
+      <p>Most failed student research projects fail at the question, not the statistics &mdash; a question no obtainable dataset can answer, or one that needs no analysis because the answer is already obvious. That is what the proposal exists to catch, three weeks early.</p>
+    </div>
+
+    <h3>Exams</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Exam</th><th>When</th><th>Covers</th><th class="fig">Points</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Exam 1</strong></td><td class="num">Thu, Oct 1</td><td>Ch 1&ndash;6 &middot; Units 1&ndash;2</td><td class="fig">100</td></tr>
+          <tr><td><strong>Exam 2</strong></td><td class="num">Thu, Nov 12</td><td>Ch 7&ndash;11, 15 &middot; Units 3&ndash;4</td><td class="fig">150</td></tr>
+          <tr><td><strong>Final Exam</strong></td><td class="num">Dec 14&ndash;17</td><td>Cumulative, weighted toward Unit 5</td><td class="fig">250</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Exams are closed-book. A <strong>formula sheet is provided</strong>, and you may bring <strong>one double-sided page of handwritten notes</strong>. Excel is used on exams for computation &mdash; bring your laptop.</p>
+    <div class="note">
+      <span class="lbl">Final exam time</span>
+      <p>MSU assigns final exam slots by meeting pattern. Confirm the exact day and time for a Tuesday/Thursday 12:15&nbsp;pm class on the Registrar's published Final Exam Schedule; it will also be posted to Canvas by week&nbsp;12. University policy does not permit taking the final early. <strong>Do not book travel before you know your slot.</strong></p>
+    </div>
+  </section>
+
+  <section class="pbreak">
+    <h2>Course Schedule</h2>
+    <p>Twenty-nine meetings in five units. Chapter numbers refer to Doane &amp; Seward, 7e. This schedule is a plan, not a contract; any change is announced in class and posted to Canvas.</p>
+
+    <div class="legend">
+      <span><i style="background:var(--lab)"></i> hands-on lab</span>
+      <span><i style="background:var(--brass)"></i> something due</span>
+      <span><i style="background:var(--exam)"></i> exam</span>
+      <span><i style="background:var(--accent)"></i> no class</span>
+    </div>
+
+    <div class="unit">
+      <div class="unit-head">
+        <span class="unit-tag">Unit 1</span>
+        <h3 class="unit-name">Describing Data</h3>
+        <span class="unit-read">Ch 1&ndash;4 &middot; Aug 27 &ndash; Sep 17</span>
+      </div>
+      <div class="tw">
+        <table class="sched">
+          <thead><tr><th>#</th><th>Date</th><th>Topic</th><th>Read</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Thu, Aug 27</td><td>Course overview and syllabus walkthrough &mdash; how the course works, what is graded, and when; what business analytics is and is not</td><td>Ch 1</td><td></td></tr>
+            <tr class="r-lab"><td>2</td><td>Tue, Sep 1</td><td>Data types and measurement scales; sampling methods &middot; <strong>Lab:</strong> Excel and the Analysis ToolPak</td><td>Ch 2</td><td></td></tr>
+            <tr class="r-lab"><td>3</td><td>Thu, Sep 3</td><td><strong>Lab:</strong> Cleaning a real dataset &mdash; tables, sorting, filtering, missing values, duplicates</td><td>Ch 2</td><td>Quiz 1</td></tr>
+            <tr><td>4</td><td>Tue, Sep 8</td><td>Describing data visually: histograms, scatterplots, line charts; how charts mislead</td><td>Ch 3</td><td></td></tr>
+            <tr class="r-lab"><td>5</td><td>Thu, Sep 10</td><td><strong>Lab:</strong> PivotTables and charts</td><td>Ch 3</td><td>Quiz 2</td></tr>
+            <tr><td>6</td><td>Tue, Sep 15</td><td>Descriptive statistics: center, variability, shape</td><td>Ch 4</td><td></td></tr>
+            <tr class="r-lab"><td>7</td><td>Thu, Sep 17</td><td>Standardization, outliers, boxplots &middot; <strong>Lab:</strong> the Descriptive Statistics tool</td><td>Ch 4</td><td>Quiz 3 &middot; <strong>Project 1 assigned</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="unit">
+      <div class="unit-head">
+        <span class="unit-tag">Unit 2</span>
+        <h3 class="unit-name">Probability and Discrete Models</h3>
+        <span class="unit-read">Ch 5&ndash;6 &middot; Sep 22 &ndash; Oct 1</span>
+      </div>
+      <div class="tw">
+        <table class="sched">
+          <thead><tr><th>#</th><th>Date</th><th>Topic</th><th>Read</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr><td>8</td><td>Tue, Sep 22</td><td>Probability: events, joint and conditional probability, independence</td><td>Ch 5</td><td></td></tr>
+            <tr><td>9</td><td>Thu, Sep 24</td><td>Discrete distributions: binomial and Poisson in Excel</td><td>Ch 6</td><td>Quiz 4</td></tr>
+            <tr class="r-due"><td>10</td><td>Tue, Sep 29</td><td>Exam 1 review</td><td>Ch 1&ndash;6</td><td><strong>Small Project 1 due</strong></td></tr>
+            <tr class="r-exam"><td>11</td><td>Thu, Oct 1</td><td>EXAM 1 &mdash; Ch 1&ndash;6</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="unit">
+      <div class="unit-head">
+        <span class="unit-tag">Unit 3</span>
+        <h3 class="unit-name">From Sample to Population</h3>
+        <span class="unit-read">Ch 7&ndash;8 &middot; Oct 6 &ndash; Oct 15</span>
+      </div>
+      <div class="tw">
+        <table class="sched">
+          <thead><tr><th>#</th><th>Date</th><th>Topic</th><th>Read</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr><td>12</td><td>Tue, Oct 6</td><td>The normal distribution; <code>NORM.DIST</code> and <code>NORM.INV</code>; the exponential distribution</td><td>Ch 7</td><td></td></tr>
+            <tr class="r-lab"><td>13</td><td>Thu, Oct 8</td><td>Sampling distributions and the Central Limit Theorem &middot; <strong>Lab:</strong> simulating the CLT</td><td>Ch 8</td><td>Quiz 5</td></tr>
+            <tr><td>14</td><td>Tue, Oct 13</td><td>Confidence intervals for a mean, &sigma; known and unknown; the <em>t</em> distribution</td><td>Ch 8</td><td></td></tr>
+            <tr><td>15</td><td>Thu, Oct 15</td><td>Confidence intervals for a proportion; choosing a sample size</td><td>Ch 8</td><td>Quiz 6</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="unit">
+      <div class="unit-head">
+        <span class="unit-tag">Unit 4</span>
+        <h3 class="unit-name">Testing Claims</h3>
+        <span class="unit-read">Ch 9&ndash;11, 15 &middot; Oct 20 &ndash; Nov 12</span>
+      </div>
+      <div class="tw">
+        <table class="sched">
+          <thead><tr><th>#</th><th>Date</th><th>Topic</th><th>Read</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr><td>16</td><td>Tue, Oct 20</td><td>The logic of hypothesis testing; one-sample test for a mean</td><td>Ch 9</td><td></td></tr>
+            <tr class="r-due"><td>17</td><td>Thu, Oct 22</td><td><em>p</em>-values; Type I and Type II error; power; one-sample test for a proportion</td><td>Ch 9</td><td>Quiz 7 &middot; <strong>Project 2 assigned</strong></td></tr>
+            <tr><td>18</td><td>Tue, Oct 27</td><td>Two-sample tests: comparing two means</td><td>Ch 10</td><td></td></tr>
+            <tr class="r-lab"><td>19</td><td>Thu, Oct 29</td><td>Paired <em>t</em>-test; two proportions; comparing variances &middot; <strong>Lab:</strong> Excel's <em>t</em>-Test tools</td><td>Ch 10</td><td>Quiz 8 &middot; <strong>Final Project assigned; teams formed</strong></td></tr>
+            <tr class="r-due"><td>20</td><td>Tue, Nov 3</td><td>One-factor ANOVA; multiple comparisons</td><td>Ch 11</td><td><strong>Small Project 2 due</strong></td></tr>
+            <tr><td>21</td><td>Thu, Nov 5</td><td>Chi-square: goodness-of-fit and tests of independence</td><td>Ch 15</td><td>Quiz 9</td></tr>
+            <tr class="r-due"><td>22</td><td>Tue, Nov 10</td><td>Exam 2 review</td><td>Ch 7&ndash;11, 15</td><td><strong>Project proposal due</strong></td></tr>
+            <tr class="r-exam"><td>23</td><td>Thu, Nov 12</td><td>EXAM 2 &mdash; Ch 7&ndash;11, 15</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="unit">
+      <div class="unit-head">
+        <span class="unit-tag">Unit 5</span>
+        <h3 class="unit-name">Relationships and Processes</h3>
+        <span class="unit-read">Ch 12&ndash;13, 17 &middot; Nov 17 &ndash; Dec 3</span>
+      </div>
+      <div class="tw">
+        <table class="sched">
+          <thead><tr><th>#</th><th>Date</th><th>Topic</th><th>Read</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr><td>24</td><td>Tue, Nov 17</td><td>Simple regression: least squares, <em>r</em>&sup2;, inference on the slope</td><td>Ch 12</td><td></td></tr>
+            <tr class="r-lab"><td>25</td><td>Thu, Nov 19</td><td>Multiple regression: interpreting coefficients, the <em>F</em>-test, adjusted <em>r</em>&sup2; &middot; <strong>Lab:</strong> reading Excel's Regression output</td><td>Ch 13</td><td>Quiz 10</td></tr>
+            <tr class="r-break"><td>&mdash;</td><td>Nov 23&ndash;27</td><td>Fall Break &mdash; no classes</td><td></td><td></td></tr>
+            <tr><td>26</td><td>Tue, Dec 1</td><td>Multiple regression, continued: dummy variables, multicollinearity, residual diagnostics</td><td>Ch 13</td><td></td></tr>
+            <tr class="r-lab"><td>27</td><td>Thu, Dec 3</td><td>Statistical process control: common vs. special cause variation, x&#772; and <em>R</em> charts, <em>p</em>-charts, process capability &middot; <strong>Lab</strong></td><td>Ch 17</td><td>Quiz 11</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="unit">
+      <div class="unit-head">
+        <span class="unit-tag">Close</span>
+        <h3 class="unit-name">Presentations and Finals</h3>
+        <span class="unit-read">Dec 8 &ndash; Dec 17</span>
+      </div>
+      <div class="tw">
+        <table class="sched">
+          <thead><tr><th>#</th><th>Date</th><th>Topic</th><th>Read</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr class="r-due"><td>28</td><td>Tue, Dec 8</td><td><strong>Final Project presentations, part 1</strong> &mdash; five teams</td><td></td><td><strong>All reports and workbooks due</strong></td></tr>
+            <tr><td>29</td><td>Thu, Dec 10</td><td><strong>Final Project presentations, part 2</strong> &mdash; five teams; Final Exam review</td><td></td><td></td></tr>
+            <tr class="r-exam"><td>&mdash;</td><td>Dec 14&ndash;17</td><td>FINAL EXAM &mdash; cumulative; day and time per the Registrar's Final Exam Schedule</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="lbl">Why the back half is sequenced this way</span>
+      <p>Regression is both a learning objective and the required method in your final project, so it is taught immediately after Exam&nbsp;2 and finishes on Dec&nbsp;1 &mdash; a full week before the report is due. Statistical process control follows it rather than preceding it, because control charts are easiest to understand once hypothesis testing and regression are already familiar. Presentations occupy two full sessions so that ten teams each get ten real minutes instead of a rushed five.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Important University Dates &mdash; Fall 2026</h2>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Date</th><th>Event</th></tr></thead>
+        <tbody>
+          <tr><td class="num">Wed, Aug 26</td><td>Classes begin &mdash; our first meeting is Thu, Aug 27</td></tr>
+          <tr><td class="num">Tue, Sep 1</td><td>Last day to self-add</td></tr>
+          <tr><td class="num">Mon, Sep 7</td><td>Labor Day &mdash; no classes</td></tr>
+          <tr><td class="num">Wed, Sep 9</td><td>Last day to add via instructor; last day to self-drop</td></tr>
+          <tr><td class="num">Wed, Sep 16</td><td>Last day to drop via advisor without a &ldquo;W&rdquo;; last day to confirm your bill</td></tr>
+          <tr><td class="num">Thu, Oct 1</td><td>Spring 2027 graduation application deadline, undergraduates</td></tr>
+          <tr><td class="num">Oct 27 &ndash; Nov 17</td><td>Priority registration for Spring 2027</td></tr>
+          <tr><td class="num">Wed, Nov 11</td><td>Veterans Day &mdash; no classes</td></tr>
+          <tr><td class="num">Wed, Nov 18</td><td><strong>Last day to drop with a &ldquo;W&rdquo; via advisor</strong></td></tr>
+          <tr><td class="num">Nov 23&ndash;27</td><td>Fall Break &mdash; no classes</td></tr>
+          <tr><td class="num">Dec 14&ndash;17</td><td>Final Week</td></tr>
+          <tr><td class="num">Thu, Dec 17</td><td>Last day of finals</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Neither Labor Day nor Veterans Day falls on a Tuesday or Thursday in 2026, so <strong>this section loses no meetings to holidays</strong> &mdash; only Fall Break.</p>
+    <p>Note the alignment of two dates: Exam&nbsp;2 is Nov&nbsp;12 and the last day to withdraw with a &ldquo;W&rdquo; is Nov&nbsp;18. Grades will be posted before that deadline, deliberately, so that you can make an informed decision. If you are worried about your standing, come see me the week of Nov&nbsp;16 rather than guessing.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Policies</h2>
+
+    <h3>In the Classroom</h3>
+    <p><strong>Attendance.</strong> Attendance is expected and is not separately graded. It is, however, close to determinative: much of this course is hands-on Excel work that is difficult to reconstruct from slides. If you miss a session, get the material from a classmate and from Canvas <em>before</em> coming to office hours, so we can spend that time on what you actually do not understand.</p>
+    <p><strong>Devices.</strong> Laptops are required on lab days and welcome on other days for note-taking and following along. Phones away during quizzes and exams. If your screen is distracting the people behind you, I will say so once, privately.</p>
+    <p><strong>Participation.</strong> Ask questions when you are lost, including the ones you think are too basic. In a statistics classroom the &ldquo;obvious&rdquo; question is usually the one half the room needs answered, and the person who asks it is doing everyone a favor.</p>
+    <p><strong>Recording and course materials.</strong> Slides, workbooks, and data files are provided for your use in this course. Do not post them, or recordings of class, to file-sharing or homework sites &mdash; that is both a copyright violation and an academic integrity issue. If you need a recording as part of an approved accommodation, arrange it with me and Disability Services.</p>
+
+    <h3>Deadlines and Missed Work</h3>
+    <p><strong>Late work.</strong> Projects lose <strong>10% per calendar day</strong>, up to three days; after three days they are not accepted. The clock starts at the beginning of class on the due date.</p>
+    <p><strong>Quizzes.</strong> No make-ups. The dropped lowest quiz is the policy.</p>
+    <p><strong>Missed exams.</strong> Make-up exams are given only for documented, unavoidable conflicts arranged <strong>in advance</strong> where advance notice is possible. An unexcused missed exam receives a zero. For an emergency that makes advance notice impossible, contact me as soon as you are able.</p>
+    <p><strong>University-sanctioned activities.</strong> If you will miss class for athletics, a conference, field work, or military service, give me the official documentation early in the semester so we can plan around it rather than react to it.</p>
+    <p><strong>Religious observance.</strong> If a religious observance conflicts with a class meeting, quiz, exam, or deadline, notify me in writing within the first two weeks of the semester &mdash; or as soon as you become aware of the conflict &mdash; and we will arrange a reasonable alternative without penalty.</p>
+    <p><strong>Incomplete grades.</strong> An &ldquo;I&rdquo; is available only when a documented emergency prevents you from finishing a small remaining portion of the course, and only when your work to that point is passing. It is not an alternative to withdrawing.</p>
+
+    <h3>Academic Integrity and AI</h3>
+    <p><strong>Academic integrity.</strong> All work in this course is governed by the MSU Student Conduct Code. Collaboration is encouraged on practice problems and required on the final project. <strong>Small projects, quizzes, and all exams are individual work.</strong> Copying another student's workbook, fabricating or altering data, and misreporting results are violations &mdash; the last one especially, because it is the specific dishonesty this discipline exists to prevent.</p>
+    <p><strong>Generative AI.</strong> AI tools (ChatGPT, Claude, Copilot, and similar) are <strong>permitted for learning</strong> and <strong>not permitted for producing your submitted work</strong>.</p>
+    <ul>
+      <li><em>Permitted:</em> explaining a concept, decoding an Excel error message, asking what a <em>p</em>-value means, checking your understanding of an assumption, debugging a formula you wrote.</li>
+      <li><em>Not permitted:</em> generating your analysis, writing your interpretation, drafting your project report, or answering a quiz or exam question.</li>
+    </ul>
+    <p>Two conditions apply to every project. First, <strong>disclosure</strong>: include a short note describing what you used an AI tool for. Second, <strong>the explanation standard</strong>: you must be able to explain, in your own words and on request, every number and every sentence you submit. I do ask. Undisclosed AI-generated work is handled as academic misconduct.</p>
+    <div class="note">
+      <span class="lbl">The reason for that line</span>
+      <p>It is not suspicion. It is that the skill this course certifies &mdash; looking at output and judging whether it is trustworthy &mdash; is precisely the skill you lose by letting a model produce the output unexamined. That skill is also the one that will still be worth something in your career.</p>
+    </div>
+
+    <h3>Access and Support</h3>
+    <p><strong>Disability accommodations.</strong> MSU is committed to providing equal access to education. If you have a documented disability and need accommodations, register with <strong>MSU Disability Services</strong> (Romney Hall &middot; <span class="num">406-994-2824</span> &middot; <a href="mailto:drv@montana.edu">drv@montana.edu</a>) and contact me early in the semester so your accommodations are in place when you need them. Accommodations cannot be applied retroactively to work already submitted. If you suspect you may need accommodations but have never been assessed, Disability Services can advise you.</p>
+    <p><strong>Title IX and non-discrimination.</strong> MSU prohibits discrimination and harassment, including sexual misconduct. As an instructor I am a <strong>mandatory reporter</strong>: I am required to report disclosures of sexual misconduct to the university's Title IX Coordinator in the Office of Institutional Equity. If you want to speak with someone confidentially instead, contact the <strong>VOICE Center</strong> (<span class="num">406-994-7069</span>, available 24/7) or Counseling &amp; Psychological Services.</p>
+    <p><strong>Mental health.</strong> <strong>Counseling &amp; Psychological Services</strong> (<span class="num">406-994-4531</span>) offers free, confidential support to enrolled students. A statistics course is a poor reason to let a hard semester get harder &mdash; please use them, and please tell me if something is affecting your work, even without details.</p>
+    <p><strong>Basic needs.</strong> If you are having trouble affording food or securing stable housing, MSU has resources including the campus student food pantry, and the Dean of Students office can help you navigate them. Tell me if it is affecting your coursework and I will connect you with support and keep it confidential.</p>
+    <p><strong>Name and pronouns.</strong> Tell me the name and pronouns you want used in class, whatever appears on my roster.</p>
+    <p><strong>Veterans and service members.</strong> If you are a veteran, active-duty, or Guard/Reserve student, let me know so I can support you around drill weekends, deployments, and VA appointments.</p>
+    <p><strong>Academic help.</strong></p>
+    <ul>
+      <li><strong>Office hours</strong> &mdash; the highest-return help available. Bring your workbook and a specific question.</li>
+      <li><strong>The MSU Writing Center</strong> &mdash; genuinely useful for project reports; the interpretation sections are writing assignments as much as statistics assignments.</li>
+      <li><strong>Canvas</strong> &mdash; readings, data files, quizzes, grades, announcements.</li>
+    </ul>
+
+    <h3>Administrative</h3>
+    <p><strong>Communication.</strong> Email is the official channel. Use your MSU address and put <strong>BMGT 240IS</strong> in the subject line; I aim to respond within one business day on weekdays. Questions about a specific grade are handled in person or in office hours, not over email.</p>
+    <p><strong>Grade concerns.</strong> If you believe a grade is wrong, email me within <strong>one week</strong> of receiving it with the specific item and the specific reason. Grade disputes beyond that go through the department's grade appeal process.</p>
+    <p><strong>Privacy.</strong> Grades are protected under FERPA and are posted only in Canvas, visible only to you.</p>
+    <p><strong>Course evaluations.</strong> You will be asked to evaluate this course near the end of the semester. Please do it, and be specific &mdash; the schedule you are reading was changed based on the last group's comments.</p>
+    <p><strong>Changes to this syllabus.</strong> I may adjust the schedule if the class needs more time on something. Any change is announced in class and posted on Canvas. Grade weights and exam dates will not change except in an emergency.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>How to Do Well in This Course</h2>
+    <p>Statistics is learned by doing it, not by watching it. The students who do well in this course share three habits, and none of them is being &ldquo;a math person.&rdquo;</p>
+    <div class="habits">
+      <p>They <strong>open the workbook</strong>. Most sessions pair a concept with an Excel file. Following along, badly, with your own hands beats watching a clean demonstration.</p>
+      <p>They <strong>treat surprise as information</strong>. When a result contradicts what you expected, that gap is the most valuable thing in the room. Bring it to class. Most of the best discussions in this course start with &ldquo;wait, why is that number negative?&rdquo;</p>
+      <p>They <strong>ask what it means, not just what to compute</strong>. By December you will be able to produce a regression output in about forty seconds. The whole game is what you say next.</p>
+    </div>
+  </section>
+
+  <p class="colophon">BMGT 240IS &middot; Business Analytics &middot; Fall 2026 &middot; Section 002 &middot; Xuying W. Swift &middot; Montana State University&ndash;Bozeman. This syllabus is subject to change; changes will be announced in class and posted on Canvas.</p>
+
+</div>
+
+</body>
+</html>
