@@ -15,63 +15,84 @@
 | **Course site** | Canvas |
 | **Grade mode** | Traditional letter grade |
 
+> ### YOU ARE REQUIRED TO CHECK YOUR EMAIL DAILY
+> All MSU students are required to have email for official correspondence, including course information. Such correspondence is sent to your official university email account. Set your spam filter so that it permits email from the course listserv, and check your email daily.
+
+---
+
+## Keys to Success
+
+| | |
+| --- | --- |
+| **WORK** | on assignments — every week, not the night before |
+| **ASK** | questions, including the ones you think are too basic |
+| **SCHEDULE** | your work on your calendar |
+| **READ** | my emails |
+| **DEVOTE** | 2–3 hours of study time per class meeting |
+| **HAVE** | fun |
+
+**Questions after class?** Email me at xuying.swift@montana.edu, come to office hours, or make an appointment.
+
 ---
 
 ## Start Here
 
 Five things that will orient you for the whole semester.
 
-1. **The week has a shape.** Tuesdays introduce a method. Thursdays practice it and open with a quiz. Everything you hand in is due on a Tuesday; every quiz happens on a Thursday. You should never have to hunt through this document to find out what is due when.
-2. **Bring a laptop.** Roughly half of our meetings include a hands-on Excel lab. Sessions marked **Lab** in the schedule are ones where you will be working, not watching.
-3. **Interpretation is the graded skill.** On every project, a correct number with no business meaning attached earns partial credit at best. Excel will do the arithmetic. Your job is to say what it means to a decision-maker.
-4. **The lowest quiz is dropped.** Eleven quizzes are given and only your best ten count. That drop is the make-up policy — plan around it rather than asking for an exception later.
-5. **The final project needs a team and a question.** It is assigned Oct 29 and runs to the last week of class. Start noticing business questions you are actually curious about now.
+1. **We move one chapter at a time, and it compounds.** The course follows the textbook in order, and almost every chapter depends on the one before it. Falling two weeks behind in this course is much harder to recover from than in a course whose topics are independent.
+2. **Lecture time cannot cover every topic.** You must be prepared to study on your own. Chapter-matched slides, demonstrations, and datasets are posted to Canvas so that class time can go to the hard parts rather than to reading definitions aloud.
+3. **Bring a laptop.** Excel desktop with the Analysis ToolPak. We set it up together in session 2; do not spend week 1 fighting the installation alone.
+4. **The lowest quiz is dropped.** Eleven quizzes are given and only your best ten count. That drop *is* the make-up policy — plan around it rather than asking for an exception later.
+5. **Every quiz is on a Thursday; everything you hand in is due on a Tuesday.** You should never have to hunt through this document to find out what is due when.
 
 ## Course Description
 
-The fundamental purpose of this course is to enable you to understand basic statistical concepts and techniques, and how modern managers apply them in business. The course builds your statistical background and gives you the skills that industry and real-world decision problems demand. Emphasis is on statistical reasoning, problem-solving, computer applications, and interpretation of results.
+The fundamental purpose of this course is to enable students to understand the basic statistical concepts and techniques, and how they can be applied in the field of business by modern managers. The course aims to build students' statistical background and to give them the statistical skills necessary to meet the needs of industry and real-world decision-making problems. Emphasis will be on statistical reasoning, problem-solving, computer applications, and interpretation of results.
 
-The through-line is a single question asked in progressively harder forms: **what can I responsibly conclude from imperfect data?** In the first month, the answer comes from describing what you have. By December, it comes from modeling relationships among several variables and knowing how much confidence that model deserves.
+The through-line is a single question asked in progressively harder forms: **what can I responsibly conclude from imperfect data?** We build the answer in order — first describing data, then quantifying uncertainty with probability, then estimating what we cannot observe, then testing claims, and finally modeling relationships among several variables at once.
 
 ## Learning Objectives
 
-By the end of this course you will be able to do the following. The right-hand columns show where each objective is taught and how it is assessed, so you can see that nothing on this list is decorative.
+The goals for this course are for you to be able to:
 
 | # | You will be able to… | Taught in | Assessed by |
 | --- | --- | --- | --- |
-| 1 | Gather, clean, describe, and summarize data using Excel | Unit 1 | Quizzes 1–3 · Small Project 1 · Exam 1 |
-| 2 | Take samples and estimate unknown parameters | Unit 3 | Quizzes 5–6 · Exam 2 |
-| 3 | Formulate and test hypotheses | Unit 4 | Quizzes 7–9 · Small Project 2 · Exam 2 |
-| 4 | Understand the basic principles of statistical process control | Unit 5 | Quiz 11 · Final Exam |
-| 5 | Use multiple regression to analyze data | Unit 5 | Quizzes 10–11 · Final Project · Final Exam |
-| 6 | Successfully complete a research project | Units 1–5 | Final Project |
+| 1 | Gather, clean, describe, and summarize data using Excel | Unit 1 | Quizzes 1–3 · Project 1 · Exam I |
+| 2 | Take samples and estimate unknown parameters | Unit 3 | Quizzes 6–7 · Project 2 · Exam II |
+| 3 | Formulate and test hypotheses | Units 4–5 | Quizzes 8–9 · Project 2 · Exam II · Final Exam |
+| 4 | Understand basic principles of statistical process control | *see note below* | — |
+| 5 | Use multiple regression to analyze data | Unit 5 | Quiz 11 · Final Project · Final Exam |
+| 6 | Successfully complete research projects | Units 1–5 | Projects 1 and 2 · Final Project |
 | 7 | Design and conduct research in the future | Final Project milestones | Proposal · Report |
 | 8 | Use sound quantitative reasoning to analyze business problems | Every session | Interpretation sections of all projects and exams |
 
-Unit 2 (probability and discrete distributions) does not map to its own objective. It is the machinery that makes objectives 2 and 3 possible, which is why it sits where it does.
+> **Note on objective 4.** Statistical process control (Ch 17) is not allocated a session in the schedule below. If it is to be assessed this term it will be introduced within Unit 5 and announced in class; otherwise treat objectives 1–3 and 5–8 as the graded set.
 
 ## Materials
 
-**Textbook — recommended, not required.** David P. Doane and Lori E. Seward, *Applied Statistics in Business and Economics*, 7th edition. Everything required is presented in class and posted to Canvas. The chapter references in the schedule are there for students who want the extra reading, worked examples, and practice problems; you can succeed in this course without buying the book.
+**Textbook — recommended, not required.** David P. Doane and Lori E. Seward, *Applied Statistics in Business and Economics*, 7th edition. The schedule below follows this book chapter by chapter, so the chapter references are worth using. Everything required is presented in class and posted to Canvas, and you can succeed in this course without buying the book — but a course that moves in textbook order rewards reading ahead more than most.
+
+**Supplementary resources.** Chapter-matched slides, demonstrations, and datasets are posted to Canvas. Because lecture time cannot cover every topic in every chapter, these are not optional extras — they are where you fill the gap between what we do in class and what the chapter contains.
 
 **Technology.**
 
 - **Microsoft Excel, desktop version**, with the **Analysis ToolPak** add-in enabled. Excel is free to MSU students through Microsoft 365. The browser version will *not* run several tools we depend on — install the desktop application.
 - A **laptop brought to class** on the days marked **Lab**. If access to a laptop is a problem, tell me in week 1 and we will solve it quietly.
 - Reliable access to **Canvas** for readings, data files, quizzes, grades, and submissions.
-
-We set Excel up together in session 2. Do not spend the first week fighting the installation alone.
+- **A folder** — physical or digital — to keep notes, assignments, and handouts, and **a backup** of your work. A lost workbook is not an extension.
 
 ## How the Course Runs
 
 | | |
 | --- | --- |
-| **Tuesdays** | A method is introduced: where it comes from, what it assumes, what it is for. |
-| **Thursdays** | Class opens with a quiz on the previous week, then we put the method to work — usually in Excel, on real data. |
+| **Tuesdays** | A chapter's core method is introduced: where it comes from, what it assumes, what it is for. |
+| **Thursdays** | Class opens with a quiz on the previous week, then we continue the chapter and put the method to work in Excel. |
 | **Every deliverable** | Due Tuesday at the start of class, submitted on Canvas. |
-| **Every quiz** | First 10 minutes of Thursday's class, in class, on paper. |
+| **Every quiz** | First 10 minutes of Thursday's class. |
 
-The exceptions are the three Thursdays that hold Exam 1, Exam 2, and the last day of class. Those have no quiz.
+The exceptions are the first day, the two Thursdays that hold Exam I and Exam II, and the last day of class. Those have no quiz.
+
+Most chapters get two sessions. A few get one, and the schedule says which — those are the chapters where you should expect to lean hardest on the posted resources and on your own reading.
 
 ---
 
@@ -82,13 +103,15 @@ The exceptions are the three Thursdays that hold Exam 1, Exam 2, and the last da
 | Component | Weight | Points |
 | --- | --- | --- |
 | Quizzes — 11 given, lowest dropped (10 × 20 pts) | 20% | 200 |
-| Small Project 1 | 7.5% | 75 |
-| Small Project 2 | 7.5% | 75 |
+| Project 1 | 7.5% | 75 |
+| Project 2 | 7.5% | 75 |
 | Final Project | 15% | 150 |
-| Exam 1 | 10% | 100 |
-| Exam 2 | 15% | 150 |
+| Exam I | 10% | 100 |
+| Exam II | 15% | 150 |
 | Final Exam — cumulative | 25% | 250 |
 | **Total** | **100%** | **1000** |
+
+Exams together are 500 points (50%); projects together are 300 points (30%); quizzes are 200 points (20%).
 
 ### Grade Scale
 
@@ -103,20 +126,34 @@ The exceptions are the three Thursdays that hold Exam 1, Exam 2, and the last da
 
 Points are what count; the percentage column is a convenience. Final percentages are **not** rounded up across a grade boundary — 929 points is an A−.
 
-### Quizzes · 200 points
+### Exams · 500 points (50%)
 
-Five short questions in the first ten minutes of Thursday's class, covering the previous week. They exist to keep the course honest: statistics compounds, and a week of quiet confusion is expensive by November.
+| | When | Covers | Points |
+| --- | --- | --- | --- |
+| **Exam I** | Thu, Oct 8, in class | Ch 1–6 · Units 1–2 | 100 |
+| **Exam II** | Thu, Nov 12, in class | Ch 7–9 · Units 3–4 | 150 |
+| **Final Exam** | Dec 14–17, per the Registrar's schedule | Cumulative, weighted toward Unit 5 | 250 |
 
-Eleven quizzes are given and the **lowest is dropped**. That drop covers illness, travel, a bad morning, and a forgotten date. Because it exists, there are no make-up quizzes and no individually excused quizzes. If you will miss more than one Thursday for a documented reason — a university-sanctioned activity, an extended illness — talk to me in advance and we will arrange something.
+Exam dates are listed above and students are required to take all exams at the scheduled times. The only exceptions are university-sanctioned excuses — class conflict, medical or family emergency — **with documentation**. You must contact me **at least a week before** missing an exam or you will receive no credit for that exam. Note that work or being out of town are not considered excuses. If your reason is compelling, I will schedule a make-up date or re-weight your other exams. If you have a conflict with athletics or other university events, let me know as soon as possible and no later than a week before the exam date.
 
-### Small Projects · 75 points each
+Exams are closed-book. A **formula sheet is provided**, and you may bring **one double-sided page of handwritten notes**. Excel is used on exams for computation — bring your laptop.
 
-Two applied projects, each submitted as **one Excel workbook plus a written interpretation of at most two pages**.
+> **Final exam time.** MSU assigns final exam slots by meeting pattern. Confirm the exact day and time for a Tuesday/Thursday 12:15 pm class on the Registrar's published Final Exam Schedule; it will also be posted to Canvas by week 12. University policy does not permit taking the final early. Do not book travel before you know your slot.
 
-- **Small Project 1** — assigned Sep 17, due Sep 29. Clean a real, messy dataset and produce a descriptive and visual summary that a manager could act on.
-- **Small Project 2** — assigned Oct 22, due Nov 3. Estimate a parameter and test a claim about it, then say what the result licenses you to conclude.
+### Projects · 300 points (30%)
 
-Each is scored out of 75:
+There are three projects: **Project 1** and **Project 2** at 75 points each, and the **Final Project** at 150 points.
+
+**How a project is submitted.** Every project submission has two parts, in this order:
+
+1. Upload your **work files** — the Excel workbook and the written report — to **Canvas › Assignments**.
+2. A **project quiz** then opens, conditional on your file submission. The quiz asks you about your own analysis.
+
+If your work files are missing, or contain incorrect work, **your project quiz grade will be reduced or set to zero**. It is your responsibility to confirm that your files actually uploaded. Do **not** email me your work — emailed work counts as not submitted. We use Canvas.
+
+**Written reports are due on the date indicated and late work is not accepted.** The submission window closes at the start of class on the due date.
+
+Each of Project 1 and Project 2 is scored out of 75:
 
 | | Points |
 | --- | --- |
@@ -124,104 +161,101 @@ Each is scored out of 75:
 | Written interpretation — what it means, what it does not mean, what you would do | 35 |
 | A workbook someone else could follow — labeled sheets, live formulas rather than typed-in numbers, documented sources | 10 |
 
-Note where the weight sits. Half the points are for correctness and reproducibility; the other half is for thinking. Small projects are **individual work**.
+Note where the weight sits. Half the points are for correctness and reproducibility; the other half is for thinking.
+
+- **Project 1** — assigned Sep 17, due **Tue, Oct 6**. Drawn from the methods of Unit 1. Full instructions and data are posted on Canvas on the day it is assigned.
+- **Project 2** — assigned Oct 27, due **Tue, Nov 10**. Drawn from the methods of Units 3–4. Full instructions and data are posted on Canvas on the day it is assigned.
+
+**Project 1 and Project 2 are individual work.** You are expected to work on them individually and your work will be checked for plagiarism.
 
 ### Final Project · 150 points
 
-A small piece of real research, in **teams of four**, on a business question you choose. Pose the question, obtain data, analyze it with the methods of this course — **multiple regression must be part of the analysis** — and report what you found.
+A small piece of real research, in **teams of four**, on a business question you choose. Pose the question, obtain data, analyze it with the methods of this course — **multiple regression must be part of the analysis** — and report what you found. There is no in-class presentation; the written report is the deliverable.
 
 | Milestone | Due | Points |
 | --- | --- | --- |
-| Topic proposal — one page: the question, the data you will use, the method you expect to need | Tue, Nov 10 | 15 |
-| Written report + workbook | Tue, Dec 8 | 100 |
-| In-class presentation — 10 minutes plus questions | Dec 8 or Dec 10 | 35 |
+| Topic proposal — one page: the question, the data you will use, the method you expect to need | Tue, Nov 17 | 15 |
+| Written report + workbook | Tue, Dec 8 | 135 |
 
-Teams are formed in class the week of Oct 29. All ten reports are due Tuesday, Dec 8, regardless of which day your team presents, so no team gains extra days by presenting later.
+Teams are formed in class on Oct 29.
 
 **Peer evaluation.** At the end of the project every member submits a confidential evaluation of their teammates' contributions. These can adjust an individual's project score by up to **±10%**. A team member who does not contribute does not receive the team's grade.
 
 The proposal is worth only 15 points but it is the most useful thing you will submit. Most failed student research projects fail at the question, not the statistics — a question that no obtainable dataset can answer, or one that needs no analysis because the answer is already obvious. That is what the proposal exists to catch, three weeks early.
 
-### Exams
+> **Plan the regression last, not first.** Multiple regression is taught on Dec 3, five days before the report is due. Everything else — the question, the data, the descriptive work, the write-up — can and should be finished before then, so that the final week goes to fitting and reading a model rather than to still looking for data.
 
-| | When | Covers | Points |
-| --- | --- | --- | --- |
-| **Exam 1** | Thu, Oct 1, in class | Ch 1–6 · Units 1–2 | 100 |
-| **Exam 2** | Thu, Nov 12, in class | Ch 7–11, 15 · Units 3–4 | 150 |
-| **Final Exam** | Dec 14–17, per the Registrar's schedule | Cumulative, weighted toward Unit 5 | 250 |
+### Quizzes · 200 points (20%)
 
-Exams are closed-book. A **formula sheet is provided**, and you may bring **one double-sided page of handwritten notes**. Excel is used on exams for computation — bring your laptop.
+Five short questions in the first ten minutes of Thursday's class, covering the previous week. They exist to keep the course honest: statistics compounds, and a week of quiet confusion is expensive by November.
 
-> **Final exam time.** MSU assigns final exam slots by meeting pattern. Confirm the exact day and time for a Tuesday/Thursday 12:15 pm class on the Registrar's published Final Exam Schedule; it will also be posted to Canvas by week 12. University policy does not permit taking the final early. Do not book travel before you know your slot.
+Eleven quizzes are given and the **lowest is dropped**. That drop covers illness, travel, a bad morning, and a forgotten date. Because it exists, **there are no make-up quizzes** and no individually excused quizzes. If you will miss more than one Thursday for a documented reason — a university-sanctioned activity, an extended illness — talk to me in advance and we will arrange something.
+
+Some Excel assignments are submitted to **Canvas › Assignments** with a quiz that opens conditional on your submission, on the same terms as the project quizzes above. Some of the work may not be graded. **This is your own individual work** and it will be checked for plagiarism.
 
 ---
 
 ## Course Schedule
 
-Twenty-nine meetings in five units. Chapter numbers refer to Doane & Seward, 7e. This schedule is a plan, not a contract; any change is announced in class and posted to Canvas.
+Twenty-nine meetings in five units, following Doane & Seward, 7e, in chapter order. This schedule is tentative — a plan, not a contract. Any change is announced in class, posted to Canvas, and **I will keep you updated via email.**
 
 ### Unit 1 · Describing Data — Ch 1–4
 
 | # | Date | Topic | Read | Due |
 | --- | --- | --- | --- | --- |
-| 1 | Thu, Aug 27 | Course overview and syllabus walkthrough — how the course works, what is graded, and when; what business analytics is and is not | Ch 1 | |
-| 2 | Tue, Sep 1 | Data types and measurement scales; sampling methods · **Lab:** Excel and the Analysis ToolPak | Ch 2 | |
-| 3 | Thu, Sep 3 | **Lab:** Cleaning a real dataset — tables, sorting, filtering, missing values, duplicates | Ch 2 | Quiz 1 |
-| 4 | Tue, Sep 8 | Describing data visually: histograms, scatterplots, line charts; how charts mislead | Ch 3 | |
-| 5 | Thu, Sep 10 | **Lab:** PivotTables and charts | Ch 3 | Quiz 2 |
-| 6 | Tue, Sep 15 | Descriptive statistics: center, variability, shape | Ch 4 | |
-| 7 | Thu, Sep 17 | Standardization, outliers, boxplots · **Lab:** the Descriptive Statistics tool | Ch 4 | Quiz 3 · **SP1 assigned** |
+| 1 | Thu, Aug 27 | Course overview and syllabus; Introduction to Statistics | Ch 1 | |
+| 2 | Tue, Sep 1 | Data Collection: data types, measurement scales, sampling methods · **Lab:** Excel and the Analysis ToolPak | Ch 2 | |
+| 3 | Thu, Sep 3 | Data Collection, continued: survey design and sources of bias | Ch 2 | Quiz 1 |
+| 4 | Tue, Sep 8 | Describing Data Visually: histograms, dot plots, bar and line charts | Ch 3 | |
+| 5 | Thu, Sep 10 | Describing Data Visually, continued: scatter plots, tables, deceptive graphs · **Lab** | Ch 3 | Quiz 2 |
+| 6 | Tue, Sep 15 | Descriptive Statistics: measures of center and variability | Ch 4 | |
+| 7 | Thu, Sep 17 | Descriptive Statistics, continued: standardization, outliers, boxplots · **Lab** | Ch 4 | Quiz 3 · **Project 1 assigned** |
 
-### Unit 2 · Probability and Discrete Models — Ch 5–6
-
-| # | Date | Topic | Read | Due |
-| --- | --- | --- | --- | --- |
-| 8 | Tue, Sep 22 | Probability: events, joint and conditional probability, independence | Ch 5 | |
-| 9 | Thu, Sep 24 | Discrete distributions: binomial and Poisson in Excel | Ch 6 | Quiz 4 |
-| 10 | Tue, Sep 29 | Exam 1 review | Ch 1–6 | **Small Project 1 due** |
-| 11 | Thu, Oct 1 | **EXAM 1** — Ch 1–6 | | |
-
-### Unit 3 · From Sample to Population — Ch 7–8
+### Unit 2 · Probability and Discrete Distributions — Ch 5–6
 
 | # | Date | Topic | Read | Due |
 | --- | --- | --- | --- | --- |
-| 12 | Tue, Oct 6 | The normal distribution; `NORM.DIST` and `NORM.INV`; the exponential distribution | Ch 7 | |
-| 13 | Thu, Oct 8 | Sampling distributions and the Central Limit Theorem · **Lab:** simulating the CLT | Ch 8 | Quiz 5 |
-| 14 | Tue, Oct 13 | Confidence intervals for a mean, σ known and unknown; the *t* distribution | Ch 8 | |
-| 15 | Thu, Oct 15 | Confidence intervals for a proportion; choosing a sample size | Ch 8 | Quiz 6 |
+| 8 | Tue, Sep 22 | Probability: events, probability rules, contingency tables | Ch 5 | |
+| 9 | Thu, Sep 24 | Probability, continued: conditional probability, independence, Bayes' theorem | Ch 5 | Quiz 4 |
+| 10 | Tue, Sep 29 | Discrete Distributions: expected value, uniform, binomial | Ch 6 | |
+| 11 | Thu, Oct 1 | Discrete Distributions, continued: Poisson, hypergeometric · **Lab** | Ch 6 | Quiz 5 |
+| 12 | Tue, Oct 6 | **Review for Exam I** | Ch 1–6 | **Project 1 due · submission quiz opens** |
+| 13 | Thu, Oct 8 | **EXAM I** — Ch 1–6 | | |
 
-### Unit 4 · Testing Claims — Ch 9–11, 15
-
-| # | Date | Topic | Read | Due |
-| --- | --- | --- | --- | --- |
-| 16 | Tue, Oct 20 | The logic of hypothesis testing; one-sample test for a mean | Ch 9 | |
-| 17 | Thu, Oct 22 | *p*-values; Type I and Type II error; power; one-sample test for a proportion | Ch 9 | Quiz 7 · **SP2 assigned** |
-| 18 | Tue, Oct 27 | Two-sample tests: comparing two means | Ch 10 | |
-| 19 | Thu, Oct 29 | Paired *t*-test; two proportions; comparing variances · **Lab:** Excel's *t*-Test tools | Ch 10 | Quiz 8 · **Final Project assigned; teams formed** |
-| 20 | Tue, Nov 3 | One-factor ANOVA; multiple comparisons | Ch 11 | **Small Project 2 due** |
-| 21 | Thu, Nov 5 | Chi-square: goodness-of-fit and tests of independence | Ch 15 | Quiz 9 |
-| 22 | Tue, Nov 10 | Exam 2 review | Ch 7–11, 15 | **Project proposal due** |
-| 23 | Thu, Nov 12 | **EXAM 2** — Ch 7–11, 15 | | |
-
-### Unit 5 · Relationships and Processes — Ch 12–13, 17
+### Unit 3 · Continuous Distributions and Estimation — Ch 7–8
 
 | # | Date | Topic | Read | Due |
 | --- | --- | --- | --- | --- |
-| 24 | Tue, Nov 17 | Simple regression: least squares, *r*², inference on the slope | Ch 12 | |
-| 25 | Thu, Nov 19 | Multiple regression: interpreting coefficients, the *F*-test, adjusted *r*² · **Lab:** reading Excel's Regression output | Ch 13 | Quiz 10 |
+| 14 | Tue, Oct 13 | Continuous Distributions: the uniform and the normal distribution | Ch 7 | |
+| 15 | Thu, Oct 15 | Continuous Distributions, continued: normal approximations, the exponential · **Lab** | Ch 7 | Quiz 6 |
+| 16 | Tue, Oct 20 | Sampling Distributions and the Central Limit Theorem | Ch 8 · §8.1–8.3 | |
+| 17 | Thu, Oct 22 | Estimation: confidence interval for a mean, σ known and unknown; the *t* distribution · **Lab** | Ch 8 · §8.4–8.5 | Quiz 7 |
+| 18 | Tue, Oct 27 | Estimation, continued: CI for a proportion; choosing a sample size; CI for a variance | Ch 8 · §8.6–8.10 | **Project 2 assigned** |
+
+### Unit 4 · Hypothesis Testing — Ch 9
+
+| # | Date | Topic | Read | Due |
+| --- | --- | --- | --- | --- |
+| 19 | Thu, Oct 29 | One-Sample Hypothesis Tests: the logic of testing; test for a mean | Ch 9 · §9.1–9.3 | Quiz 8 · **Final Project assigned; teams formed** |
+| 20 | Tue, Nov 3 | One-Sample Tests, continued: *p*-values; test for a proportion | Ch 9 · §9.1–9.3 | |
+| 21 | Thu, Nov 5 | Test for a variance; Type I and Type II error, and power · **Lab** | Ch 9 · §9.4–9.5 | Quiz 9 |
+| 22 | Tue, Nov 10 | **Review for Exam II** | Ch 7–9 | **Project 2 due · submission quiz opens** |
+| 23 | Thu, Nov 12 | **EXAM II** — Ch 7–9 | | |
+
+### Unit 5 · Comparing Groups and Modeling Relationships — Ch 10–13, 15
+
+| # | Date | Topic | Read | Due |
+| --- | --- | --- | --- | --- |
+| 24 | Tue, Nov 17 | Two-Sample Hypothesis Tests: two means, paired samples, two proportions | Ch 10 | **Final Project proposal due** |
+| 25 | Thu, Nov 19 | Analysis of Variance: one-factor ANOVA and multiple comparisons · **Lab** | Ch 11 · §11.1–11.3 | Quiz 10 |
 | — | Nov 23–27 | **Fall Break — no classes** | | |
-| 26 | Tue, Dec 1 | Multiple regression, continued: dummy variables, multicollinearity, residual diagnostics | Ch 13 | |
-| 27 | Thu, Dec 3 | Statistical process control: common vs. special cause variation, x̄ and *R* charts, *p*-charts, process capability · **Lab** | Ch 17 | Quiz 11 |
-
-### Closing Week
-
-| # | Date | Topic | Read | Due |
-| --- | --- | --- | --- | --- |
-| 28 | Tue, Dec 8 | **Final Project presentations, part 1** — five teams | | **All reports and workbooks due** |
-| 29 | Thu, Dec 10 | **Final Project presentations, part 2** — five teams; Final Exam review | | |
+| 26 | Tue, Dec 1 | Bivariate Regression: least squares, *r*², inference on the slope | Ch 12 · §12.1–12.4 | |
+| 27 | Thu, Dec 3 | Multiple Regression: interpreting coefficients, the *F*-test, adjusted *r*² · **Lab:** reading Excel's Regression output | Ch 13 | Quiz 11 |
+| 28 | Tue, Dec 8 | Chi-Square Tests for Independence | Ch 15 · §15.1–15.2 | **Final Project report due** |
+| 29 | Thu, Dec 10 | **Final Exam review** — cumulative | | |
 | — | Dec 14–17 | **FINAL EXAM** — cumulative; day and time per the Registrar's Final Exam Schedule | | |
 
-**Why the back half is sequenced this way.** Regression is both a learning objective and the required method in your final project, so it is taught immediately after Exam 2 and finishes on Dec 1 — a full week before the report is due. Statistical process control follows it rather than preceding it, because control charts are easiest to understand once hypothesis testing and regression are already familiar. Presentations occupy two full sessions so that ten teams each get ten real minutes instead of a rushed five.
+**How the time is allocated, and what it costs.** This is a one-semester course built on a book written for two, so every chapter is a tradeoff. Chapters 2 through 9 — the descriptive and inferential core — each get two sessions, because everything later depends on them and because Exam I and Exam II are built on them. Unit 5 then compresses: two-sample tests, ANOVA, bivariate regression, multiple regression, and chi-square each get a single session. That is deliberate, but it is real, and it means Unit 5 is where the posted chapter resources matter most. Multiple regression is placed on Dec 3 specifically so that it lands before the final project report is due on Dec 8.
 
 ---
 
@@ -230,7 +264,7 @@ Twenty-nine meetings in five units. Chapter numbers refer to Doane & Seward, 7e.
 | Date | Event |
 | --- | --- |
 | Wed, Aug 26 | Classes begin — our first meeting is Thu, Aug 27 |
-| Tue, Sep 1 | Last day to self-add |
+| Tue, Sep 1 | Last day to self-add courses online |
 | Mon, Sep 7 | Labor Day — no classes |
 | Wed, Sep 9 | Last day to add via instructor; last day to self-drop |
 | Wed, Sep 16 | Last day to drop via advisor without a "W"; last day to confirm your bill |
@@ -242,9 +276,23 @@ Twenty-nine meetings in five units. Chapter numbers refer to Doane & Seward, 7e.
 | Dec 14–17 | Final Week |
 | Thu, Dec 17 | Last day of finals |
 
-Neither Labor Day nor Veterans Day falls on a Tuesday or Thursday in 2026, so **this section loses no meetings to holidays** — only Fall Break.
+Labor Day falls on a Monday and Veterans Day on a Wednesday in 2026, so **this section loses no meetings to holidays** — only Fall Break, which removes the Tuesday and Thursday of that week.
 
-Note the alignment of two dates: Exam 2 is Nov 12 and the last day to withdraw with a "W" is Nov 18. Grades will be posted before that deadline, deliberately, so that you can make an informed decision. If you are worried about your standing, come see me the week of Nov 16 rather than guessing.
+Note the alignment of two dates: Exam II is Nov 12 and the last day to withdraw with a "W" is Nov 18. Grades will be posted before that deadline, deliberately, so that you can make an informed decision. If you are worried about your standing, come see me the week of Nov 16 rather than guessing.
+
+---
+
+## Core Perspective: Inquiry — Social Sciences (IS)
+
+The Inquiry Social Sciences perspective emphasizes the methods and principles used by social scientists to systematically study human behavior. In this course we focus on **estimation, hypothesis testing, and regression.**
+
+**University Inquiry Social Science (IS) Core.** This class meets the University IS requirements for the Core Curriculum, which provides opportunities for developing two Core Qualities:
+
+**1. Thinker and Problem Solver.** As a thinker and problem solver, you will reason using relevant evidence gathered through quantitative methods. You will apply information literacy: the ability to skillfully consume — find, evaluate, and use — and meaningfully create information. You will demonstrate thoughtful evaluation of the data and provide an interpretation based on the data: define problems, find evidence, conduct analysis, and identify solutions.
+
+**2. Effective Communicator.** As an effective communicator, you will use written and visual communication to create meaning and foster understanding. You will demonstrate facility in analyzing, interpreting, and understanding quantitative information. You will be given large datasets and tasked with developing approaches to asking and answering questions, defining problems, and identifying solutions. You will then use written and visual communication to persuade and inform sound business decision-making.
+
+Where these qualities are assessed: the **interpretation sections** of Projects 1 and 2 and the Final Project report carry the Thinker and Problem Solver quality; the Final Project **written report** carries the Effective Communicator quality.
 
 ---
 
@@ -252,21 +300,19 @@ Note the alignment of two dates: Exam 2 is Nov 12 and the last day to withdraw w
 
 ### In the Classroom
 
-**Attendance.** Attendance is expected and is not separately graded. It is, however, close to determinative: much of this course is hands-on Excel work that is difficult to reconstruct from slides. If you miss a session, get the material from a classmate and from Canvas *before* coming to office hours, so we can spend that time on what you actually do not understand.
+**Attendance.** Attendance is expected and is not separately graded. It is, however, close to determinative: this course moves in chapter order and each chapter leans on the one before it, so a missed session is not an isolated loss. If you miss a session, get the material from a classmate and from Canvas *before* coming to office hours, so we can spend that time on what you actually do not understand.
 
 **Devices.** Laptops are required on lab days and welcome on other days for note-taking and following along. Phones away during quizzes and exams. If your screen is distracting the people behind you, I will say so once, privately.
 
 **Participation.** Ask questions when you are lost, including the ones you think are too basic. In a statistics classroom the "obvious" question is usually the one half the room needs answered, and the person who asks it is doing everyone a favor.
 
-**Recording and course materials.** Slides, workbooks, and data files are provided for your use in this course. Do not post them, or recordings of class, to file-sharing or homework sites — that is both a copyright violation and an academic integrity issue. If you need a recording as part of an approved accommodation, arrange it with me and Disability Services.
-
 ### Deadlines and Missed Work
 
-**Late work.** Projects lose **10% per calendar day**, up to three days; after three days they are not accepted. The clock starts at the beginning of class on the due date.
+**Projects.** Written reports are due on the date indicated and **late work is not accepted.** The submission window closes at the start of class on the due date. Confirm your Canvas upload succeeded — an unsubmitted file is an unsubmitted project.
 
 **Quizzes.** No make-ups. The dropped lowest quiz is the policy.
 
-**Missed exams.** Make-up exams are given only for documented, unavoidable conflicts arranged **in advance** where advance notice is possible. An unexcused missed exam receives a zero. For an emergency that makes advance notice impossible, contact me as soon as you are able.
+**Exams.** Make-up exams are given only for documented, university-sanctioned conflicts arranged **at least a week in advance**. An unexcused missed exam receives a zero. For an emergency that makes advance notice impossible, contact me as soon as you are able.
 
 **University-sanctioned activities.** If you will miss class for athletics, a conference, field work, or military service, give me the official documentation early in the semester so we can plan around it rather than react to it.
 
@@ -274,11 +320,21 @@ Note the alignment of two dates: Exam 2 is Nov 12 and the last day to withdraw w
 
 **Incomplete grades.** An "I" is available only when a documented emergency prevents you from finishing a small remaining portion of the course, and only when your work to that point is passing. It is not an alternative to withdrawing.
 
-### Academic Integrity and AI
+### Academic Integrity
 
-**Academic integrity.** All work in this course is governed by the MSU Student Conduct Code. Collaboration is encouraged on practice problems and required on the final project. **Small projects, quizzes, and all exams are individual work.** Copying another student's workbook, fabricating or altering data, and misreporting results are violations — the last one especially, because it is the specific dishonesty this discipline exists to prevent.
+**ALL WORK IN THIS CLASS IS INDIVIDUAL, except the Final Project.**
 
-**Generative AI.** AI tools (ChatGPT, Claude, Copilot, and similar) are **permitted for learning** and **not permitted for producing your submitted work**.
+All students are expected to abide by the Student Conduct Code and Academic Integrity Guidelines, available at [montana.edu/policy/student_conduct](https://www.montana.edu/policy/student_conduct/). Paraphrasing or quoting another's work without citing the source is a form of academic misconduct. Even inadvertent or unintentional misuse or appropriation of another's work — relying heavily on source material that is not expressly acknowledged — is considered plagiarism. If you have questions about using and citing sources, ask me for clarification.
+
+Although you are always encouraged to talk to others about assignments, the work you turn in must be your own and will be checked for plagiarism. **Do not share your files or accept files from others.** If you share your files or cheat on quizzes, you will receive a zero on that work or in the class, and I will report you to the Dean and to MSU. If you have any questions about this, please ask.
+
+The one exception is the **Final Project**, which is explicitly team-based. Within a team, collaboration is expected and shared files are the point. Across teams, the rule above applies unchanged.
+
+Copying another student's workbook, fabricating or altering data, and misreporting results are all violations — the last one especially, because it is the specific dishonesty this discipline exists to prevent.
+
+### Generative AI
+
+AI tools (ChatGPT, Claude, Copilot, and similar) are **permitted for learning** and **not permitted for producing your submitted work**.
 
 - *Permitted:* explaining a concept, decoding an Excel error message, asking what a *p*-value means, checking your understanding of an assumption, debugging a formula you wrote.
 - *Not permitted:* generating your analysis, writing your interpretation, drafting your project report, or answering a quiz or exam question.
@@ -289,11 +345,22 @@ The reason for this line is not suspicion. It is that the skill this course cert
 
 ### Access and Support
 
-**Disability accommodations.** MSU is committed to providing equal access to education. If you have a documented disability and need accommodations, register with **MSU Disability Services** (Romney Hall · 406-994-2824 · drv@montana.edu) and contact me early in the semester so your accommodations are in place when you need them. Accommodations cannot be applied retroactively to work already submitted. If you suspect you may need accommodations but have never been assessed, Disability Services can advise you.
+**Accommodations for disabilities.** If you have a documented disability for which you are or may be requesting accommodations, please let me know as soon as possible. Please also contact **MSU Disability Services** (Romney Hall · 406-994-2824 · drv@montana.edu). Additional information about accommodations provided through Disability Services is at [montana.edu/disabilityservices](https://www.montana.edu/disabilityservices/). Accommodations cannot be applied retroactively to work already submitted. If you suspect you may need accommodations but have never been assessed, Disability Services can advise you.
+
+**Mental health and wellness.** MSU strives to create a culture of support and recognizes that your mental health and wellness are equally as important as your physical health. It is OK if you experience difficulty, and there are several resources on campus to help you succeed emotionally, personally, and academically:
+
+| Resource | Where |
+| --- | --- |
+| Counseling & Psychological Services | [montana.edu/counseling](https://www.montana.edu/counseling) · 406-994-4531 |
+| Office of Health Advancement | [montana.edu/oha](https://www.montana.edu/oha) |
+| Insight Program (substance use) | [montana.edu/oha/insight](https://www.montana.edu/oha/insight) |
+| Suicide Prevention | [montana.edu/suicide-prevention](https://www.montana.edu/suicide-prevention) |
+| Medical Services | [montana.edu/health/medical.html](https://www.montana.edu/health/medical.html) |
+| Mental Health Screening | [screening.mentalhealthscreening.org/montanastateuniv](https://screening.mentalhealthscreening.org/montanastateuniv) |
+
+A statistics course is a poor reason to let a hard semester get harder — please use these, and please tell me if something is affecting your work, even without details.
 
 **Title IX and non-discrimination.** MSU prohibits discrimination and harassment, including sexual misconduct. As an instructor I am a **mandatory reporter**: I am required to report disclosures of sexual misconduct to the university's Title IX Coordinator in the Office of Institutional Equity. If you want to speak with someone confidentially instead, contact the **VOICE Center** (406-994-7069, available 24/7) or **Counseling & Psychological Services**.
-
-**Mental health.** **Counseling & Psychological Services** (406-994-4531) offers free, confidential support to enrolled students. A statistics course is a poor reason to let a hard semester get harder — please use them, and please tell me if something is affecting your work, even without details.
 
 **Basic needs.** If you are having trouble affording food or securing stable housing, MSU has resources including the campus student food pantry, and the Dean of Students office can help you navigate them. Tell me if it is affecting your coursework and I will connect you with support and keep it confidential.
 
@@ -306,6 +373,14 @@ The reason for this line is not suspicion. It is that the skill this course cert
 - **The MSU Writing Center** — genuinely useful for project reports; the interpretation sections are writing assignments as much as statistics assignments.
 - **Canvas** — readings, data files, quizzes, grades, announcements.
 
+> I am here to **help** you learn, but **you** are ultimately responsible for your performance.
+
+### Course Materials Copyright
+
+This syllabus, course lectures and presentations, and any course materials provided throughout this term are protected by U.S. copyright laws. Students enrolled in the course may use them for their own research and educational purposes. However, reproducing, selling, or otherwise distributing these materials without the written permission of the copyright owner is expressly prohibited, **including providing materials to commercial platforms such as Chegg or CourseHero.** Doing so may constitute a violation of U.S. copyright law as well as MSU's Code of Student Conduct.
+
+Electronic video and/or audio recording is not permitted during class unless the student obtains permission from the instructor. If permission is granted, any distribution of the recording is prohibited. Students with specific electronic recording accommodations authorized by the Office of Disability Services do not require instructor permission; however, the instructor must be notified of any such accommodation prior to recording. Any distribution of such recordings is prohibited.
+
 ### Administrative
 
 **Communication.** Email is the official channel. Use your MSU address and put **BMGT 240IS** in the subject line; I aim to respond within one business day on weekdays. Questions about a specific grade are handled in person or in office hours, not over email.
@@ -314,9 +389,29 @@ The reason for this line is not suspicion. It is that the skill this course cert
 
 **Privacy.** Grades are protected under FERPA and are posted only in Canvas, visible only to you.
 
-**Course evaluations.** You will be asked to evaluate this course near the end of the semester. Please do it, and be specific — the schedule you are reading was changed based on the last group's comments.
+**Course evaluations.** You will be asked to evaluate this course near the end of the semester. Please do it, and be specific.
 
 **Changes to this syllabus.** I may adjust the schedule if the class needs more time on something. Any change is announced in class and posted on Canvas. Grade weights and exam dates will not change except in an emergency.
+
+---
+
+## E-Mail Etiquette
+
+This is a business course, and email is a business skill. Every message you send me should meet the following standards.
+
+- Include a **salutation and sign-off** (e.g., "Professor," "Hi"; "Thank you," "Best wishes").
+- Single-space within paragraphs and double-space between paragraphs.
+- Write in **complete sentences**, and use upper- and lowercase letters.
+- Include a **signature block**: full name, course number, and section number or class time.
+- Use a **detailed subject line**.
+- **Be concise.** Present your point in the first sentence. Ask politely.
+- Do **not** ask for things you can find out by yourself — office hours are always listed on the syllabus; ask classmates for notes from a lecture you missed.
+- **Never respond when you are angry.**
+- Care about correctness — use spell-check.
+- Resist humor and tongue-in-cheek comments.
+- Assume that all business email is monitored.
+
+> **WARNING:** Emails that do not follow the above standards will not be answered.
 
 ---
 
@@ -324,7 +419,7 @@ The reason for this line is not suspicion. It is that the skill this course cert
 
 Statistics is learned by doing it, not by watching it. The students who do well in this course share three habits, and none of them is being "a math person."
 
-They **open the workbook**. Most sessions pair a concept with an Excel file. Following along, badly, with your own hands beats watching a clean demonstration.
+They **read ahead**. In a course that moves in chapter order, twenty minutes with the chapter before class changes what the lecture is for — you arrive with questions instead of trying to take dictation.
 
 They **treat surprise as information**. When a result contradicts what you expected, that gap is the most valuable thing in the room. Bring it to class. Most of the best discussions in this course start with "wait, why is that number negative?"
 
@@ -332,4 +427,4 @@ They **ask what it means, not just what to compute**. By December you will be ab
 
 ---
 
-*Fall 2026. This syllabus is subject to change; changes will be announced in class and posted on Canvas.*
+*BMGT 240IS · Business Analytics · Fall 2026 · Section 002 · Xuying W. Swift · Montana State University–Bozeman. This syllabus is subject to change; changes will be announced in class and posted on Canvas.*
