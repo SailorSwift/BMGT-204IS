@@ -1,0 +1,693 @@
+<title>Soft Drink Frequency Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --navy:#162960; --navy-ink:#ffffff; --gold:#f4b425;
+  --ink:#111a30; --slate:#4a5570; --muted:#6b7591;
+  --rule:#d5dae7; --rule-soft:#e8ecf4;
+  --ground:#fbfbfd; --surface:#ffffff; --surface-2:#f3f5fa; --surface-3:#e7ebf4;
+  --field:#ffffff; --field-edge:#c3cbdd;
+  --ok:#1a7f5a; --ok-bg:#e6f4ee; --ok-edge:#8fcfb4;
+  --err:#b3261e; --err-bg:#fdecea; --err-edge:#e8a49e;
+  --warn:#8a5a00; --warn-bg:#fdf3e0; --warn-edge:#e6c98a;
+  --focus:#2f6df6;
+  --shadow:0 1px 2px rgba(16,26,48,.06),0 8px 24px rgba(16,26,48,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --navy:#16264f; --navy-ink:#f2f5fc; --gold:#f7c246;
+    --ink:#e9edf7; --slate:#b6bfd6; --muted:#8b96b3;
+    --rule:#2c3757; --rule-soft:#222c49;
+    --ground:#0c1220; --surface:#131b2e; --surface-2:#18213a; --surface-3:#1f2a47;
+    --field:#0f1729; --field-edge:#38446a;
+    --ok:#5ed3a0; --ok-bg:#102f24; --ok-edge:#2c6a52;
+    --err:#ff9c93; --err-bg:#351a1c; --err-edge:#7a3b38;
+    --warn:#f0c274; --warn-bg:#33270f; --warn-edge:#6d5424;
+    --focus:#6d9bff;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#16264f; --navy-ink:#f2f5fc; --gold:#f7c246;
+  --ink:#e9edf7; --slate:#b6bfd6; --muted:#8b96b3;
+  --rule:#2c3757; --rule-soft:#222c49;
+  --ground:#0c1220; --surface:#131b2e; --surface-2:#18213a; --surface-3:#1f2a47;
+  --field:#0f1729; --field-edge:#38446a;
+  --ok:#5ed3a0; --ok-bg:#102f24; --ok-edge:#2c6a52;
+  --err:#ff9c93; --err-bg:#351a1c; --err-edge:#7a3b38;
+  --warn:#f0c274; --warn-bg:#33270f; --warn-edge:#6d5424;
+  --focus:#6d9bff;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:Spectral,Georgia,'Times New Roman',serif;
+  font-size:17px; line-height:1.6; margin:0;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px 80px}
+.lbl{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:11px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase;
+}
+.num{font-family:'IBM Plex Mono',Consolas,monospace;font-variant-numeric:tabular-nums}
+
+/* header */
+header{background:var(--navy);border-bottom:4px solid var(--gold);padding:36px 20px 30px;margin-bottom:34px}
+.hd{max-width:880px;margin:0 auto}
+.hd .eyebrow{color:var(--gold);margin:0 0 12px}
+h1{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:clamp(26px,4.4vw,34px);
+  font-weight:700; line-height:1.15; color:var(--navy-ink);
+  margin:0 0 12px; max-width:22ch; text-wrap:balance;
+}
+.hd p{color:#c9d3ea;margin:0;max-width:58ch;font-size:17.5px}
+:root[data-theme="dark"] .hd p,
+:root:not([data-theme="light"]) .hd p{color:#b6c2de}
+
+h2{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:21px; font-weight:700;
+  line-height:1.25; color:var(--ink); margin:0 0 10px; text-wrap:balance;
+}
+.sec{margin:0 0 14px}
+.sec .eyebrow{color:var(--muted);margin:0 0 7px}
+.sec p{color:var(--slate);margin:0;max-width:66ch}
+
+/* observation strip */
+.data{
+  background:var(--surface); border:1px solid var(--rule);
+  border-radius:3px; padding:16px; margin:0 0 34px; box-shadow:var(--shadow);
+}
+.data-hd{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between;margin:0 0 12px}
+.data-hd .lbl{color:var(--muted)}
+.obs{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(126px,1fr));
+  gap:4px; max-height:212px; overflow-y:auto; padding:2px;
+}
+.ob{
+  display:flex; gap:7px; align-items:baseline;
+  background:var(--surface-2); border-radius:2px; padding:4px 8px;
+  font-size:12.5px; color:var(--ink);
+  font-family:'IBM Plex Sans',Arial,sans-serif;
+}
+.ob i{
+  font-style:normal; color:var(--muted); font-size:10.5px; min-width:16px;
+  text-align:right; font-family:'IBM Plex Mono',monospace;
+}
+
+/* entry table */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--surface);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:620px}
+th{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:10.5px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--navy-ink);
+  background:var(--navy); text-align:right; vertical-align:bottom; padding:11px 14px;
+}
+th:first-child{text-align:left}
+th small{display:block;font-weight:400;letter-spacing:0;text-transform:none;font-size:10.5px;color:#a8b6d6;margin-top:3px}
+td{padding:0;border-bottom:1px solid var(--rule-soft)}
+tbody tr:nth-child(even) td{background:var(--surface-2)}
+.brand{
+  font-family:Spectral,Georgia,serif; font-size:15.5px; color:var(--ink);
+  padding:0 14px; white-space:nowrap;
+}
+.cell{display:flex;align-items:center;gap:6px;padding:6px 10px 6px 6px;justify-content:flex-end}
+.cell input{
+  width:100%; max-width:96px; background:var(--field); color:var(--ink);
+  border:1px solid var(--field-edge); border-radius:2px;
+  padding:7px 9px; text-align:right; font-size:15px;
+  font-family:'IBM Plex Mono',Consolas,monospace; font-variant-numeric:tabular-nums;
+}
+.cell input:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--focus)}
+.cell .suffix{color:var(--muted);font-size:13px;font-family:'IBM Plex Sans',sans-serif;min-width:10px}
+.mark{
+  min-width:15px; font-size:14px; font-weight:700; text-align:center;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+td.ok input{border-color:var(--ok-edge);background:var(--ok-bg)}
+td.ok .mark{color:var(--ok)}
+td.bad input{border-color:var(--err-edge);background:var(--err-bg)}
+td.bad .mark{color:var(--err)}
+
+tr.total td{border-top:2px solid var(--navy);border-bottom:0;background:var(--surface-3)!important}
+tr.total .brand{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink); padding:14px;
+}
+.sum{
+  display:flex; align-items:center; justify-content:flex-end; gap:7px;
+  padding:14px 10px 14px 6px; font-family:'IBM Plex Mono',monospace;
+  font-variant-numeric:tabular-nums; font-size:15px; font-weight:600; color:var(--slate);
+}
+.sum .target{font-size:11px;font-weight:400;color:var(--muted);font-family:'IBM Plex Sans',sans-serif}
+.sum.hit{color:var(--ok)}
+.sum.miss{color:var(--err)}
+
+/* controls */
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0 0}
+button{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:13.5px; font-weight:600;
+  border-radius:2px; padding:10px 18px; cursor:pointer; border:1px solid transparent;
+  transition:background .12s ease,border-color .12s ease;
+}
+button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.primary{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.primary:hover{background:var(--ink)}
+.ghost{background:transparent;color:var(--slate);border-color:var(--field-edge)}
+.ghost:hover{background:var(--surface-2);color:var(--ink)}
+.link{background:none;border:0;color:var(--muted);text-decoration:underline;padding:10px 4px;font-weight:400}
+.link:hover{color:var(--ink)}
+
+.verdict{
+  margin:18px 0 0; padding:13px 16px; border-radius:2px; border:1px solid var(--rule);
+  background:var(--surface-2); color:var(--slate);
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:14px; line-height:1.55;
+}
+.verdict.good{background:var(--ok-bg);border-color:var(--ok-edge);color:var(--ok)}
+.verdict.bad{background:var(--err-bg);border-color:var(--err-edge);color:var(--err)}
+.verdict.part{background:var(--warn-bg);border-color:var(--warn-edge);color:var(--warn)}
+.verdict[hidden]{display:none}
+
+/* short questions */
+.q{border-top:1px solid var(--rule);padding:22px 0 0;margin:22px 0 0}
+p.stem{color:var(--ink);margin:0 0 12px;max-width:66ch}
+p.stem b{
+  font-family:'IBM Plex Sans',Arial,sans-serif; color:var(--navy); font-weight:700;
+  margin-right:5px;
+}
+:root[data-theme="dark"] p.stem b,
+:root:not([data-theme="light"]) p.stem b{color:var(--gold)}
+.answer{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.answer input{
+  flex:1 1 240px; background:var(--field); color:var(--ink);
+  border:1px solid var(--field-edge); border-radius:2px; padding:9px 11px;
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:14.5px;
+}
+.answer input:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--focus)}
+.answer .unit{color:var(--muted);font-family:'IBM Plex Sans',sans-serif;font-size:14px}
+.fb{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:13.5px; margin:9px 0 0;
+  color:var(--slate); line-height:1.55;
+}
+.fb.good{color:var(--ok)} .fb.bad{color:var(--err)} .fb.part{color:var(--warn)}
+.fb[hidden]{display:none}
+
+.note{
+  margin:38px 0 0; padding:17px 19px; background:var(--surface-3);
+  border-left:3px solid var(--gold); border-radius:0 2px 2px 0;
+}
+.note .lbl{color:var(--slate);margin:0 0 6px;display:block}
+.note p{margin:0 0 9px;color:var(--slate);font-size:16px}
+.note p:last-child{margin:0}
+.note code{
+  font-family:'IBM Plex Mono',Consolas,monospace; font-size:14px;
+  background:var(--surface); border:1px solid var(--rule); border-radius:2px;
+  padding:1px 6px; color:var(--ink);
+}
+footer{
+  margin:44px 0 0; padding:16px 0 0; border-top:1px solid var(--rule);
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:12.5px;
+  color:var(--muted); line-height:1.6;
+}
+/* why-it-matters */
+.why{margin:44px 0 0;padding:28px 0 0;border-top:1px solid var(--rule)}
+.why h2{margin:0 0 12px}
+.why p{color:var(--slate);margin:0 0 15px;max-width:66ch}
+.why p:last-child{margin-bottom:0}
+.why strong{color:var(--ink);font-weight:600}
+.lede{font-size:19px;line-height:1.55;color:var(--ink)!important}
+.cmpwrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--surface);box-shadow:var(--shadow);margin:4px 0 16px}
+table.cmp{border-collapse:collapse;width:100%;min-width:520px}
+table.cmp th{text-align:right}
+table.cmp th:first-child{text-align:left}
+table.cmp td{
+  padding:12px 14px; border-bottom:1px solid var(--rule-soft); text-align:right;
+  font-family:'IBM Plex Mono',Consolas,monospace; font-variant-numeric:tabular-nums;
+  font-size:15.5px; color:var(--ink);
+}
+table.cmp td:first-child{
+  text-align:left; font-family:'IBM Plex Sans',Arial,sans-serif; font-size:13.5px;
+  font-weight:500; color:var(--slate);
+}
+table.cmp td:last-child{text-align:right}
+table.cmp tr:last-child td{border-bottom:0}
+table.cmp tr.share td{background:var(--surface-2)}
+.pill{
+  display:inline-block; font-family:'IBM Plex Sans',Arial,sans-serif; font-size:11px;
+  font-weight:600; letter-spacing:.07em; text-transform:uppercase;
+  border:1px solid var(--field-edge); border-radius:2px; padding:3px 8px; color:var(--slate);
+}
+.pill.flip{border-color:var(--gold);color:var(--ink);background:var(--surface-3)}
+.punch{
+  margin:0 0 20px; padding:15px 18px; background:var(--surface-3);
+  border-left:3px solid var(--gold); border-radius:0 2px 2px 0;
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:15px; line-height:1.6; color:var(--ink);
+}
+.bridge{
+  margin:22px 0 0; padding:18px 20px; border:1px solid var(--rule);
+  border-radius:3px; background:var(--surface);
+}
+.bridge .lbl{color:var(--muted);display:block;margin:0 0 8px}
+.bridge .eq{
+  font-family:'IBM Plex Mono',Consolas,monospace; font-size:16px; color:var(--ink);
+  background:var(--surface-2); border:1px solid var(--rule); border-radius:2px;
+  padding:10px 13px; margin:0 0 14px; overflow-x:auto;
+}
+.probe{
+  margin:22px 0 0; padding:19px 21px; border:1px solid var(--field-edge);
+  border-radius:3px; background:var(--surface-2);
+}
+.probe .lbl{color:var(--muted);display:block;margin:0 0 9px}
+.probe .ask{
+  font-family:Spectral,Georgia,serif; font-size:18.5px; line-height:1.5;
+  color:var(--ink); margin:0 0 15px; max-width:58ch;
+}
+.probe .body{margin:16px 0 0;padding:15px 0 0;border-top:1px solid var(--rule)}
+.probe .body p{font-size:16px;color:var(--slate);margin:0 0 12px;max-width:64ch}
+.probe .body p:last-child{margin:0}
+.probe .body[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header>
+  <div class="hd">
+    <div class="lbl eyebrow">BMGT 240IS &middot; Chapter 2 &middot; Excel Activity 2.1</div>
+    <h1>Soft drink frequency lab</h1>
+    <p>Count the 50 purchases, build all three distributions, and check your own work before anyone tells you the answer.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="sec">
+    <div class="lbl eyebrow">The sample</div>
+    <h2>Soft Drink Purchases</h2>
+    <p>Data have been collected from a sample of <strong>50 soft drink purchases</strong>. Each observation indicates the brand purchased. The full sample is below &mdash; count from it directly, or open <span class="num" style="font-size:15px">softdrink.xlsx</span> and use COUNTIF.</p>
+  </div>
+
+  <div class="data">
+    <div class="data-hd">
+      <span class="lbl">DATAfile &middot; softdrink &middot; brand purchased</span>
+      <span class="lbl" style="letter-spacing:.06em">n = 50</span>
+    </div>
+    <div class="obs" id="obs"></div>
+  </div>
+
+  <div class="sec">
+    <div class="lbl eyebrow">Build the distributions</div>
+    <p class="stem"><b>a.</b> Construct frequency, relative frequency, and percent frequency distributions to summarize the data.</p>
+    <p>Enter a frequency, a relative frequency to two decimals, and a percent frequency to one decimal for each brand. The totals below update as you type.</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Soft Drink</th>
+          <th scope="col">Frequency</th>
+          <th scope="col">Relative Frequency<small>two decimals</small></th>
+          <th scope="col">Percent Frequency<small>one decimal</small></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+      <tfoot>
+        <tr class="total">
+          <td class="brand">Total</td>
+          <td><div class="sum" id="sumF">&mdash; <span class="target">/ 50</span></div></td>
+          <td><div class="sum" id="sumR">&mdash; <span class="target">/ 1.00</span></div></td>
+          <td><div class="sum" id="sumP">&mdash; <span class="target">/ 100</span></div></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="bar">
+    <button type="button" class="primary" id="check">Check my work</button>
+    <button type="button" class="ghost" id="reset">Clear everything</button>
+    <button type="button" class="link" id="reveal">Show the answers</button>
+  </div>
+  <div class="verdict" id="verdict" hidden></div>
+
+  <div class="q">
+    <p class="stem"><b>b.</b> Which soft drink is purchased most often?</p>
+    <div class="answer">
+      <input type="text" id="qb" placeholder="Brand" autocomplete="off">
+      <button type="button" class="ghost" data-check="b">Check</button>
+    </div>
+    <p class="fb" id="fb-b" hidden></p>
+  </div>
+
+  <div class="q">
+    <p class="stem"><b>c.</b> Which soft drink is purchased least often? Read your table carefully before answering.</p>
+    <div class="answer">
+      <input type="text" id="qc" placeholder="Brand" autocomplete="off">
+      <button type="button" class="ghost" data-check="c">Check</button>
+    </div>
+    <p class="fb" id="fb-c" hidden></p>
+  </div>
+
+  <div class="q">
+    <p class="stem"><b>d.</b> What percentage of purchases were Coca-Cola products (Coca-Cola and Diet Coke combined)?</p>
+    <div class="answer">
+      <input type="text" inputmode="decimal" id="qd" placeholder="0.0" autocomplete="off" style="flex:0 0 120px;text-align:right;font-family:'IBM Plex Mono',monospace">
+      <span class="unit">%</span>
+      <button type="button" class="ghost" data-check="d">Check</button>
+    </div>
+    <p class="fb" id="fb-d" hidden></p>
+  </div>
+
+  <div class="q">
+    <p class="stem"><b>e.</b> Compare the colas (Coca-Cola, Diet Coke, Pepsi) to the non-colas (Dr.&nbsp;Pepper, Sprite). Which group accounts for more purchases, and by how much?</p>
+    <div class="answer">
+      <input type="text" id="qe" placeholder="Group, and the margin" autocomplete="off">
+      <button type="button" class="ghost" data-check="e">Check</button>
+    </div>
+    <p class="fb" id="fb-e" hidden></p>
+  </div>
+
+  <div class="why">
+    <div class="lbl eyebrow" style="color:var(--muted);margin:0 0 7px">Why bother with the second and third columns</div>
+    <h2>19 is not an answer. 19 out of what?</h2>
+    <p class="lede">A frequency tells you the size of a pile. A relative or percent frequency tells you the <strong>share</strong> &mdash; and share is the only one of the two that survives a change in sample size.</p>
+    <p>Suppose you run the same study at a second location and collect 40 purchases instead of 50.</p>
+
+    <div class="cmpwrap">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th scope="col">Coca-Cola</th>
+            <th scope="col">Store A &nbsp;<small style="font-weight:400;color:#a8b6d6">n = 50</small></th>
+            <th scope="col">Store B &nbsp;<small style="font-weight:400;color:#a8b6d6">n = 40</small></th>
+            <th scope="col">Larger</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Frequency</td>
+            <td>19</td>
+            <td>16</td>
+            <td><span class="pill">Store A</span></td>
+          </tr>
+          <tr class="share">
+            <td>Relative frequency</td>
+            <td>0.38</td>
+            <td>0.40</td>
+            <td><span class="pill flip">Store B</span></td>
+          </tr>
+          <tr class="share">
+            <td>Percent frequency</td>
+            <td>38.0%</td>
+            <td>40.0%</td>
+            <td><span class="pill flip">Store B</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="punch">Same data, opposite conclusions. Read the frequency row and Store A looks better for Coca-Cola. Read either share row and it is Store B. Only the share rows are comparable, because only they account for the two different sample sizes.</div>
+
+    <p>This is why a count on its own cannot be compared to anything, and comparison is almost always the actual question &mdash; against another store, another year, another region, or a published market share.</p>
+
+    <div class="probe">
+      <span class="lbl">Push on it</span>
+      <p class="ask">So which store is the larger market for soft drinks &mdash; and can you even tell?</p>
+      <button type="button" class="ghost" id="probe-btn">Show what to look for</button>
+      <div class="body" id="probe-body" hidden>
+        <p><strong>No &mdash; and neither row gets you there.</strong> The numbers 50 and 40 are <em>sample sizes</em>. Somebody chose to observe 50 purchases at one store and 40 at the other. That choice says nothing about how much either store actually sells.</p>
+        <p>Share is a <strong>within-store</strong> quantity. It tells you how Coca-Cola performs against its shelf-mates at that location, and nothing at all about the size of the location. Store B could be three times the size of Store A and simply have been sampled less.</p>
+        <p>To get volume you would need a second variable entirely &mdash; total soft drink sales per store &mdash; and then multiply: <strong>total volume &times; share = Coca-Cola volume</strong>. A 40% share of a corner shop is fewer cans than a 38% share of a supermarket.</p>
+        <p>One more caution, which is Chapter 8 territory: 38% from 50 observations against 40% from 40 observations sits comfortably inside sampling noise. Samples this small cannot establish that Store B&rsquo;s true share is higher at all. Shares fix the sample-size problem in the <em>arithmetic</em>; they do not make a small sample trustworthy.</p>
+      </div>
+    </div>
+
+    <div class="bridge">
+      <span class="lbl">The part that pays off in Chapter 4</span>
+      <p style="margin:0 0 12px">Relative frequency is where probability quietly enters this course. When you divide 19 by 50, you have computed the <strong>empirical probability</strong> that a randomly chosen purchase is a Coca-Cola:</p>
+      <div class="eq">P(Coca-Cola) &asymp; 19 / 50 = 0.38</div>
+      <p style="margin:0">Same arithmetic, different name. And it explains why the totals are worth checking: a relative frequency column summing to exactly <strong>1.00</strong> means the categories are non-overlapping and exhaustive &mdash; every observation landed in one class and only one. That is precisely the condition a probability distribution has to satisfy in Chapter 5. You will have built one by hand today without calling it that.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="lbl">Why the total row matters</span>
+    <p>A frequency distribution has three invariants, and they are the only self-check you need: the frequencies sum to <strong>n&nbsp;=&nbsp;50</strong>, the relative frequencies sum to <strong>1.00</strong>, and the percent frequencies sum to <strong>100</strong>. If a total is off, the mistake is almost always in the counting, not the arithmetic.</p>
+    <p>In Excel, get the counts with <code>=COUNTIF($A$2:$A$51,"Coca-Cola")</code> or a PivotTable, then divide by the total with an absolute reference &mdash; <code>=B2/$B$7</code> &mdash; so the formula copies down without drifting.</p>
+  </div>
+
+  <footer>
+    Camm et al., <em>Essentials of Modern Business Statistics with Microsoft Excel</em>, 9e &middot;
+    Section 2.1, LO 2-1 &middot; BMGT 240IS, Section 002, Fall 2026<br>
+    Your entries are saved in this browser only. Nothing is submitted or recorded.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA = ["Coca-Cola","Diet Coke","Pepsi","Diet Coke","Coca-Cola","Coca-Cola","Dr. Pepper","Diet Coke","Pepsi","Pepsi","Coca-Cola","Dr. Pepper","Sprite","Coca-Cola","Diet Coke","Coca-Cola","Coca-Cola","Sprite","Coca-Cola","Diet Coke","Coca-Cola","Diet Coke","Coca-Cola","Sprite","Pepsi","Coca-Cola","Coca-Cola","Coca-Cola","Pepsi","Coca-Cola","Sprite","Dr. Pepper","Pepsi","Diet Coke","Pepsi","Coca-Cola","Coca-Cola","Coca-Cola","Pepsi","Dr. Pepper","Coca-Cola","Diet Coke","Pepsi","Pepsi","Pepsi","Pepsi","Coca-Cola","Dr. Pepper","Pepsi","Sprite"];
+  var BRANDS = ["Coca-Cola","Diet Coke","Dr. Pepper","Pepsi","Sprite"];
+  var N = DATA.length;
+  var KEY = {};
+  BRANDS.forEach(function(b){ KEY[b] = DATA.filter(function(x){ return x === b; }).length; });
+
+  var STORE = "bmgt240-ch02-21-v1";
+
+  /* --- observation strip --- */
+  var obs = document.getElementById("obs");
+  DATA.forEach(function(v,i){
+    var d = document.createElement("div");
+    d.className = "ob";
+    var n = document.createElement("i"); n.textContent = i + 1;
+    var s = document.createElement("span"); s.textContent = v;
+    d.appendChild(n); d.appendChild(s); obs.appendChild(d);
+  });
+
+  /* --- entry rows --- */
+  var rows = document.getElementById("rows");
+  BRANDS.forEach(function(b,i){
+    var tr = document.createElement("tr");
+    var td0 = document.createElement("td");
+    td0.className = "brand"; td0.textContent = b;
+    tr.appendChild(td0);
+    ["f","r","p"].forEach(function(kind){
+      var td = document.createElement("td");
+      var wrap = document.createElement("div"); wrap.className = "cell";
+      var inp = document.createElement("input");
+      inp.type = "text"; inp.inputMode = "decimal"; inp.autocomplete = "off";
+      inp.id = kind + i;
+      inp.setAttribute("aria-label", b + " " +
+        (kind === "f" ? "frequency" : kind === "r" ? "relative frequency" : "percent frequency"));
+      inp.placeholder = kind === "f" ? "0" : kind === "r" ? "0.00" : "0.0";
+      wrap.appendChild(inp);
+      if (kind === "p") {
+        var sfx = document.createElement("span");
+        sfx.className = "suffix"; sfx.textContent = "%";
+        wrap.appendChild(sfx);
+      }
+      var mk = document.createElement("span");
+      mk.className = "mark"; mk.setAttribute("aria-live","polite");
+      wrap.appendChild(mk);
+      td.appendChild(wrap); tr.appendChild(td);
+    });
+    rows.appendChild(tr);
+  });
+
+  var all = Array.prototype.slice.call(document.querySelectorAll("#rows input"));
+
+  function num(el){
+    var t = (el.value || "").replace(/[%,\s]/g, "");
+    if (t === "") return null;
+    var v = parseFloat(t);
+    return isFinite(v) ? v : NaN;
+  }
+
+  /* --- live totals --- */
+  function fmt(v, dp){ return v.toFixed(dp); }
+  function totals(){
+    var spec = [
+      { kind:"f", el:document.getElementById("sumF"), target:N,   dp:0, tol:0.0001, label:"/ " + N },
+      { kind:"r", el:document.getElementById("sumR"), target:1,   dp:2, tol:0.005,  label:"/ 1.00" },
+      { kind:"p", el:document.getElementById("sumP"), target:100, dp:1, tol:0.05,   label:"/ 100" }
+    ];
+    spec.forEach(function(s){
+      var sum = 0, any = false, bad = false;
+      for (var i = 0; i < BRANDS.length; i++){
+        var v = num(document.getElementById(s.kind + i));
+        if (v === null) continue;
+        if (isNaN(v)) { bad = true; continue; }
+        any = true; sum += v;
+      }
+      s.el.className = "sum";
+      if (!any) { s.el.innerHTML = '&mdash; <span class="target">' + s.label + "</span>"; return; }
+      var hit = !bad && Math.abs(sum - s.target) < s.tol;
+      s.el.classList.add(hit ? "hit" : "miss");
+      s.el.innerHTML = fmt(sum, s.dp) + ' <span class="target">' + s.label + "</span>";
+    });
+  }
+
+  /* --- persistence --- */
+  function save(){
+    var o = {};
+    all.forEach(function(i){ if (i.value) o[i.id] = i.value; });
+    ["qb","qc","qd","qe"].forEach(function(id){
+      var e = document.getElementById(id);
+      if (e && e.value) o[id] = e.value;
+    });
+    try { localStorage.setItem(STORE, JSON.stringify(o)); } catch (e) {}
+  }
+  function load(){
+    var o = null;
+    try { o = JSON.parse(localStorage.getItem(STORE) || "null"); } catch (e) {}
+    if (!o) return;
+    Object.keys(o).forEach(function(k){
+      var e = document.getElementById(k);
+      if (e) e.value = o[k];
+    });
+  }
+
+  /* --- check part a --- */
+  function clearMarks(){
+    all.forEach(function(i){
+      i.parentNode.parentNode.className = "";
+      i.parentNode.querySelector(".mark").textContent = "";
+    });
+  }
+
+  var verdict = document.getElementById("verdict");
+
+  document.getElementById("check").addEventListener("click", function(){
+    var right = 0, wrong = 0, blank = 0;
+    BRANDS.forEach(function(b,i){
+      var f = KEY[b], r = f / N, p = r * 100;
+      [["f", f, 0.0001], ["r", r, 0.005], ["p", p, 0.05]].forEach(function(t){
+        var el = document.getElementById(t[0] + i);
+        var td = el.parentNode.parentNode;
+        var mk = el.parentNode.querySelector(".mark");
+        var v = num(el);
+        if (v === null) { td.className = ""; mk.textContent = ""; blank++; return; }
+        if (!isNaN(v) && Math.abs(v - t[1]) <= t[2]) {
+          td.className = "ok"; mk.textContent = "✓"; right++;
+        } else {
+          td.className = "bad"; mk.textContent = "✕"; wrong++;
+        }
+      });
+    });
+    verdict.hidden = false;
+    verdict.className = "verdict";
+    if (blank === 15) {
+      verdict.textContent = "Nothing entered yet. Count the sample above, then fill in the frequency column first — the other two columns follow from it.";
+    } else if (wrong === 0 && blank === 0) {
+      verdict.classList.add("good");
+      verdict.textContent = "All 15 values correct. Your three totals should read 50, 1.00 and 100 — confirm that, then move on to part b.";
+    } else if (wrong === 0) {
+      verdict.textContent = right + " correct so far, " + blank + " still blank. Nothing wrong yet — keep going.";
+    } else {
+      verdict.classList.add("bad");
+      verdict.textContent = wrong + " of " + (right + wrong) + " entered values are off (marked ✕). Recount those brands in the sample above before changing the arithmetic — a wrong relative frequency usually means a wrong count.";
+    }
+    save();
+  });
+
+  document.getElementById("reveal").addEventListener("click", function(){
+    BRANDS.forEach(function(b,i){
+      var f = KEY[b], r = f / N, p = r * 100;
+      document.getElementById("f" + i).value = String(f);
+      document.getElementById("r" + i).value = r.toFixed(2);
+      document.getElementById("p" + i).value = p.toFixed(1);
+    });
+    clearMarks(); totals(); save();
+    verdict.hidden = false;
+    verdict.className = "verdict";
+    verdict.textContent = "Answers filled in. Note that Dr. Pepper and Sprite tie at 5 — part c has two correct answers, not one.";
+  });
+
+  document.getElementById("reset").addEventListener("click", function(){
+    all.forEach(function(i){ i.value = ""; });
+    ["qb","qc","qd","qe"].forEach(function(id){
+      document.getElementById(id).value = "";
+      var f = document.getElementById("fb-" + id.charAt(1));
+      f.hidden = true; f.className = "fb";
+    });
+    clearMarks(); totals();
+    verdict.hidden = true;
+    try { localStorage.removeItem(STORE); } catch (e) {}
+  });
+
+  /* --- short answers --- */
+  function norm(s){ return (s || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+
+  var CHECKS = {
+    b: function(raw){
+      var t = norm(raw);
+      if (!t) return ["", "Type a brand name first."];
+      if (t.indexOf("cocacola") > -1 || t === "coke" || t === "coca")
+        return ["good", "Correct — Coca-Cola, 19 purchases, 38% of the sample."];
+      if (t.indexOf("dietcoke") > -1)
+        return ["bad", "Not quite. Diet Coke is a separate category here with 8 purchases. Which single row has the largest frequency?"];
+      return ["bad", "Not quite. Look for the largest value in your frequency column."];
+    },
+    c: function(raw){
+      var t = norm(raw);
+      if (!t) return ["", "Type a brand name first."];
+      var dp = t.indexOf("drpepper") > -1 || t.indexOf("pepper") > -1;
+      var sp = t.indexOf("sprite") > -1;
+      if (dp && sp) return ["good", "Correct — and you caught the tie. Dr. Pepper and Sprite both have 5 purchases, 10% each. There is no single least-purchased brand."];
+      if (dp || sp) return ["part", "Half right. That brand has 5 purchases — but so does one other. Check your frequency column again: this question has two correct answers."];
+      return ["bad", "Not quite. Find the smallest value in your frequency column — and check whether more than one brand has it."];
+    },
+    d: function(raw){
+      var v = parseFloat((raw || "").replace(/[%,\s]/g, ""));
+      if (!isFinite(v)) return ["", "Enter a percentage."];
+      if (Math.abs(v - 54) <= 0.05) return ["good", "Correct — 19 + 8 = 27 of 50, which is 54%."];
+      if (Math.abs(v - 38) <= 0.05) return ["part", "That is Coca-Cola alone. The question asks for Coca-Cola products, so add Diet Coke's share as well."];
+      if (Math.abs(v - 0.54) <= 0.005) return ["part", "Right proportion, wrong units — the question asks for a percentage, not a relative frequency."];
+      return ["bad", "Not quite. Add the Coca-Cola and Diet Coke frequencies, divide by 50, then multiply by 100."];
+    },
+    e: function(raw){
+      var t = norm(raw);
+      if (!t) return ["", "Name the larger group, and say by how much."];
+      var saysCola = t.indexOf("cola") > -1 && t.indexOf("noncola") !== 0;
+      var hasMargin = /30|60|20|40|80/.test(t);
+      if (saysCola && hasMargin) return ["good", "Correct — colas take 40 of 50 purchases (80%) against 10 (20%) for the non-colas, a margin of 30 purchases or 60 percentage points."];
+      if (saysCola) return ["part", "Right group. Now quantify it — how many purchases separate the two, or how many percentage points?"];
+      return ["bad", "Not quite. Add Coca-Cola + Diet Coke + Pepsi, then compare that to Dr. Pepper + Sprite."];
+    }
+  };
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function(btn){
+    btn.addEventListener("click", function(){
+      var k = btn.getAttribute("data-check");
+      var res = CHECKS[k](document.getElementById("q" + k).value);
+      var fb = document.getElementById("fb-" + k);
+      fb.hidden = false;
+      fb.className = "fb" + (res[0] ? " " + res[0] : "");
+      fb.textContent = res[1];
+      save();
+    });
+  });
+
+  document.addEventListener("input", function(e){
+    if (e.target && e.target.tagName === "INPUT") { totals(); save(); }
+  });
+
+  var probeBtn = document.getElementById("probe-btn");
+  probeBtn.addEventListener("click", function(){
+    var body = document.getElementById("probe-body");
+    var wasOpen = !body.hidden;
+    body.hidden = wasOpen;
+    probeBtn.textContent = wasOpen ? "Show what to look for" : "Hide";
+    probeBtn.setAttribute("aria-expanded", wasOpen ? "false" : "true");
+  });
+  probeBtn.setAttribute("aria-expanded", "false");
+  probeBtn.setAttribute("aria-controls", "probe-body");
+
+  load();
+  totals();
+})();
+</script>

@@ -1,0 +1,252 @@
+<title>Excel Steps 2.1</title>
+<div style="background:#ffffff;min-height:100vh;margin:0;padding:0;">
+<div style="max-width:900px;margin:0 auto;padding:0 24px 72px;background:#ffffff;">
+
+  <div style="background:#162960;margin:0 -24px 40px;padding:34px 24px 28px;border-bottom:4px solid #f4b425;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;
+      text-transform:uppercase;color:#f4b425;margin:0 0 12px;">
+      BMGT 240IS &middot; Business Analytics &middot; Chapter 2 &middot; Excel Activity 2.1
+    </div>
+    <h1 style="font-family:Arial,Helvetica,sans-serif;font-size:32px;font-weight:700;line-height:1.15;
+      color:#ffffff;margin:0 0 12px;max-width:26ch;">Summarizing soft drink purchases in Excel</h1>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:1.55;color:#cdd6ea;
+      margin:0;max-width:62ch;">
+      Seven steps from 50 rows of raw text to a finished frequency, relative frequency,
+      and percent frequency distribution &mdash; plus the bar chart.
+    </p>
+  </div>
+
+  <div style="display:block;margin:0 0 26px;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#66708c;margin:0 0 8px;">Before you start</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 14px;max-width:68ch;">Open <strong>softdrink.xlsx</strong>. You should see one column: the label <em>Brand Purchased</em> in cell A1, then 50 brand names in cells A2 through A51. Each row is one purchase &mdash; one observation of a single categorical variable.</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:68ch;">There is nothing to compute yet. Excel cannot average a brand name. The only thing you can do with categorical data is <strong>count</strong> it &mdash; which is exactly what a frequency distribution is.</p>
+  </div>
+
+  <div style="height:1px;background:#d5dae7;margin:36px 0;"></div>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">1</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Insert the PivotTable</h2>
+        <ol style="margin:0 0 16px;padding:0 0 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.75;color:#111a30;max-width:66ch;">
+          <li><strong>Click any cell inside the data first</strong> &mdash; A1 works. This matters; see the note below.</li>
+          <li>Click the <strong>Insert</strong> tab on the Ribbon.</li>
+          <li>In the <strong>Tables</strong> group, click <strong>PivotTable</strong>.</li>
+          <li>Check the dialog that appears, then click <strong>OK</strong>.</li>
+        </ol>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin:0 0 34px 52px;padding:16px 19px;background:#f3f5fa;border-left:3px solid #d5dae7;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#66708c;margin:0 0 9px;">What the dialog is asking</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:64ch;"><strong style="color:#111a30;">Table/Range</strong> should read <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">Sheet1!$A$1:$A$51</span>. If this box is <em>empty</em>, Excel could not detect your data because the cursor was outside it &mdash; cancel, click A1, and start again. Always include row 1: the header becomes the field name, and leaving it out costs you an observation.</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:64ch;"><strong style="color:#111a30;">New Worksheet or Existing Worksheet.</strong> Either is fine. Choosing <em>Existing Worksheet</em> with a location of <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">$C$1</span> keeps the summary beside the raw data, which is handy. The steps below assume you did that. A PivotTable grows down and to the right, so just do not drop it on top of column A.</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0;max-width:64ch;"><strong style="color:#111a30;">Add this data to the Data Model.</strong> Leave it unchecked. That option is for relating several tables together, and ticking it makes grouping harder later.</p>
+  </div>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">2</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Place the field twice</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">You get an empty PivotTable and a <strong>PivotTable Fields</strong> pane on the right listing one field: <em>Brand Purchased</em>. You need that same field in two places &mdash; once to make a row per brand, once to count them.</p>
+        <ol style="margin:0 0 14px;padding:0 0 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.75;color:#111a30;max-width:66ch;">
+          <li><strong>Tick the checkbox</strong> beside <em>Brand Purchased</em>. Excel puts text fields into <strong>Rows</strong> automatically.</li>
+          <li><strong>Right-click</strong> <em>Brand Purchased</em> in the same list &rarr; <strong>Add to Values</strong>.</li>
+        </ol>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">The counts appear immediately. Because the field holds text, Excel chooses <strong>Count</strong> on its own &mdash; summing brand names would be meaningless.</p>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin:0 0 34px 52px;padding:16px 19px;background:#fdf3e0;border-left:3px solid #f4b425;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a5a00;margin:0 0 9px;">If the Fields pane keeps vanishing</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:64ch;">The pane exists only while the selected cell is <em>inside</em> a PivotTable. A drag that starts a few pixels off the field name lands as a click on the worksheet, which deselects the PivotTable and the pane disappears. This is why the steps above use a checkbox and a right-click rather than dragging.</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0;max-width:64ch;">To bring it back: click any PivotTable cell. If it still does not appear, the toggle is off &mdash; <strong>PivotTable Analyze &rarr; Show &rarr; Field List</strong>. There is no setting that keeps it permanently visible; it is contextual by design.</p>
+  </div>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 30px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">3</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Rename the headers, and find your rows</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">Click the <em>Row Labels</em> cell and type <strong>Brand</strong>. Click <em>Count of Brand Purchased</em> and type <strong>Frequency</strong>. The one rule: a new name cannot exactly match an existing field name, so <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">Brand Purchased</span> would be rejected.</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;"><strong style="color:#111a30;">Now note which rows your table actually occupies.</strong> Click the count next to Coca-Cola and read the Name Box at the top-left. Placed at C1, the headers land in row 1, the five brands in rows 2&ndash;6, and Grand Total in row 7. Every formula below uses those references &mdash; if your table sits elsewhere, adjust them to match.</p>
+      </td>
+    </tr>
+  </table>
+
+  <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:#66708c;margin:0 0 8px;">
+    What your sheet looks like, placed at C1
+  </div>
+  <div style="overflow-x:auto;border:1px solid #d5dae7;margin:0 0 12px;">
+    <table style="border-collapse:collapse;width:100%;min-width:640px;">
+      <tr>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:7px 10px;border:1px solid #d5dae7;width:34px;">&nbsp;</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:7px 10px;border:1px solid #d5dae7;">C</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:7px 10px;border:1px solid #d5dae7;">D</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#dfe6f5;text-align:center;padding:7px 10px;border:1px solid #d5dae7;">E</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#dfe6f5;text-align:center;padding:7px 10px;border:1px solid #d5dae7;">F</th>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px 10px;border:1px solid #d5dae7;">1</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#111a30;background:#ffffff;padding:8px 12px;border:1px solid #d5dae7;">Brand</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#111a30;background:#ffffff;padding:8px 12px;border:1px solid #d5dae7;">Frequency</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#111a30;background:#f7f9ff;padding:8px 12px;border:1px solid #d5dae7;">Relative Frequency</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#111a30;background:#f7f9ff;padding:8px 12px;border:1px solid #d5dae7;">Percent Frequency</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px 10px;border:1px solid #d5dae7;">2</td>
+        <td style="font-family:Georgia,'Times New Roman',serif;font-size:14.5px;color:#111a30;background:#ffffff;padding:8px 12px;border:1px solid #d5dae7;">Coca-Cola</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;color:#111a30;background:#ffffff;text-align:right;padding:8px 12px;border:1px solid #d5dae7;">19</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#1a4fa0;background:#f7f9ff;padding:8px 12px;border:1px solid #d5dae7;">=D2/$D$7</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#1a4fa0;background:#f7f9ff;padding:8px 12px;border:1px solid #d5dae7;">=E2*100</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px 10px;border:1px solid #d5dae7;">3</td>
+        <td style="font-family:Georgia,'Times New Roman',serif;font-size:14.5px;color:#111a30;background:#f3f5fa;padding:8px 12px;border:1px solid #d5dae7;">Diet Coke</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;color:#111a30;background:#f3f5fa;text-align:right;padding:8px 12px;border:1px solid #d5dae7;">8</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#66708c;background:#f3f5fa;padding:8px 12px;border:1px solid #d5dae7;">fill down</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#66708c;background:#f3f5fa;padding:8px 12px;border:1px solid #d5dae7;">fill down</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px 10px;border:1px solid #d5dae7;">4</td>
+        <td style="font-family:Georgia,'Times New Roman',serif;font-size:14.5px;color:#111a30;background:#ffffff;padding:8px 12px;border:1px solid #d5dae7;">Dr. Pepper</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;color:#111a30;background:#ffffff;text-align:right;padding:8px 12px;border:1px solid #d5dae7;">5</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#66708c;background:#f7f9ff;padding:8px 12px;border:1px solid #d5dae7;">fill down</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#66708c;background:#f7f9ff;padding:8px 12px;border:1px solid #d5dae7;">fill down</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px 10px;border:1px solid #d5dae7;">5</td>
+        <td style="font-family:Georgia,'Times New Roman',serif;font-size:14.5px;color:#111a30;background:#f3f5fa;padding:8px 12px;border:1px solid #d5dae7;">Pepsi</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;color:#111a30;background:#f3f5fa;text-align:right;padding:8px 12px;border:1px solid #d5dae7;">13</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#66708c;background:#f3f5fa;padding:8px 12px;border:1px solid #d5dae7;">fill down</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#66708c;background:#f3f5fa;padding:8px 12px;border:1px solid #d5dae7;">fill down</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px 10px;border:1px solid #d5dae7;">6</td>
+        <td style="font-family:Georgia,'Times New Roman',serif;font-size:14.5px;color:#111a30;background:#ffffff;padding:8px 12px;border:1px solid #d5dae7;">Sprite</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;color:#111a30;background:#ffffff;text-align:right;padding:8px 12px;border:1px solid #d5dae7;">5</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#66708c;background:#f7f9ff;padding:8px 12px;border:1px solid #d5dae7;">fill down</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#66708c;background:#f7f9ff;padding:8px 12px;border:1px solid #d5dae7;">fill down</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px 10px;border:1px solid #d5dae7;">7</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#162960;background:#e7ebf4;padding:9px 12px;border:1px solid #d5dae7;">Grand Total</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;font-weight:700;color:#111a30;background:#e7ebf4;text-align:right;padding:9px 12px;border:1px solid #d5dae7;">50</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#1a4fa0;background:#dfe6f5;padding:9px 12px;border:1px solid #d5dae7;">=SUM(E2:E6)</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13px;color:#1a4fa0;background:#dfe6f5;padding:9px 12px;border:1px solid #d5dae7;">=SUM(F2:F6)</td>
+      </tr>
+    </table>
+  </div>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 34px;max-width:68ch;">Columns <strong>C and D belong to the PivotTable</strong> and are read-only &mdash; Excel refuses to let you type in them. Columns <strong>E and F are ordinary worksheet cells</strong>, and that is where all your formulas go. You are not replacing the 19; you are referring to it.</p>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">4</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Relative frequency</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">Type the header in <strong>E1</strong>. In <strong>E2</strong>, divide Coca-Cola&rsquo;s frequency by the total, then fill E2 down to E6.</p>
+        <div style="font-family:Consolas,'Courier New',monospace;font-size:16px;color:#111a30;background:#f5f8ff;border:1px solid #c3d2ee;border-left:3px solid #162960;padding:11px 14px;margin:0 0 14px;">=D2/$D$7</div>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;"><strong style="color:#111a30;">The dollar signs are the whole point of this step.</strong> Without them, filling down would slide the denominator too &mdash; row 3 would read <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">=D3/D8</span>, dividing by an empty cell. The <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">$</span> locks D7 so every brand is divided by the same 50.</p>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin:0 0 34px 52px;padding:16px 19px;background:#fdf3e0;border-left:3px solid #f4b425;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a5a00;margin:0 0 9px;">Type the references &mdash; do not click them</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:64ch;">If you type <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">=D2/</span> and then <em>click</em> cell D7 to pick it up, Excel will not insert <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">D7</span>. Because that cell belongs to a PivotTable it writes something like <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">=GETPIVOTDATA("Brand Purchased",$C$1)</span> instead, which will not fill down correctly.</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0;max-width:64ch;">Either type <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">D2/$D$7</span> on the keyboard, or switch the behaviour off: <strong>PivotTable Analyze &rarr; Options dropdown &rarr; untick Generate GetPivotData</strong>. This is the single most common snag when building formulas beside a PivotTable, and it is not in the textbook.</p>
+  </div>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">5</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Percent frequency</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">Header in <strong>F1</strong>. In <strong>F2</strong>, multiply the relative frequency by 100, then fill down to F6.</p>
+        <div style="font-family:Consolas,'Courier New',monospace;font-size:16px;color:#111a30;background:#f5f8ff;border:1px solid #c3d2ee;border-left:3px solid #162960;padding:11px 14px;margin:0 0 14px;">=E2*100</div>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">No dollar signs here &mdash; you <em>want</em> E2 to become E3, E4 and so on as you fill. Reach for <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">$</span> only when a reference must stay put.</p>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin:0 0 34px 52px;padding:16px 19px;background:#f3f5fa;border-left:3px solid #d5dae7;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#66708c;margin:0 0 9px;">Alternative &middot; let the PivotTable compute the percent</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:64ch;">Right-click <em>Brand Purchased</em> in the field list &rarr; <strong>Add to Values</strong> a second time, then right-click any number in the new column &rarr; <strong>Show Values As &rarr; % of Grand Total</strong>. Rename the header to Percent Frequency.</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0;max-width:64ch;">This gives the percent column with no formula, but there is <strong>no equivalent for relative frequency</strong> &mdash; you still need step 4. Worth knowing: that column actually stores 0.38 and merely <em>displays</em> 38.00%. Percentage is a number format, not a different number. That is the same fact as <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">=E2*100</span>, seen from the other side.</p>
+  </div>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 30px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">6</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Total the columns, then check them</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">In <strong>E7</strong> enter the sum, then copy it across to <strong>F7</strong>.</p>
+        <div style="font-family:Consolas,'Courier New',monospace;font-size:16px;color:#111a30;background:#f5f8ff;border:1px solid #c3d2ee;border-left:3px solid #162960;padding:11px 14px;margin:0 0 14px;">=SUM(E2:E6)</div>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">Your three totals must read <strong style="color:#111a30;">50</strong>, <strong style="color:#111a30;">1.00</strong>, and <strong style="color:#111a30;">100</strong>. These are not decoration &mdash; they are the only built-in check this method has. A total that is off means a miscount upstream, not a rounding problem.</p>
+      </td>
+    </tr>
+  </table>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 30px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">7</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Bar chart</h2>
+        <ol style="margin:0 0 14px;padding:0 0 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.75;color:#111a30;max-width:66ch;">
+          <li>Select any cell in the PivotTable.</li>
+          <li>Click the <strong>Insert</strong> tab on the Ribbon.</li>
+          <li>In the <strong>Charts</strong> group, click <strong>Recommended Charts</strong>. A preview of the bar chart appears.</li>
+          <li>Click <strong>OK</strong>.</li>
+        </ol>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">Then title the chart and label both axes. An untitled chart with bare axes is not finished work &mdash; a reader should understand it without being told what it shows. Keep the gaps between bars: these are five separate categories, not intervals on a scale. (In 2.2 you will close those gaps deliberately, and that is what makes a histogram a histogram.)</p>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin:38px 0 0;padding:18px 20px;background:#e7ebf4;border-left:3px solid #162960;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;
+      text-transform:uppercase;color:#4a5570;margin:0 0 8px;">Where this usually goes wrong</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:68ch;">
+      <strong style="color:#111a30;">Trying to type a formula into the PivotTable.</strong> Columns C and D are read-only; Excel will refuse with a message about affecting a PivotTable. Formulas go in E and F and <em>refer</em> to D2 and D7.
+    </p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:68ch;">
+      <strong style="color:#111a30;">Using the textbook&rsquo;s row numbers instead of your own.</strong> The book&rsquo;s example prints <span style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;">=B4/$B$9</span> because its PivotTable starts lower down. Yours depends entirely on where you placed it. Read your own Grand Total row off the sheet before writing any formula.
+    </p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:68ch;">
+      <strong style="color:#111a30;">Forgetting the dollar signs.</strong> If your relative frequencies come out as <span style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;">#DIV/0!</span> errors or a column that will not total 1, the denominator drifted as you filled down.
+    </p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:68ch;">
+      <strong style="color:#111a30;">Percent formatting on top of multiplying by 100.</strong> Apply Excel&rsquo;s <em>Percent</em> format to a column that already holds 38 and you will see 3800%. Pick one; the textbook multiplies.
+    </p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0;max-width:68ch;">
+      <strong style="color:#111a30;">Treating Diet Coke as Coca-Cola.</strong> They are separate categories in this data set. Combine them only when a question asks about Coca-Cola <em>products</em>.
+    </p>
+  </div>
+
+  <div style="margin:40px 0 0;padding:16px 0 0;border-top:1px solid #d5dae7;
+    font-family:Arial,Helvetica,sans-serif;font-size:12.5px;line-height:1.6;color:#66708c;">
+    Camm et al., <em>Essentials of Modern Business Statistics with Microsoft Excel</em>, 9e
+    &middot; Section 2.1, LO 2-1 &middot; DATAfile: softdrink &middot; BMGT 240IS, Section 002, Fall 2026
+  </div>
+
+</div>
+</div>

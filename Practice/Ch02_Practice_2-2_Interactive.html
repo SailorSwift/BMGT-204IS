@@ -1,0 +1,799 @@
+<title>Audit Time Distribution Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --navy:#162960; --navy-ink:#ffffff; --gold:#f4b425; --bar:#2f4b8f;
+  --ink:#111a30; --slate:#4a5570; --muted:#6b7591;
+  --rule:#d5dae7; --rule-soft:#e8ecf4;
+  --ground:#fbfbfd; --surface:#ffffff; --surface-2:#f3f5fa; --surface-3:#e7ebf4;
+  --field:#ffffff; --field-edge:#c3cbdd;
+  --ok:#1a7f5a; --ok-bg:#e6f4ee; --ok-edge:#8fcfb4;
+  --err:#b3261e; --err-bg:#fdecea; --err-edge:#e8a49e;
+  --warn:#8a5a00; --warn-bg:#fdf3e0; --warn-edge:#e6c98a;
+  --focus:#2f6df6;
+  --shadow:0 1px 2px rgba(16,26,48,.06),0 8px 24px rgba(16,26,48,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --navy:#16264f; --navy-ink:#f2f5fc; --gold:#f7c246; --bar:#5b82d8;
+    --ink:#e9edf7; --slate:#b6bfd6; --muted:#8b96b3;
+    --rule:#2c3757; --rule-soft:#222c49;
+    --ground:#0c1220; --surface:#131b2e; --surface-2:#18213a; --surface-3:#1f2a47;
+    --field:#0f1729; --field-edge:#38446a;
+    --ok:#5ed3a0; --ok-bg:#102f24; --ok-edge:#2c6a52;
+    --err:#ff9c93; --err-bg:#351a1c; --err-edge:#7a3b38;
+    --warn:#f0c274; --warn-bg:#33270f; --warn-edge:#6d5424;
+    --focus:#6d9bff;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#16264f; --navy-ink:#f2f5fc; --gold:#f7c246; --bar:#5b82d8;
+  --ink:#e9edf7; --slate:#b6bfd6; --muted:#8b96b3;
+  --rule:#2c3757; --rule-soft:#222c49;
+  --ground:#0c1220; --surface:#131b2e; --surface-2:#18213a; --surface-3:#1f2a47;
+  --field:#0f1729; --field-edge:#38446a;
+  --ok:#5ed3a0; --ok-bg:#102f24; --ok-edge:#2c6a52;
+  --err:#ff9c93; --err-bg:#351a1c; --err-edge:#7a3b38;
+  --warn:#f0c274; --warn-bg:#33270f; --warn-edge:#6d5424;
+  --focus:#6d9bff;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:Spectral,Georgia,'Times New Roman',serif;
+  font-size:17px; line-height:1.6; margin:0;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px 80px}
+.lbl{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:11px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase;
+}
+
+header{background:var(--navy);border-bottom:4px solid var(--gold);padding:36px 20px 30px;margin-bottom:34px}
+.hd{max-width:880px;margin:0 auto}
+.hd .eyebrow{color:var(--gold);margin:0 0 12px}
+h1{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:clamp(26px,4.4vw,34px);
+  font-weight:700; line-height:1.15; color:var(--navy-ink);
+  margin:0 0 12px; max-width:22ch; text-wrap:balance;
+}
+.hd p{color:#c9d3ea;margin:0;max-width:58ch;font-size:17.5px}
+:root[data-theme="dark"] .hd p,
+:root:not([data-theme="light"]) .hd p{color:#b6c2de}
+
+h2{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:21px; font-weight:700;
+  line-height:1.25; color:var(--ink); margin:0 0 10px; text-wrap:balance;
+}
+.sec{margin:34px 0 14px}
+.sec:first-of-type{margin-top:0}
+.sec .eyebrow{color:var(--muted);margin:0 0 7px}
+.sec p{color:var(--slate);margin:0;max-width:66ch}
+p.stem{color:var(--ink);margin:0 0 12px;max-width:66ch}
+p.stem b{
+  font-family:'IBM Plex Sans',Arial,sans-serif; color:var(--navy); font-weight:700;
+  margin-right:5px;
+}
+:root[data-theme="dark"] p.stem b,
+:root:not([data-theme="light"]) p.stem b{color:var(--gold)}
+
+/* raw data strip */
+.data{
+  background:var(--surface); border:1px solid var(--rule);
+  border-radius:3px; padding:16px; margin:0 0 8px; box-shadow:var(--shadow);
+}
+.data-hd{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between;margin:0 0 12px}
+.data-hd .lbl{color:var(--muted)}
+.obs{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:4px}
+.ob{
+  background:var(--surface-2); border-radius:2px; padding:7px 4px; text-align:center;
+  font-family:'IBM Plex Mono',Consolas,monospace; font-variant-numeric:tabular-nums;
+  font-size:14.5px; color:var(--ink); border:1px solid transparent;
+}
+.ob.lo{border-color:var(--gold);background:var(--surface-3)}
+.ob.hi{border-color:var(--gold);background:var(--surface-3)}
+.legend{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:12px;color:var(--muted);margin:10px 0 0}
+
+/* setup calculator */
+.setup{
+  border:1px solid var(--rule); border-radius:3px; background:var(--surface);
+  padding:18px 20px; margin:0 0 10px; box-shadow:var(--shadow);
+}
+.facts{display:flex;flex-wrap:wrap;gap:0;margin:0 0 18px;border:1px solid var(--rule-soft);border-radius:2px;overflow:hidden}
+.fact{flex:1 1 110px;padding:11px 14px;background:var(--surface-2);border-right:1px solid var(--rule-soft)}
+.fact:last-child{border-right:0}
+.fact .k{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);display:block;margin:0 0 4px}
+.fact .v{font-family:'IBM Plex Mono',Consolas,monospace;font-variant-numeric:tabular-nums;font-size:20px;font-weight:600;color:var(--ink)}
+.ask-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:0 0 12px}
+.ask-row label{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:14.5px;color:var(--slate);flex:1 1 300px;max-width:44ch}
+.ask-row input{
+  width:96px; background:var(--field); color:var(--ink); border:1px solid var(--field-edge);
+  border-radius:2px; padding:8px 10px; text-align:right; font-size:15px;
+  font-family:'IBM Plex Mono',Consolas,monospace; font-variant-numeric:tabular-nums;
+}
+.ask-row input:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--focus)}
+.ask-row .mark{min-width:16px;font-size:15px;font-weight:700;font-family:'IBM Plex Sans',sans-serif}
+.ask-row.ok input{border-color:var(--ok-edge);background:var(--ok-bg)}
+.ask-row.ok .mark{color:var(--ok)}
+.ask-row.bad input{border-color:var(--err-edge);background:var(--err-bg)}
+.ask-row.bad .mark{color:var(--err)}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--surface);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:600px}
+th{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:10.5px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--navy-ink);
+  background:var(--navy); text-align:right; vertical-align:bottom; padding:11px 14px;
+}
+th:first-child{text-align:left}
+th small{display:block;font-weight:400;letter-spacing:0;text-transform:none;font-size:10.5px;color:#a8b6d6;margin-top:3px}
+td{padding:0;border-bottom:1px solid var(--rule-soft)}
+tbody tr:nth-child(even) td{background:var(--surface-2)}
+.clab{
+  font-family:'IBM Plex Mono',Consolas,monospace; font-variant-numeric:tabular-nums;
+  font-size:15px; color:var(--ink); padding:0 14px; white-space:nowrap;
+}
+.cell{display:flex;align-items:center;gap:6px;padding:6px 10px 6px 6px;justify-content:flex-end}
+.cell input{
+  width:100%; max-width:92px; background:var(--field); color:var(--ink);
+  border:1px solid var(--field-edge); border-radius:2px;
+  padding:7px 9px; text-align:right; font-size:15px;
+  font-family:'IBM Plex Mono',Consolas,monospace; font-variant-numeric:tabular-nums;
+}
+.cell input:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--focus)}
+.cell .suffix{color:var(--muted);font-size:13px;font-family:'IBM Plex Sans',sans-serif;min-width:10px}
+.mark{min-width:15px;font-size:14px;font-weight:700;text-align:center;font-family:'IBM Plex Sans',sans-serif}
+td.ok input{border-color:var(--ok-edge);background:var(--ok-bg)}
+td.ok .mark{color:var(--ok)}
+td.bad input{border-color:var(--err-edge);background:var(--err-bg)}
+td.bad .mark{color:var(--err)}
+tr.total td{border-top:2px solid var(--navy);border-bottom:0;background:var(--surface-3)!important}
+tr.total .clab{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink); padding:14px;
+}
+.sum{
+  display:flex; align-items:center; justify-content:flex-end; gap:7px;
+  padding:14px 10px 14px 6px; font-family:'IBM Plex Mono',monospace;
+  font-variant-numeric:tabular-nums; font-size:15px; font-weight:600; color:var(--slate);
+}
+.sum .target{font-size:11px;font-weight:400;color:var(--muted);font-family:'IBM Plex Sans',sans-serif}
+.sum.hit{color:var(--ok)}
+.sum.miss{color:var(--err)}
+
+/* histogram */
+.hist{
+  border:1px solid var(--rule); border-radius:3px; background:var(--surface);
+  padding:20px 20px 14px; margin:0; box-shadow:var(--shadow); overflow-x:auto;
+}
+.hist-hd{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:baseline;margin:0 0 16px}
+.hist-hd .lbl{color:var(--muted)}
+.plot{display:flex;align-items:flex-end;min-width:440px;height:196px;border-bottom:2px solid var(--navy);gap:0}
+.col{flex:1 1 0;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;height:100%}
+.col .v{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--slate);
+  text-align:center; margin:0 0 4px; min-height:16px;
+}
+.col .b{
+  background:var(--bar); border:1px solid var(--surface); border-bottom:0;
+  min-height:0; transition:height .18s ease;
+}
+.xax{display:flex;min-width:440px;gap:0}
+.xax div{
+  flex:1 1 0; text-align:center; padding:7px 2px 0;
+  font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);
+}
+.xtitle{
+  text-align:center; font-family:'IBM Plex Sans',Arial,sans-serif; font-size:12px;
+  color:var(--muted); margin:8px 0 0; min-width:440px;
+}
+
+/* controls & feedback */
+.bar-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0 0}
+button{
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:13.5px; font-weight:600;
+  border-radius:2px; padding:10px 18px; cursor:pointer; border:1px solid transparent;
+  transition:background .12s ease,border-color .12s ease;
+}
+button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.primary{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.primary:hover{background:var(--ink)}
+.ghost{background:transparent;color:var(--slate);border-color:var(--field-edge)}
+.ghost:hover{background:var(--surface-2);color:var(--ink)}
+.link{background:none;border:0;color:var(--muted);text-decoration:underline;padding:10px 4px;font-weight:400}
+.link:hover{color:var(--ink)}
+.verdict{
+  margin:18px 0 0; padding:13px 16px; border-radius:2px; border:1px solid var(--rule);
+  background:var(--surface-2); color:var(--slate);
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:14px; line-height:1.55;
+}
+.verdict.good{background:var(--ok-bg);border-color:var(--ok-edge);color:var(--ok)}
+.verdict.bad{background:var(--err-bg);border-color:var(--err-edge);color:var(--err)}
+.verdict[hidden]{display:none}
+
+.q{border-top:1px solid var(--rule);padding:22px 0 0;margin:22px 0 0}
+.answer{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.answer input{
+  flex:1 1 220px; background:var(--field); color:var(--ink);
+  border:1px solid var(--field-edge); border-radius:2px; padding:9px 11px;
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:14.5px;
+}
+.answer input.n{flex:0 0 116px;text-align:right;font-family:'IBM Plex Mono',monospace}
+.answer input:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--focus)}
+.answer .unit{color:var(--muted);font-family:'IBM Plex Sans',sans-serif;font-size:14px}
+.fb{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:13.5px;margin:9px 0 0;color:var(--slate);line-height:1.55}
+.fb.good{color:var(--ok)} .fb.bad{color:var(--err)} .fb.part{color:var(--warn)}
+.fb[hidden]{display:none}
+
+.why{margin:44px 0 0;padding:28px 0 0;border-top:1px solid var(--rule)}
+.why p{color:var(--slate);margin:0 0 15px;max-width:66ch}
+.why p:last-child{margin-bottom:0}
+.why strong{color:var(--ink);font-weight:600}
+.lede{font-size:19px;line-height:1.55;color:var(--ink)!important}
+.punch{
+  margin:0 0 20px; padding:15px 18px; background:var(--surface-3);
+  border-left:3px solid var(--gold); border-radius:0 2px 2px 0;
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:15px; line-height:1.6; color:var(--ink);
+}
+.note{margin:38px 0 0;padding:17px 19px;background:var(--surface-3);border-left:3px solid var(--gold);border-radius:0 2px 2px 0}
+.note .lbl{color:var(--slate);display:block;margin:0 0 6px}
+.note p{margin:0 0 9px;color:var(--slate);font-size:16px}
+.note p:last-child{margin:0}
+.note code{
+  font-family:'IBM Plex Mono',Consolas,monospace; font-size:14px;
+  background:var(--surface); border:1px solid var(--rule); border-radius:2px;
+  padding:1px 6px; color:var(--ink);
+}
+footer{
+  margin:44px 0 0; padding:16px 0 0; border-top:1px solid var(--rule);
+  font-family:'IBM Plex Sans',Arial,sans-serif; font-size:12.5px;
+  color:var(--muted); line-height:1.6;
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header>
+  <div class="hd">
+    <div class="lbl eyebrow">BMGT 240IS &middot; Chapter 2 &middot; Section 2.2</div>
+    <h1>Audit time distribution lab</h1>
+    <p>With categorical data the classes are handed to you. With quantitative data you have to build them &mdash; and that choice is the whole exercise.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="sec">
+    <div class="lbl eyebrow">The sample</div>
+    <h2>Year-End Audit Times</h2>
+    <p>The data below show the time in <strong>days</strong> required to complete year-end audits for a sample of 20 clients of a small public accounting firm.</p>
+  </div>
+
+  <div class="data">
+    <div class="data-hd">
+      <span class="lbl">DATAfile &middot; audit &middot; audit time (days)</span>
+      <span class="lbl" style="letter-spacing:.06em">n = 20</span>
+    </div>
+    <div class="obs" id="obs"></div>
+    <p class="legend">Outlined values are the smallest and largest observations.</p>
+  </div>
+
+  <div class="sec">
+    <div class="lbl eyebrow">Part a</div>
+    <p class="stem"><b>a.</b> Define the classes. Use five classes, and work out how wide each one has to be.</p>
+    <p>For quantitative data the classes do not exist until you make them. Three rules govern the choice: between 5 and 20 classes depending on sample size, equal widths, and limits that let every observation fall in exactly one class.</p>
+  </div>
+
+  <div class="setup">
+    <div class="facts">
+      <div class="fact"><span class="k">Largest</span><span class="v">33</span></div>
+      <div class="fact"><span class="k">Smallest</span><span class="v">12</span></div>
+      <div class="fact"><span class="k">Range</span><span class="v">21</span></div>
+      <div class="fact"><span class="k">Classes</span><span class="v">5</span></div>
+    </div>
+    <div class="ask-row" id="row-w1">
+      <label for="w1">Approximate class width &mdash; the range divided by the number of classes</label>
+      <input type="text" inputmode="decimal" id="w1" placeholder="0.0" autocomplete="off">
+      <span class="mark"></span>
+    </div>
+    <div class="ask-row" id="row-w2">
+      <label for="w2">Class width you will actually use &mdash; a convenient value, rounded <em>up</em></label>
+      <input type="text" inputmode="numeric" id="w2" placeholder="0" autocomplete="off">
+      <span class="mark"></span>
+    </div>
+    <div class="bar-row" style="margin-top:4px">
+      <button type="button" class="ghost" id="check-setup">Check the width</button>
+    </div>
+    <div class="verdict" id="v-setup" hidden></div>
+  </div>
+
+  <div class="sec">
+    <div class="lbl eyebrow">Part b</div>
+    <p class="stem"><b>b.</b> Construct frequency, relative frequency, and percent frequency distributions.</p>
+    <p>The five classes are laid out for you. Tally how many of the 20 audit times fall in each, then compute the two share columns.</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Audit Time (days)</th>
+          <th scope="col">Frequency</th>
+          <th scope="col">Relative Frequency<small>two decimals</small></th>
+          <th scope="col">Percent Frequency<small>one decimal</small></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+      <tfoot>
+        <tr class="total">
+          <td class="clab">Total</td>
+          <td><div class="sum" id="sumF">&mdash; <span class="target">/ 20</span></div></td>
+          <td><div class="sum" id="sumR">&mdash; <span class="target">/ 1.00</span></div></td>
+          <td><div class="sum" id="sumP">&mdash; <span class="target">/ 100</span></div></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="bar-row">
+    <button type="button" class="primary" id="check">Check my work</button>
+    <button type="button" class="ghost" id="reset">Clear everything</button>
+    <button type="button" class="link" id="reveal">Show the answers</button>
+  </div>
+  <div class="verdict" id="verdict" hidden></div>
+
+  <div class="sec">
+    <div class="lbl eyebrow">Live histogram</div>
+    <h2>Your frequencies, drawn</h2>
+    <p>This updates as you type in the frequency column. Note that the rectangles <strong>touch</strong> &mdash; unlike the bar chart in 2.1, a histogram leaves no gap between adjacent classes, because the classes are adjacent intervals on a continuous scale rather than separate categories.</p>
+  </div>
+
+  <div class="hist">
+    <div class="hist-hd">
+      <span class="lbl">Frequency</span>
+      <span class="lbl" style="letter-spacing:.06em">Audit time, days</span>
+    </div>
+    <div class="plot" id="plot"></div>
+    <div class="xax" id="xax"></div>
+    <p class="xtitle">Audit time (days)</p>
+  </div>
+
+  <div class="sec">
+    <div class="lbl eyebrow">Part c</div>
+    <p class="stem"><b>c.</b> Construct the cumulative distributions.</p>
+    <p>Each row counts everything at or below that class&rsquo;s upper limit &mdash; so each entry includes all the rows above it.</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Audit Time (days)</th>
+          <th scope="col">Cumulative Frequency</th>
+          <th scope="col">Cumulative Relative<small>two decimals</small></th>
+          <th scope="col">Cumulative Percent<small>one decimal</small></th>
+        </tr>
+      </thead>
+      <tbody id="crows"></tbody>
+    </table>
+  </div>
+
+  <div class="bar-row">
+    <button type="button" class="primary" id="check-cum">Check the cumulative table</button>
+  </div>
+  <div class="verdict" id="v-cum" hidden></div>
+
+  <div class="q">
+    <p class="stem"><b>d.</b> What percentage of the audits were completed in 24 days or less?</p>
+    <div class="answer">
+      <input type="text" inputmode="decimal" class="n" id="qd" placeholder="0" autocomplete="off">
+      <span class="unit">%</span>
+      <button type="button" class="ghost" data-check="d">Check</button>
+    </div>
+    <p class="fb" id="fb-d" hidden></p>
+  </div>
+
+  <div class="q">
+    <p class="stem"><b>e.</b> What percentage of the audits required 30 or more days?</p>
+    <div class="answer">
+      <input type="text" inputmode="decimal" class="n" id="qe" placeholder="0" autocomplete="off">
+      <span class="unit">%</span>
+      <button type="button" class="ghost" data-check="e">Check</button>
+    </div>
+    <p class="fb" id="fb-e" hidden></p>
+  </div>
+
+  <div class="q">
+    <p class="stem"><b>f.</b> Which class has the greatest frequency, and how many audits fall in it?</p>
+    <div class="answer">
+      <input type="text" id="qf" placeholder="Class, and its frequency" autocomplete="off">
+      <button type="button" class="ghost" data-check="f">Check</button>
+    </div>
+    <p class="fb" id="fb-f" hidden></p>
+  </div>
+
+  <div class="q">
+    <p class="stem"><b>g.</b> Look at your histogram. Is the distribution symmetric, skewed left, or skewed right?</p>
+    <div class="answer">
+      <input type="text" id="qg" placeholder="Shape" autocomplete="off">
+      <button type="button" class="ghost" data-check="g">Check</button>
+    </div>
+    <p class="fb" id="fb-g" hidden></p>
+  </div>
+
+  <div class="why">
+    <div class="lbl" style="color:var(--muted);margin:0 0 7px">Why the class choice matters</div>
+    <h2>The distribution you see is partly a decision you made</h2>
+    <p class="lede">A categorical variable arrives with its classes already fixed &mdash; Coca-Cola is Coca-Cola. A quantitative variable does not. <strong>You choose the number of classes, and that choice changes the shape of the picture.</strong></p>
+
+    <div class="punch">Run these same 20 audit times with 3 classes and you get a smooth mound that hides the long right tail. Run them with 15 classes and you get a scatter of ones and twos with no shape at all. Same data, three different stories &mdash; and only the middle one is informative.</div>
+
+    <p>That is why the textbook&rsquo;s guidance is a range and not a formula: <strong>5 classes for small data sets, up to 20 for large ones</strong>. Too few classes and you smooth away the detail you were looking for. Too many and every class holds one observation, which tells you nothing you could not read off the raw list.</p>
+
+    <p>The two hard rules are not negotiable, though. Classes must be <strong>non-overlapping</strong> &mdash; 10&ndash;15 and 15&ndash;20 is wrong, because an audit of exactly 15 days belongs to both. And they must be <strong>exhaustive</strong>, covering every observation from smallest to largest. Those two conditions are what make the frequencies sum to n, the relative frequencies sum to 1.00, and the whole thing a legitimate distribution &mdash; the same requirement you will meet again as a probability distribution in Chapter 5.</p>
+
+    <p>And it is why the width gets rounded <strong>up</strong>, never to the nearest value. Here 21 / 5 = 4.2, and rounding down to 4 gives five classes spanning only 20 days &mdash; one short of the 21-day range, leaving the largest audit with nowhere to go.</p>
+  </div>
+
+  <div class="note">
+    <span class="lbl">Doing this in Excel</span>
+    <p>Insert &rarr; PivotTable, drag <strong>Audit Time</strong> to both Rows and Values, then set the Values field to <strong>Count</strong> rather than Sum. Right-click any row label and choose <strong>Group</strong> to set the starting value, ending value, and interval &mdash; that is where your class width goes.</p>
+    <p>For the histogram, select a cell in the PivotTable, then Insert &rarr; Recommended Charts. Excel produces a bar chart with gaps; set the <code>Gap Width</code> to <code>0</code> in Format Data Series to make it a proper histogram.</p>
+  </div>
+
+  <footer>
+    Camm et al., <em>Essentials of Modern Business Statistics with Microsoft Excel</em>, 9e &middot;
+    Section 2.2, LO 2-3 &middot; DATAfile: audit &middot; BMGT 240IS, Section 002, Fall 2026<br>
+    Your entries are saved in this browser only. Nothing is submitted or recorded.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA = [12,15,20,22,14,14,15,27,21,18,19,18,22,33,16,18,17,23,28,13];
+  var N = DATA.length;
+  var CLASSES = [[10,14],[15,19],[20,24],[25,29],[30,34]];
+  var STORE = "bmgt240-ch02-22-v1";
+
+  var F = CLASSES.map(function(c){
+    return DATA.filter(function(x){ return x >= c[0] && x <= c[1]; }).length;
+  });
+  var CF = [], run = 0;
+  F.forEach(function(f){ run += f; CF.push(run); });
+
+  /* raw data strip */
+  var lo = Math.min.apply(null, DATA), hi = Math.max.apply(null, DATA);
+  var obs = document.getElementById("obs");
+  DATA.forEach(function(v){
+    var d = document.createElement("div");
+    d.className = "ob" + (v === lo ? " lo" : v === hi ? " hi" : "");
+    d.textContent = v;
+    obs.appendChild(d);
+  });
+
+  function num(el){
+    var t = (el.value || "").replace(/[%,\s]/g, "");
+    if (t === "") return null;
+    var v = parseFloat(t);
+    return isFinite(v) ? v : NaN;
+  }
+
+  /* frequency table */
+  var rows = document.getElementById("rows");
+  CLASSES.forEach(function(c,i){
+    var tr = document.createElement("tr");
+    var td0 = document.createElement("td");
+    td0.className = "clab"; td0.textContent = c[0] + "–" + c[1];
+    tr.appendChild(td0);
+    ["f","r","p"].forEach(function(kind){
+      var td = document.createElement("td");
+      var w = document.createElement("div"); w.className = "cell";
+      var inp = document.createElement("input");
+      inp.type = "text"; inp.inputMode = "decimal"; inp.autocomplete = "off";
+      inp.id = kind + i;
+      inp.placeholder = kind === "f" ? "0" : kind === "r" ? "0.00" : "0.0";
+      inp.setAttribute("aria-label", c[0] + " to " + c[1] + " days " +
+        (kind === "f" ? "frequency" : kind === "r" ? "relative frequency" : "percent frequency"));
+      w.appendChild(inp);
+      if (kind === "p") {
+        var s = document.createElement("span"); s.className = "suffix"; s.textContent = "%";
+        w.appendChild(s);
+      }
+      var m = document.createElement("span"); m.className = "mark"; m.setAttribute("aria-live","polite");
+      w.appendChild(m);
+      td.appendChild(w); tr.appendChild(td);
+    });
+    rows.appendChild(tr);
+  });
+
+  /* cumulative table */
+  var crows = document.getElementById("crows");
+  CLASSES.forEach(function(c,i){
+    var tr = document.createElement("tr");
+    var td0 = document.createElement("td");
+    td0.className = "clab"; td0.textContent = "≤ " + c[1];
+    tr.appendChild(td0);
+    ["cf","cr","cp"].forEach(function(kind){
+      var td = document.createElement("td");
+      var w = document.createElement("div"); w.className = "cell";
+      var inp = document.createElement("input");
+      inp.type = "text"; inp.inputMode = "decimal"; inp.autocomplete = "off";
+      inp.id = kind + i;
+      inp.placeholder = kind === "cf" ? "0" : kind === "cr" ? "0.00" : "0.0";
+      inp.setAttribute("aria-label", "at most " + c[1] + " days " +
+        (kind === "cf" ? "cumulative frequency" : kind === "cr" ? "cumulative relative frequency" : "cumulative percent frequency"));
+      w.appendChild(inp);
+      if (kind === "cp") {
+        var s = document.createElement("span"); s.className = "suffix"; s.textContent = "%";
+        w.appendChild(s);
+      }
+      var m = document.createElement("span"); m.className = "mark"; m.setAttribute("aria-live","polite");
+      w.appendChild(m);
+      td.appendChild(w); tr.appendChild(td);
+    });
+    crows.appendChild(tr);
+  });
+
+  /* histogram */
+  var plot = document.getElementById("plot"), xax = document.getElementById("xax");
+  CLASSES.forEach(function(c,i){
+    var col = document.createElement("div"); col.className = "col";
+    var v = document.createElement("div"); v.className = "v"; v.id = "hv" + i;
+    var b = document.createElement("div"); b.className = "b"; b.id = "hb" + i;
+    b.style.height = "0px";
+    col.appendChild(v); col.appendChild(b); plot.appendChild(col);
+    var x = document.createElement("div"); x.textContent = c[0] + "–" + c[1];
+    xax.appendChild(x);
+  });
+
+  function drawHist(){
+    var vals = CLASSES.map(function(c,i){
+      var v = num(document.getElementById("f" + i));
+      return (v === null || isNaN(v) || v < 0) ? 0 : v;
+    });
+    var peak = Math.max(10, Math.max.apply(null, vals));
+    vals.forEach(function(v,i){
+      document.getElementById("hb" + i).style.height = Math.round(v / peak * 170) + "px";
+      document.getElementById("hv" + i).textContent = v > 0 ? v : "";
+    });
+  }
+
+  /* live totals */
+  function totals(){
+    [
+      { k:"f", el:document.getElementById("sumF"), t:N,   dp:0, tol:0.0001, lab:"/ " + N },
+      { k:"r", el:document.getElementById("sumR"), t:1,   dp:2, tol:0.005,  lab:"/ 1.00" },
+      { k:"p", el:document.getElementById("sumP"), t:100, dp:1, tol:0.05,   lab:"/ 100" }
+    ].forEach(function(s){
+      var sum = 0, any = false, bad = false;
+      for (var i = 0; i < CLASSES.length; i++){
+        var v = num(document.getElementById(s.k + i));
+        if (v === null) continue;
+        if (isNaN(v)) { bad = true; continue; }
+        any = true; sum += v;
+      }
+      s.el.className = "sum";
+      if (!any) { s.el.innerHTML = '&mdash; <span class="target">' + s.lab + "</span>"; return; }
+      s.el.classList.add(!bad && Math.abs(sum - s.t) < s.tol ? "hit" : "miss");
+      s.el.innerHTML = sum.toFixed(s.dp) + ' <span class="target">' + s.lab + "</span>";
+    });
+  }
+
+  /* persistence */
+  var ids = [];
+  CLASSES.forEach(function(c,i){ ["f","r","p","cf","cr","cp"].forEach(function(k){ ids.push(k + i); }); });
+  ids = ids.concat(["w1","w2","qd","qe","qf","qg"]);
+
+  function save(){
+    var o = {};
+    ids.forEach(function(id){
+      var e = document.getElementById(id);
+      if (e && e.value) o[id] = e.value;
+    });
+    try { localStorage.setItem(STORE, JSON.stringify(o)); } catch (e) {}
+  }
+  function load(){
+    var o = null;
+    try { o = JSON.parse(localStorage.getItem(STORE) || "null"); } catch (e) {}
+    if (!o) return;
+    Object.keys(o).forEach(function(k){
+      var e = document.getElementById(k);
+      if (e) e.value = o[k];
+    });
+  }
+
+  function grade(el, expected, tol){
+    var td = el.parentNode.parentNode;
+    var mk = el.parentNode.querySelector(".mark");
+    var v = num(el);
+    if (v === null) { td.className = ""; mk.textContent = ""; return "blank"; }
+    if (!isNaN(v) && Math.abs(v - expected) <= tol) { td.className = "ok"; mk.textContent = "✓"; return "ok"; }
+    td.className = "bad"; mk.textContent = "✕"; return "bad";
+  }
+
+  /* part a */
+  document.getElementById("check-setup").addEventListener("click", function(){
+    var r1 = document.getElementById("row-w1"), r2 = document.getElementById("row-w2");
+    var a = num(document.getElementById("w1")), b = num(document.getElementById("w2"));
+    var v = document.getElementById("v-setup");
+    r1.className = "ask-row"; r2.className = "ask-row";
+    r1.querySelector(".mark").textContent = ""; r2.querySelector(".mark").textContent = "";
+    var msgs = [];
+    if (a !== null) {
+      var ok1 = !isNaN(a) && Math.abs(a - 4.2) <= 0.05;
+      r1.classList.add(ok1 ? "ok" : "bad");
+      r1.querySelector(".mark").textContent = ok1 ? "✓" : "✕";
+      if (!ok1) msgs.push("Approximate width is the range over the number of classes: 21 ÷ 5.");
+    }
+    if (b !== null) {
+      var ok2 = !isNaN(b) && Math.abs(b - 5) <= 0.0001;
+      r2.classList.add(ok2 ? "ok" : "bad");
+      r2.querySelector(".mark").textContent = ok2 ? "✓" : "✕";
+      if (!ok2) {
+        msgs.push(Math.abs(b - 4) <= 0.0001
+          ? "You rounded down. Five classes of width 4 span only 20 days, and the range is 21 — the 33-day audit would fall outside every class. Always round up."
+          : "Round 4.2 up to a convenient whole number.");
+      }
+    }
+    v.hidden = false; v.className = "verdict";
+    if (a === null && b === null) { v.textContent = "Fill in at least one box, then check."; return; }
+    if (!msgs.length) { v.classList.add("good"); v.textContent = "Correct. 21 ÷ 5 = 4.2, rounded up to a width of 5 — which gives the classes 10–14, 15–19, 20–24, 25–29, 30–34."; }
+    else { v.classList.add("bad"); v.textContent = msgs.join(" "); }
+    save();
+  });
+
+  /* part b */
+  document.getElementById("check").addEventListener("click", function(){
+    var right = 0, wrong = 0, blank = 0;
+    CLASSES.forEach(function(c,i){
+      var f = F[i], r = f / N, p = r * 100;
+      var res = [grade(document.getElementById("f"+i), f, 0.0001),
+                 grade(document.getElementById("r"+i), r, 0.005),
+                 grade(document.getElementById("p"+i), p, 0.05)];
+      res.forEach(function(x){ if (x === "ok") right++; else if (x === "bad") wrong++; else blank++; });
+    });
+    var v = document.getElementById("verdict");
+    v.hidden = false; v.className = "verdict";
+    if (blank === 15) v.textContent = "Nothing entered yet. Tally the frequency column first — count how many of the 20 audit times land in each class. The other two columns follow from it.";
+    else if (wrong === 0 && blank === 0) { v.classList.add("good"); v.textContent = "All 15 correct, and your totals should read 20, 1.00 and 100. Look at the histogram below, then work through the cumulative table."; }
+    else if (wrong === 0) v.textContent = right + " correct so far, " + blank + " still blank. Nothing wrong yet.";
+    else { v.classList.add("bad"); v.textContent = wrong + " of " + (right + wrong) + " entered values are off. Recount the marked classes — remember the limits are inclusive on both ends, so an audit of exactly 19 days belongs to 15–19, not 20–24."; }
+    save();
+  });
+
+  /* part c */
+  document.getElementById("check-cum").addEventListener("click", function(){
+    var right = 0, wrong = 0, blank = 0;
+    CLASSES.forEach(function(c,i){
+      var cf = CF[i], cr = cf / N, cp = cr * 100;
+      [grade(document.getElementById("cf"+i), cf, 0.0001),
+       grade(document.getElementById("cr"+i), cr, 0.005),
+       grade(document.getElementById("cp"+i), cp, 0.05)]
+        .forEach(function(x){ if (x === "ok") right++; else if (x === "bad") wrong++; else blank++; });
+    });
+    var v = document.getElementById("v-cum");
+    v.hidden = false; v.className = "verdict";
+    if (blank === 15) v.textContent = "Nothing entered yet. Each row is a running total — start with your first frequency and add the next class each time.";
+    else if (wrong === 0 && blank === 0) { v.classList.add("good"); v.textContent = "All correct. The last row must always equal n, 1.00 and 100 — every observation is at or below the highest upper limit."; }
+    else if (wrong === 0) v.textContent = right + " correct so far, " + blank + " still blank.";
+    else { v.classList.add("bad"); v.textContent = wrong + " of " + (right + wrong) + " entered values are off. Each row includes every class above it, not just its own — the second row is the first two frequencies added together."; }
+    save();
+  });
+
+  document.getElementById("reveal").addEventListener("click", function(){
+    CLASSES.forEach(function(c,i){
+      var f = F[i], cf = CF[i];
+      document.getElementById("f"+i).value = String(f);
+      document.getElementById("r"+i).value = (f/N).toFixed(2);
+      document.getElementById("p"+i).value = (f/N*100).toFixed(1);
+      document.getElementById("cf"+i).value = String(cf);
+      document.getElementById("cr"+i).value = (cf/N).toFixed(2);
+      document.getElementById("cp"+i).value = (cf/N*100).toFixed(1);
+    });
+    document.getElementById("w1").value = "4.2";
+    document.getElementById("w2").value = "5";
+    ids.forEach(function(id){
+      var e = document.getElementById(id);
+      if (e && e.parentNode.className === "cell") {
+        e.parentNode.parentNode.className = "";
+        e.parentNode.querySelector(".mark").textContent = "";
+      }
+    });
+    totals(); drawHist(); save();
+    var v = document.getElementById("verdict");
+    v.hidden = false; v.className = "verdict";
+    v.textContent = "Answers filled in. The histogram now shows the real shape — a peak at 15–19 with a tail stretching right toward 30–34.";
+  });
+
+  document.getElementById("reset").addEventListener("click", function(){
+    ids.forEach(function(id){
+      var e = document.getElementById(id);
+      if (!e) return;
+      e.value = "";
+      if (e.parentNode.className === "cell") {
+        e.parentNode.parentNode.className = "";
+        e.parentNode.querySelector(".mark").textContent = "";
+      }
+    });
+    ["row-w1","row-w2"].forEach(function(id){
+      var r = document.getElementById(id);
+      r.className = "ask-row"; r.querySelector(".mark").textContent = "";
+    });
+    ["verdict","v-cum","v-setup"].forEach(function(id){ document.getElementById(id).hidden = true; });
+    ["d","e","f","g"].forEach(function(k){
+      var fb = document.getElementById("fb-" + k); fb.hidden = true; fb.className = "fb";
+    });
+    totals(); drawHist();
+    try { localStorage.removeItem(STORE); } catch (e) {}
+  });
+
+  /* short answers */
+  function norm(s){ return (s || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+  var CHECKS = {
+    d: function(raw){
+      var v = parseFloat((raw || "").replace(/[%,\s]/g, ""));
+      if (!isFinite(v)) return ["", "Enter a percentage."];
+      if (Math.abs(v - 85) <= 0.05) return ["good", "Correct — 17 of the 20 audits, which is the cumulative percent for the class ending at 24 days."];
+      if (Math.abs(v - 25) <= 0.05) return ["part", "That is the percent frequency of the 20–24 class alone. The question says 24 days or less, so you want the cumulative figure."];
+      if (Math.abs(v - 15) <= 0.05) return ["part", "That is the percentage taking more than 24 days. Subtract from 100."];
+      return ["bad", "Not quite. Read the cumulative percent frequency on the row for 24 days."];
+    },
+    e: function(raw){
+      var v = parseFloat((raw || "").replace(/[%,\s]/g, ""));
+      if (!isFinite(v)) return ["", "Enter a percentage."];
+      if (Math.abs(v - 5) <= 0.05) return ["good", "Correct — one audit out of 20 fell in the 30–34 class."];
+      if (Math.abs(v - 95) <= 0.05) return ["part", "That is the percentage completed in 29 days or less. The question asks for the rest."];
+      return ["bad", "Not quite. Only the highest class contains audits of 30 days or more."];
+    },
+    f: function(raw){
+      var t = norm(raw);
+      if (!t) return ["", "Name the class and its frequency."];
+      var cls = t.indexOf("1519") > -1 || (t.indexOf("15") > -1 && t.indexOf("19") > -1);
+      var n8 = /(^|[^0-9])8([^0-9]|$)/.test(t);
+      if (cls && n8) return ["good", "Correct — the 15–19 class holds 8 of the 20 audits, 40% of the sample and the tallest bar on your histogram."];
+      if (cls) return ["part", "Right class. Now give its frequency — how many audits fall in it?"];
+      return ["bad", "Not quite. Look for the tallest bar on the histogram, or the largest value in your frequency column."];
+    },
+    g: function(raw){
+      var t = norm(raw);
+      if (!t) return ["", "Symmetric, skewed left, or skewed right?"];
+      if (t.indexOf("right") > -1 || t.indexOf("positive") > -1)
+        return ["good", "Correct — skewed right. The peak sits left of centre at 15–19 and the tail stretches toward the higher audit times, with a single audit out at 30–34."];
+      if (t.indexOf("left") > -1 || t.indexOf("negative") > -1)
+        return ["bad", "Other way round. Skewness is named for the direction the long tail points, not where the peak is — and here the tail runs toward the larger values."];
+      if (t.indexOf("symmetric") > -1)
+        return ["bad", "Not symmetric. A symmetric distribution would mirror around its centre; here the 30–34 tail has no counterpart on the low side."];
+      return ["bad", "Try one of: symmetric, skewed left, skewed right."];
+    }
+  };
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function(btn){
+    btn.addEventListener("click", function(){
+      var k = btn.getAttribute("data-check");
+      var res = CHECKS[k](document.getElementById("q" + k).value);
+      var fb = document.getElementById("fb-" + k);
+      fb.hidden = false;
+      fb.className = "fb" + (res[0] ? " " + res[0] : "");
+      fb.textContent = res[1];
+      save();
+    });
+  });
+
+  document.addEventListener("input", function(e){
+    if (e.target && e.target.tagName === "INPUT") { totals(); drawHist(); save(); }
+  });
+
+  load();
+  totals();
+  drawHist();
+})();
+</script>

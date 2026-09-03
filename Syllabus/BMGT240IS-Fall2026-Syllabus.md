@@ -70,7 +70,14 @@ The goals for this course are for you to be able to:
 
 ## Materials
 
-**Textbook — recommended, not required.** David P. Doane and Lori E. Seward, *Applied Statistics in Business and Economics*, 7th edition. The schedule below follows this book chapter by chapter, so the chapter references are worth using. Everything required is presented in class and posted to Canvas, and you can succeed in this course without buying the book — but a course that moves in textbook order rewards reading ahead more than most.
+**Textbook — recommended, not required.** DEssentials of Modern Business Statistics with Microsoft® Excel® 9th Edition
+Jeffrey D. Camm , Wake Forest University
+James J. Cochran , University of Alabama
+Michael J. Fry , University of Cincinnati
+Jeffrey W. Ohlmann , University of Iowa
+David R. Anderson , University of Cincinnati
+Dennis J. Sweeney , University of Cincinnati
+Thomas A. Williams , Rochester Institute of Technology
 
 **Supplementary resources.** Chapter-matched slides, demonstrations, and datasets are posted to Canvas. Because lecture time cannot cover every topic in every chapter, these are not optional extras — they are where you fill the gap between what we do in class and what the chapter contains.
 
@@ -86,9 +93,7 @@ The goals for this course are for you to be able to:
 | | |
 | --- | --- |
 | **Tuesdays** | A chapter's core method is introduced: where it comes from, what it assumes, what it is for. |
-| **Thursdays** | Class opens with a quiz on the previous week, then we continue the chapter and put the method to work in Excel. |
-| **Every deliverable** | Due Tuesday at the start of class, submitted on Canvas. |
-| **Every quiz** | First 10 minutes of Thursday's class. |
+| **Thursdays** | We go throughs each assignment in class. |
 
 The exceptions are the first day, the two Thursdays that hold Exam I and Exam II, and the last day of class. Those have no quiz.
 

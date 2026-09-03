@@ -24,12 +24,12 @@ The through-line is one question asked in progressively harder forms: **what can
 
 | # | You will be able to… | Assessed by |
 | --- | --- | --- |
-| 1 | Gather, clean, describe, and summarize data using Excel | MindTap Ch 1–3 · Project 1 · Midterm |
-| 2 | Take samples and estimate unknown parameters | MindTap §6.2, Ch 7–8 · Project 2 · Midterm |
-| 3 | Formulate and test hypotheses | MindTap Ch 9–13 · Project 2 · Final Project |
+| 1 | Gather, clean, describe, and summarize data using Excel | MindTap Ch 1–3 · Project · Exam 1 |
+| 2 | Take samples and estimate unknown parameters | MindTap §6.2, Ch 7–8 · Exam 1 |
+| 3 | Formulate and test hypotheses | MindTap Ch 9–13 · Exam 2 · Final Project |
 | 4 | Understand basic principles of statistical process control | *see note* |
 | 5 | Use multiple regression to analyze data | MindTap Ch 14–15 · Final Project report and presentation |
-| 6 | Successfully complete research projects | Projects 1 and 2 · Final Project |
+| 6 | Successfully complete research projects | Project · Final Project |
 | 7 | Design and conduct research in the future | Final Project proposal, report, and presentation |
 | 8 | Use sound quantitative reasoning to analyze business problems | Interpretation sections of all projects and exams |
 
@@ -60,11 +60,11 @@ We do not cover all fifteen chapters. See the note after the schedule for what i
 | Component | Weight | Points |
 | --- | --- | --- |
 | MindTap quizzes — 11 given, lowest dropped (10 × 15) | 15% | 150 |
-| MindTap chapter assignments — best 10 of 11 (10 × 5) | 5% | 50 |
-| Project 1 | 10% | 100 |
-| Project 2 | 10% | 100 |
-| Midterm Exam — Thu, Oct 15 | 25% | 250 |
-| Final Project — team; proposal, report, and presentation | 35% | 350 |
+| MindTap chapter assignments — 11 given, lowest dropped (10 × 15) | 15% | 150 |
+| Exam 1 — Thu, Oct 15 | 12.5% | 125 |
+| Exam 2 — Thu, Nov 19 | 12.5% | 125 |
+| Project | 15% | 150 |
+| Final Project — team; proposal, report, and presentation | 30% | 300 |
 | **Total** | **100%** | **1000** |
 
 | Grade | Points | | Grade | Points |
@@ -78,50 +78,50 @@ We do not cover all fifteen chapters. See the note after the schedule for what i
 
 Points are what count. Final scores are **not** rounded up across a boundary — 929 points is an A−.
 
-> **There is no final exam.** The midterm on Oct 15 is the only exam in this course. Your final exam period is used for **Final Project presentations** instead — attendance at it is required, and it is graded.
+> **There is no final exam.** Both exams are held in class during the semester. Your final exam period is used for **Final Project presentations** instead — attendance at it is required, and it is graded.
 
 **Extra credit.** Opportunities may be announced during the semester — the Jabs Career Symposium is the usual one — for up to **15 points**. Nothing is guaranteed and none is offered individually on request.
 
-### Midterm Exam · 250 points
+### Exams · 250 points
 
 | | When | Covers |
 | --- | --- | --- |
-| **Midterm** | Thu, Oct 15, in class | Ch 1–3, §6.2, 7–8 |
+| **Exam 1** | Thu, Oct 15, in class | Ch 1–3, §6.2, 7–8 |
+| **Exam 2** | Thu, Nov 19, in class | Ch 9, 10, 12, 13 |
 
-The midterm closes the describe-and-estimate half of the course. It is the only exam, so it carries a quarter of your grade on its own — treat the date as fixed.
+**Exam 1** closes the describe-and-estimate half of the course. **Exam 2** covers inference — hypothesis testing through ANOVA. Each is worth 12.5% of your grade, and neither is cumulative beyond the material listed. Both dates are fixed.
 
-It is closed-book. A **formula sheet is provided** and you may bring **one double-sided page of handwritten notes**. Bring your laptop; Excel is used for computation.
+Both are closed-book. A **formula sheet is provided** and you may bring **one double-sided page of handwritten notes** to each. Bring your laptop; Excel is used for computation.
 
-Make-ups are given only for documented, university-sanctioned conflicts arranged **at least a week in advance**. Work travel and vacations are not excuses. With no second exam to absorb it, a missed midterm is not recoverable.
+Make-ups are given only for documented, university-sanctioned conflicts arranged **at least a week in advance**. Work travel and vacations are not excuses. Neither exam is dropped; a missed exam without an approved conflict is a zero.
 
-### Projects · 550 points
+### Projects · 450 points
 
 Written work has two submission steps: upload your **workbook and written report** to Canvas › Assignments, then complete the **project quiz** that opens conditional on that upload. Missing or incorrect files reduce or zero the project quiz. Emailed work counts as not submitted. **Late work is not accepted** — the window closes at the start of class.
 
-**Project 1 and Project 2 · 100 points each · individual work**
+**Project · 150 points · individual work**
 
 | | Points |
 | --- | --- |
-| Correct analysis — right method, right execution | 40 |
-| Written interpretation — what it means, what it does not mean, what you would do | 45 |
-| A workbook someone else could follow — labeled sheets, live formulas, documented sources | 15 |
+| Correct analysis — right method, right execution | 60 |
+| Written interpretation — what it means, what it does not mean, what you would do | 70 |
+| A workbook someone else could follow — labeled sheets, live formulas, documented sources | 20 |
 
-- **Project 1 — Describing a business dataset.** Assigned Sep 17, due **Tue, Oct 6**. Ch 1–3: choose and defend displays, compute and interpret location, variability, and association.
-- **Project 2 — Estimating and testing.** Assigned Oct 20, due **Tue, Nov 10**. Ch 7–9: build a confidence interval and run a hypothesis test, state your assumptions, and write the conclusion in business language.
+- **Project — Describing a business dataset.** Assigned Sep 17, due **Tue, Oct 6**. Ch 1–3: choose and defend displays, compute and interpret location, variability, and association.
 
-Instructions and data are posted to Canvas on the day each is assigned. Both are individual work and are checked for plagiarism.
+Instructions and data are posted to Canvas on the day it is assigned. It is individual work and is checked for plagiarism.
 
-**Final Project · 350 points · teams of four**
+**Final Project · 300 points · teams of four**
 
 Real small-scale research on a business question you choose. Pose the question, obtain data, analyze it — **multiple regression must be part of the analysis** — report what you found in writing, and present it to the class. Teams are formed in class **Thu, Oct 22**.
 
 | Milestone | Due | Points |
 | --- | --- | --- |
 | Topic proposal — one page: the question, the data, the methods you expect to need | Tue, Nov 17 | 25 |
-| Written report + workbook | Tue, Dec 8 | 225 |
+| Written report + workbook | Tue, Dec 8 | 175 |
 | Presentation | Dec 10 or finals week | 100 |
 
-Report scoring, out of 225: question and data (30) · descriptive and graphical analysis (35) · inference, with assumptions stated (35) · **multiple regression — specification, output, interpretation, diagnostics (60)** · written report, including honest limitations (50) · reproducible workbook (15).
+Report scoring, out of 175: question and data (25) · descriptive and graphical analysis (25) · inference, with assumptions stated (30) · **multiple regression — specification, output, interpretation, diagnostics (50)** · written report, including honest limitations (35) · reproducible workbook (10).
 
 The proposal is worth 25 points but it is the most useful thing you will submit. Most failed student research projects fail at the question, not the statistics — a question no obtainable dataset can answer, or one whose answer is already obvious. The proposal exists to catch that three weeks early.
 
@@ -145,9 +145,9 @@ Because the report is due Dec 8, your analysis is finished before anyone present
 
 > **A presentation is not a reading of your report.** The most common failure is a team narrating every table in order and running out of time before the conclusion. Lead with what you found. Then show only the evidence that supports it.
 
-### MindTap Quizzes and Assignments · 200 points
+### MindTap Quizzes and Assignments · 300 points
 
-Each covered chapter has one **quiz** (15 pts) and one **chapter assignment** (5 pts) in MindTap, due at **11:59 pm MT** on the date in the schedule. Eleven of each are given; the **lowest quiz is dropped** and only your **best ten assignments** count.
+Each covered chapter has one **quiz** and one **chapter assignment** in MindTap, both worth **15 points**, due at **11:59 pm MT** on the date in the schedule. **Eleven of each** are given; the **lowest of each is dropped**, so ten quizzes and ten assignments count — 150 points per group, 300 in all.
 
 Those drops are the make-up policy. They cover illness, travel, a bad week, and a forgotten date, so **there are no make-ups and no individually excused deadlines**. MindTap deadlines are enforced by the platform, not by me. If you will miss more than one week for a documented reason, talk to me in advance.
 
@@ -161,17 +161,19 @@ This is your own individual work.
 
 Twenty-nine meetings following Camm et al., 9e. Section numbers refer to that edition. Tentative — changes are announced in class, posted to Canvas, and emailed.
 
+**✓ marks a session already held.** Completed through session 3, Thursday Sep 3. Everything after that date is still subject to change.
+
 ### Unit 1 · Describing Data — Ch 1–3 · Aug 27 – Sep 17
 
 | # | Date | Topic | Read | Due |
 | --- | --- | --- | --- | --- |
-| 1 | Thu, Aug 27 | Course overview; **Data and Statistics** — data and variables, scales of measurement, categorical vs. quantitative, cross-sectional vs. time series | §1.1–1.3 |  |
-| 2 | Tue, Sep 1 | Descriptive statistics vs. inference; analytics, big data, ethical guidelines · **Lab:** Excel and the Analysis ToolPak | §1.4–1.9 |  |
-| 3 | Thu, Sep 3 | **Tabular and Graphical Displays** — frequency, relative, and percent frequency distributions; bar and pie charts | §2.1 | MindTap **Ch 1** |
+| ✓ 1 | Thu, Aug 27 | Course overview; **Data and Statistics** — data and variables, scales of measurement, categorical vs. quantitative, cross-sectional vs. time series | §1.1–1.3 |  |
+| ✓ 2 | Tue, Sep 1 | Descriptive statistics vs. inference; analytics, big data, ethical guidelines · **Lab:** Excel and the Analysis ToolPak | §1.4–1.9 |  |
+| ✓ 3 | Thu, Sep 3 | **Tabular and Graphical Displays** — frequency, relative, and percent frequency distributions; bar and pie charts | §2.1 | MindTap **Ch 1** |
 | 4 | Tue, Sep 8 | Quantitative displays: class intervals, cumulative distributions, dot plots, histograms and skewness, stem-and-leaf · **Lab** | §2.2 |  |
 | 5 | Thu, Sep 10 | Two variables: crosstabulation with PivotTables, row and column percentages, Simpson's paradox, scatter diagrams, side-by-side and stacked bars, geospatial displays · **Lab** | §2.3–2.5 | MindTap **Ch 2** |
 | 6 | Tue, Sep 15 | **Numerical Measures** — mean, median, mode, weighted and geometric mean, percentiles, quartiles | §3.1 |  |
-| 7 | Thu, Sep 17 | Variability and shape: range, IQR, variance, standard deviation, CV, *z*-scores, the empirical rule, outliers, boxplots; covariance and correlation · **Lab:** Descriptive Statistics tool | §3.2–3.5 | MindTap **Ch 3** · **Project 1 assigned** |
+| 7 | Thu, Sep 17 | Variability and shape: range, IQR, variance, standard deviation, CV, *z*-scores, the empirical rule, outliers, boxplots; covariance and correlation · **Lab:** Descriptive Statistics tool | §3.2–3.5 | MindTap **Ch 3** · **Project assigned** |
 
 ### Unit 2 · From Sample to Population — §6.2, Ch 7–8 · Sep 22 – Oct 15
 
@@ -181,37 +183,37 @@ Twenty-nine meetings following Camm et al., 9e. Section numbers refer to that ed
 | 9 | Thu, Sep 24 | **Sampling and Sampling Distributions** — simple random sampling, point estimation, the sampling distribution of the sample mean, standard error, and the Central Limit Theorem · **Lab** | §7.1–7.5 |  |
 | 10 | Tue, Sep 29 | The sampling distribution of the sample proportion; stratified, cluster, systematic, and convenience sampling; why big data does not fix sampling error | §7.6–7.8 |  |
 | 11 | Thu, Oct 1 | **Interval Estimates** — confidence interval for a mean, σ known and unknown; the *t* distribution; margin of error · **Lab** | §8.1–8.2 | MindTap **§6.2 + Ch 7** |
-| 12 | Tue, Oct 6 | Determining the sample size; confidence interval for a proportion · **Lab:** `CONFIDENCE.T`, `T.INV.2T` | §8.3–8.4 | **Project 1 due** |
+| 12 | Tue, Oct 6 | Determining the sample size; confidence interval for a proportion · **Lab:** `CONFIDENCE.T`, `T.INV.2T` | §8.3–8.4 | **Project due** |
 | 13 | Thu, Oct 8 | What a confidence interval does and does not claim; intervals when *n* is enormous; worked business cases · **Lab** | §8.5 | MindTap **Ch 8** |
-| 14 | Tue, Oct 13 | **Review for the Midterm** | Ch 1–3, §6.2, 7–8 |  |
-| 15 | Thu, Oct 15 | **MIDTERM EXAM** — Ch 1–3, §6.2, 7–8 |  |  |
+| 14 | Tue, Oct 13 | **Review for Exam 1** | Ch 1–3, §6.2, 7–8 |  |
+| 15 | Thu, Oct 15 | **EXAM 1** — Ch 1–3, §6.2, 7–8 |  |  |
 
 ### Unit 3 · Hypothesis Testing — Ch 9 · Oct 20 – Oct 27
 
 | # | Date | Topic | Read | Due |
 | --- | --- | --- | --- | --- |
-| 16 | Tue, Oct 20 | **Hypothesis Tests** — developing null and alternative hypotheses; Type I and Type II errors; the logic of a test before any formula | §9.1–9.2 | **Project 2 assigned** |
+| 16 | Tue, Oct 20 | **Hypothesis Tests** — developing null and alternative hypotheses; Type I and Type II errors; the logic of a test before any formula | §9.1–9.2 |  |
 | 17 | Thu, Oct 22 | One-tailed and two-tailed tests about a population mean, σ known and unknown; *p*-values · **Lab** | §9.3–9.4 | **Final Project assigned; teams formed** |
 | 18 | Tue, Oct 27 | Tests about a population proportion; statistical vs. practical significance; what a *p*-value is not | §9.5–9.6 |  |
 
-### Unit 4 · Comparing Two or More Populations — Ch 10, 12, 13 · Oct 29 – Nov 17
+### Unit 4 · Comparing Two or More Populations — Ch 10, 12, 13 · Oct 29 – Nov 19
 
 | # | Date | Topic | Read | Due |
 | --- | --- | --- | --- | --- |
 | 19 | Thu, Oct 29 | **Two Populations** — inference about the difference between two means, σ's known and unknown · **Lab:** Excel's *t*-Test and *z*-Test tools | §10.1–10.2 | MindTap **Ch 9** |
 | 20 | Tue, Nov 3 | Matched samples; inference about the difference between two proportions | §10.3–10.4 |  |
 | 21 | Thu, Nov 5 | **Categorical Data** — the chi-square distribution and the goodness-of-fit test · **Lab** | §12.1 | MindTap **Ch 10** |
-| 22 | Tue, Nov 10 | What independence means for two categorical variables; the test of independence; testing the equality of three or more proportions · **Lab** | §12.2–12.3 | **Project 2 due** |
+| 22 | Tue, Nov 10 | What independence means for two categorical variables; the test of independence; testing the equality of three or more proportions · **Lab** | §12.2–12.3 |  |
 | 23 | Thu, Nov 12 | **Experimental Design and ANOVA** — completely randomized designs, partitioning total variation, and the *F* test | §13.1–13.2 | MindTap **Ch 12** |
-| 24 | Tue, Nov 17 | Multiple comparisons and Fisher's LSD; reading ANOVA output and reporting the conclusion · **Lab:** Anova: Single Factor | §13.3 | **Final Project proposal due** |
+| 24 | Tue, Nov 17 | Multiple comparisons and Fisher's LSD; reading ANOVA output and reporting the conclusion · **Lab:** Anova: Single Factor | §13.3 | MindTap **Ch 13** · **Final Project proposal due** |
+| 25 | Thu, Nov 19 | **EXAM 2** — Ch 9, 10, 12, 13 |  |  |
 
-### Unit 5 · Modeling Relationships — Ch 14–15 · Nov 19 – Dec 10
+### Unit 5 · Modeling Relationships — Ch 14–15 · Dec 1 – Dec 10
 
 | # | Date | Topic | Read | Due |
 | --- | --- | --- | --- | --- |
-| 25 | Thu, Nov 19 | **Simple Linear Regression** — the model, the least squares method, the coefficient of determination, model assumptions | §14.1–14.4 | MindTap **Ch 13** |
 | — | Nov 23–27 | **Fall Break — no classes** |  |  |
-| 26 | Tue, Dec 1 | Testing for significance; estimation and prediction; residual analysis; outliers and influential observations · **Lab:** Excel's Regression tool | §14.5–14.9 |  |
+| 26 | Tue, Dec 1 | **Simple Linear Regression** — the model, least squares, the coefficient of determination, model assumptions; testing for significance, estimation and prediction, residual analysis · **Lab:** Excel's Regression tool | §14.1–14.9 |  |
 | 27 | Thu, Dec 3 | **Multiple Regression** — least squares with several predictors, multiple and adjusted *R*², the *F* test versus the individual *t* tests, interpreting a coefficient *holding the others constant* · **Lab** | §15.1–15.6 | MindTap **Ch 14** |
 | 28 | Tue, Dec 8 | Categorical independent variables (dummy coding), residual analysis, and what multicollinearity does to your interpretation · **Lab** | §15.7–15.8 | **Final Project report due** |
 | 29 | Thu, Dec 10 | **Final Project presentations** — round 1, plus course wrap-up |  | MindTap **Ch 15** |
@@ -219,7 +221,7 @@ Twenty-nine meetings following Camm et al., 9e. Section numbers refer to that ed
 
 **What we skip, and why.** Eleven of fifteen chapters fit in one semester, plus one section of a twelfth. **Ch 4, Introduction to Probability**, **Ch 5, Discrete Probability Distributions**, and **Ch 6, Continuous Probability Distributions** are omitted, along with **Ch 11, Inference About Population Variances** and the block and factorial designs in **§13.4–13.5**. None of these appear on either exam, and no probability rules, counting rules, or Bayes' theorem are assessed in this course.
 
-The one exception is **§6.2, the normal distribution**, kept as a single session on Sep 22. Everything from the Central Limit Theorem onward is built on the normal curve, so that section is a prerequisite rather than a topic. What the trade buys is room: three sessions for hypothesis testing, two each for chi-square and ANOVA, and four for regression — the ideas this course is actually assessed on.
+The one exception is **§6.2, the normal distribution**, kept as a single session on Sep 22. Everything from the Central Limit Theorem onward is built on the normal curve, so that section is a prerequisite rather than a topic. What the trade buys is room: three sessions for hypothesis testing, two each for chi-square and ANOVA, and three for regression — the ideas this course is actually assessed on.
 ---
 
 ## Important Dates — Fall 2026
@@ -235,7 +237,7 @@ The one exception is **§6.2, the normal distribution**, kept as a single sessio
 
 Labor Day falls on a Monday and Veterans Day on a Wednesday in 2026, so **this section loses no meetings to holidays** — only Fall Break.
 
-By the Nov 18 withdrawal deadline you will have back the midterm, both projects, and most of your MindTap work — about 610 of 1000 points. That is deliberate: decide with data, not with a feeling. If you are worried about your standing, see me the week of Nov 16.
+By the Nov 18 withdrawal deadline you will have back Exam 1, the project, and most of your MindTap work — about 515 of 1000 points. Exam 2 falls the day after, so it is not part of that picture. That is deliberate: decide with data, not with a feeling. If you are worried about your standing, see me the week of Nov 16.
 
 ---
 
@@ -243,7 +245,7 @@ By the Nov 18 withdrawal deadline you will have back the midterm, both projects,
 
 The IS perspective emphasizes the methods social scientists use to systematically study human behavior. In this course that means **estimation, hypothesis testing, and regression.** The course meets the University IS Core requirement and develops two Core Qualities:
 
-**Thinker and Problem Solver.** You will reason from evidence gathered through quantitative methods, and apply information literacy — finding, evaluating, using, and creating information. You will define problems, find evidence, conduct analysis, and identify solutions. *Assessed in the interpretation sections of Projects 1 and 2 and the Final Project report.*
+**Thinker and Problem Solver.** You will reason from evidence gathered through quantitative methods, and apply information literacy — finding, evaluating, using, and creating information. You will define problems, find evidence, conduct analysis, and identify solutions. *Assessed in the interpretation sections of the project and the Final Project report.*
 
 **Effective Communicator.** You will use written and visual communication to create meaning and foster understanding, demonstrating facility in analyzing and interpreting quantitative information. Given large datasets, you will develop approaches to asking and answering questions, then use written and visual communication to inform sound business decisions. *Assessed in the Final Project written report and presentation.*
 
@@ -257,7 +259,7 @@ The IS perspective emphasizes the methods social scientists use to systematicall
 
 **Participation.** Ask questions when you are lost, including the ones you think are too basic. In a statistics classroom the "obvious" question is usually the one half the room needs answered.
 
-**Missed work.** Projects: late work is not accepted. MindTap: no make-ups; the dropped quiz and assignment are the policy. Midterm: documented, university-sanctioned conflicts arranged a week in advance. Presentations: your team presents on its assigned day. For an emergency that makes advance notice impossible, contact me as soon as you are able.
+**Missed work.** Projects: late work is not accepted. MindTap: no make-ups; the dropped quiz and assignment are the policy. Exams: documented, university-sanctioned conflicts arranged a week in advance. Presentations: your team presents on its assigned day. For an emergency that makes advance notice impossible, contact me as soon as you are able.
 
 **University activities and religious observance.** If you will miss class for athletics, a conference, field work, military service, or a religious observance, give me documentation early in the semester — or within the first two weeks for a religious conflict — and we will plan around it without penalty.
 

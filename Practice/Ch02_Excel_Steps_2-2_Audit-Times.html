@@ -1,0 +1,260 @@
+<title>Excel Steps 2.2</title>
+<div style="background:#ffffff;min-height:100vh;margin:0;padding:0;">
+<div style="max-width:900px;margin:0 auto;padding:0 24px 72px;background:#ffffff;">
+
+  <div style="background:#162960;margin:0 -24px 40px;padding:34px 24px 28px;border-bottom:4px solid #f4b425;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;
+      text-transform:uppercase;color:#f4b425;margin:0 0 12px;">
+      BMGT 240IS &middot; Business Analytics &middot; Chapter 2 &middot; Excel Activity 2.2
+    </div>
+    <h1 style="font-family:Arial,Helvetica,sans-serif;font-size:32px;font-weight:700;line-height:1.15;
+      color:#ffffff;margin:0 0 12px;max-width:26ch;">Summarizing audit times in Excel</h1>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:1.55;color:#cdd6ea;
+      margin:0;max-width:62ch;">
+      Same PivotTable, two new problems: the data are numbers, so Excel wants to add them up
+      &mdash; and the classes do not exist until you create them.
+    </p>
+  </div>
+
+  <div style="display:block;margin:0 0 22px;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#66708c;margin:0 0 8px;">Before you start</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 14px;max-width:68ch;">Open <strong>audit.xlsx</strong>. Cell A1 holds the label <em>Audit Time</em>, and cells A2 through A21 hold 20 observations &mdash; the number of days required to complete a year-end audit for each of 20 clients.</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:68ch;">If you did Activity 2.1, most of this will feel familiar. Two things are genuinely different, and both come from the data being <strong>quantitative</strong> rather than categorical. They are steps 1 and 4 below.</p>
+  </div>
+
+  <div style="margin:0 0 34px;padding:16px 19px;background:#fdf3e0;border-left:3px solid #f4b425;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a5a00;margin:0 0 9px;">What changes when the data are numbers</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:64ch;"><strong style="color:#111a30;">Excel will try to add them.</strong> Drop a text field into Values and Excel counts it, because summing brand names is meaningless. Drop a number field in and it <em>sums</em> &mdash; giving you 366 total days, which answers nothing. You have to change it to Count yourself.</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0;max-width:64ch;"><strong style="color:#111a30;">There are no categories to count.</strong> Coca-Cola was a category; 18 days is not. Without grouping you get one row per distinct value &mdash; a list almost as long as the raw data. You have to define the classes.</p>
+  </div>
+
+  <div style="height:1px;background:#d5dae7;margin:36px 0;"></div>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">1</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Work out the classes first &mdash; on paper</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">Do this before touching a menu, because step 4 will ask you for the numbers.</p>
+        <ol style="margin:0 0 14px;padding:0 0 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.8;color:#111a30;max-width:66ch;">
+          <li><strong>Choose the number of classes.</strong> Five to twenty, depending on sample size. With n = 20, use <strong>5</strong>.</li>
+          <li><strong>Find the range.</strong> Largest 33, smallest 12, so the range is <strong>21</strong>.</li>
+          <li><strong>Divide.</strong> 21 &divide; 5 = <strong>4.2</strong>.</li>
+          <li><strong>Round up</strong> to a convenient value: a class width of <strong>5</strong>.</li>
+          <li><strong>Set the limits</strong> from a round number at or below the smallest value: <strong>10&ndash;14, 15&ndash;19, 20&ndash;24, 25&ndash;29, 30&ndash;34</strong>.</li>
+        </ol>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;"><strong style="color:#111a30;">Round up, never to the nearest.</strong> Rounding 4.2 down to 4 gives five classes covering only 20 days, one short of the 21-day range &mdash; and the 33-day audit would have nowhere to go.</p>
+      </td>
+    </tr>
+  </table>
+
+  <table style="border-collapse:collapse;width:100%;margin:26px 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">2</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Insert the PivotTable</h2>
+        <ol style="margin:0 0 12px;padding:0 0 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.75;color:#111a30;max-width:66ch;">
+          <li>Click any cell inside the data first &mdash; A1 works.</li>
+          <li><strong>Insert</strong> tab &rarr; <strong>Tables</strong> group &rarr; <strong>PivotTable</strong>.</li>
+          <li>Confirm <strong>Table/Range</strong> reads <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">Sheet1!$A$1:$A$21</span>. Leave <em>Add this data to the Data Model</em> unchecked.</li>
+          <li>Choose <strong>Existing Worksheet</strong>, location <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">$C$1</span>, then <strong>OK</strong>.</li>
+        </ol>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">An empty <strong>Table/Range</strong> box means Excel could not detect your data because the cursor was outside it. Cancel, click A1, try again. Ticking the Data Model box will block the grouping you need in step 4, so leave it alone.</p>
+      </td>
+    </tr>
+  </table>
+
+  <table style="border-collapse:collapse;width:100%;margin:26px 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">3</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Place the field, then change Sum to Count</h2>
+        <ol style="margin:0 0 14px;padding:0 0 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.75;color:#111a30;max-width:66ch;">
+          <li><strong>Tick the checkbox</strong> beside <em>Audit Time</em> in the Fields pane.</li>
+          <li><strong>Right-click</strong> <em>Audit Time</em> &rarr; <strong>Add to Values</strong>.</li>
+          <li>The Values box now reads <strong>Sum of Audit Time</strong>. Click it &rarr; <strong>Value Field Settings</strong>.</li>
+          <li>Under <em>Summarize value field by</em>, choose <strong>Count</strong>. Click <strong>OK</strong>.</li>
+        </ol>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">You now have a long list &mdash; one row per distinct audit time, each with a count of 1 or 2, and a Grand Total of 20. That is correct but useless, and step 4 fixes it.</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">If the Fields pane keeps disappearing, that is normal &mdash; it only exists while the selected cell is inside the PivotTable. Click any PivotTable cell to bring it back, or use <strong>PivotTable Analyze &rarr; Show &rarr; Field List</strong>.</p>
+      </td>
+    </tr>
+  </table>
+
+  <table style="border-collapse:collapse;width:100%;margin:26px 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#f4b425;color:#111a30;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">4</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Group the values into your classes</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">This is the step that has no counterpart in 2.1, and it is where your step 1 numbers go.</p>
+        <ol style="margin:0 0 14px;padding:0 0 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.75;color:#111a30;max-width:66ch;">
+          <li><strong>Right-click any row label</strong> in the PivotTable (any audit time value) &rarr; <strong>Group</strong>.</li>
+          <li><strong>Starting at:</strong> <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">10</span></li>
+          <li><strong>Ending at:</strong> <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">34</span></li>
+          <li><strong>By:</strong> <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">5</span></li>
+          <li>Click <strong>OK</strong>.</li>
+        </ol>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">The long list collapses to five rows: <strong>10&ndash;14, 15&ndash;19, 20&ndash;24, 25&ndash;29, 30&ndash;34</strong>, with frequencies <strong>4, 8, 5, 2, 1</strong> and a Grand Total of 20.</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">Excel pre-fills <em>Starting at</em> with 12 and <em>Ending at</em> with 33 &mdash; your actual minimum and maximum. <strong style="color:#111a30;">Overwrite both.</strong> Accepting 12 gives classes of 12&ndash;16, 17&ndash;21 and so on: arithmetically valid, but not the round limits the textbook uses, and much harder to read.</p>
+      </td>
+    </tr>
+  </table>
+
+  <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:#66708c;margin:30px 0 8px;">
+    What your sheet looks like, placed at C1
+  </div>
+  <div style="overflow-x:auto;border:1px solid #d5dae7;margin:0 0 12px;">
+    <table style="border-collapse:collapse;width:100%;min-width:800px;">
+      <tr>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:7px 8px;border:1px solid #d5dae7;width:30px;">&nbsp;</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:7px 8px;border:1px solid #d5dae7;">C</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:7px 8px;border:1px solid #d5dae7;">D</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#dfe6f5;text-align:center;padding:7px 8px;border:1px solid #d5dae7;">E</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#dfe6f5;text-align:center;padding:7px 8px;border:1px solid #d5dae7;">F</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#dfe6f5;text-align:center;padding:7px 8px;border:1px solid #d5dae7;">G</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#dfe6f5;text-align:center;padding:7px 8px;border:1px solid #d5dae7;">H</th>
+        <th scope="col" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#dfe6f5;text-align:center;padding:7px 8px;border:1px solid #d5dae7;">I</th>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px;border:1px solid #d5dae7;">1</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;color:#111a30;background:#ffffff;padding:8px 10px;border:1px solid #d5dae7;">Audit Time</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;color:#111a30;background:#ffffff;padding:8px 10px;border:1px solid #d5dae7;">Frequency</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;color:#111a30;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">Rel. Freq.</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;color:#111a30;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">Pct. Freq.</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;color:#111a30;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">Cum. Freq.</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;color:#111a30;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">Cum. Rel.</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;color:#111a30;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">Cum. Pct.</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px;border:1px solid #d5dae7;">2</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#ffffff;padding:8px 10px;border:1px solid #d5dae7;">10-14</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#ffffff;text-align:right;padding:8px 10px;border:1px solid #d5dae7;">4</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;color:#1a4fa0;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">=D2/$D$7</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;color:#1a4fa0;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">=E2*100</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;color:#1a4fa0;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">=SUM($D$2:D2)</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;color:#1a4fa0;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">=G2/$D$7</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;color:#1a4fa0;background:#f7f9ff;padding:8px 10px;border:1px solid #d5dae7;">=H2*100</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px;border:1px solid #d5dae7;">3</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#f3f5fa;padding:8px 10px;border:1px solid #d5dae7;">15-19</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#f3f5fa;text-align:right;padding:8px 10px;border:1px solid #d5dae7;">8</td>
+        <td colspan="5" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#66708c;background:#f3f5fa;text-align:center;padding:8px 10px;border:1px solid #d5dae7;">fill row 2 down to row 6</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px;border:1px solid #d5dae7;">4</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#ffffff;padding:8px 10px;border:1px solid #d5dae7;">20-24</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#ffffff;text-align:right;padding:8px 10px;border:1px solid #d5dae7;">5</td>
+        <td colspan="5" style="background:#f7f9ff;border:1px solid #d5dae7;padding:8px;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px;border:1px solid #d5dae7;">5</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#f3f5fa;padding:8px 10px;border:1px solid #d5dae7;">25-29</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#f3f5fa;text-align:right;padding:8px 10px;border:1px solid #d5dae7;">2</td>
+        <td colspan="5" style="background:#f3f5fa;border:1px solid #d5dae7;padding:8px;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px;border:1px solid #d5dae7;">6</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#ffffff;padding:8px 10px;border:1px solid #d5dae7;">30-34</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;color:#111a30;background:#ffffff;text-align:right;padding:8px 10px;border:1px solid #d5dae7;">1</td>
+        <td colspan="5" style="background:#f7f9ff;border:1px solid #d5dae7;padding:8px;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4a5570;background:#e7ebf4;text-align:center;padding:8px;border:1px solid #d5dae7;">7</td>
+        <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#162960;background:#e7ebf4;padding:9px 10px;border:1px solid #d5dae7;">Grand Total</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:13.5px;font-weight:700;color:#111a30;background:#e7ebf4;text-align:right;padding:9px 10px;border:1px solid #d5dae7;">20</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;color:#1a4fa0;background:#dfe6f5;padding:9px 10px;border:1px solid #d5dae7;">=SUM(E2:E6)</td>
+        <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;color:#1a4fa0;background:#dfe6f5;padding:9px 10px;border:1px solid #d5dae7;">=SUM(F2:F6)</td>
+        <td colspan="3" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#66708c;background:#dfe6f5;text-align:center;padding:9px 10px;border:1px solid #d5dae7;">no totals &mdash; these are already running totals</td>
+      </tr>
+    </table>
+  </div>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 34px;max-width:68ch;">Columns <strong>C and D belong to the PivotTable</strong> and are read-only. Columns <strong>E through I are ordinary worksheet cells</strong> &mdash; that is where every formula goes. Check your own row numbers before typing: these assume the table was placed at C1.</p>
+
+  <table style="border-collapse:collapse;width:100%;margin:0 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">5</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Relative and percent frequency</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">In <strong>E2</strong> and <strong>F2</strong>, then fill both down to row 6:</p>
+        <div style="font-family:Consolas,'Courier New',monospace;font-size:16px;color:#111a30;background:#f5f8ff;border:1px solid #c3d2ee;border-left:3px solid #162960;padding:11px 14px;margin:0 0 10px;">=D2/$D$7</div>
+        <div style="font-family:Consolas,'Courier New',monospace;font-size:16px;color:#111a30;background:#f5f8ff;border:1px solid #c3d2ee;border-left:3px solid #162960;padding:11px 14px;margin:0 0 14px;">=E2*100</div>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;"><strong style="color:#111a30;">Type the references rather than clicking the cells.</strong> Clicking a PivotTable cell mid-formula makes Excel write <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">GETPIVOTDATA(...)</span>, which will not fill down. Or switch it off first: <strong>PivotTable Analyze &rarr; Options dropdown &rarr; untick Generate GetPivotData</strong>.</p>
+      </td>
+    </tr>
+  </table>
+
+  <table style="border-collapse:collapse;width:100%;margin:26px 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#162960;color:#ffffff;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">6</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">The three cumulative distributions</h2>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">A cumulative frequency counts everything at or below a class&rsquo;s upper limit. In <strong>G2</strong>:</p>
+        <div style="font-family:Consolas,'Courier New',monospace;font-size:16px;color:#111a30;background:#f5f8ff;border:1px solid #c3d2ee;border-left:3px solid #162960;padding:11px 14px;margin:0 0 14px;">=SUM($D$2:D2)</div>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;"><strong style="color:#111a30;">Only the start of the range is anchored.</strong> That is the trick worth learning. Fill down and the range grows: row 3 becomes <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">SUM($D$2:D3)</span>, row 4 becomes <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">SUM($D$2:D4)</span>. The window keeps its left edge and stretches its right, which is exactly what &ldquo;everything so far&rdquo; means.</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;">Then <strong>H2</strong> is <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">=G2/$D$7</span> and <strong>I2</strong> is <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">=H2*100</span>. Fill all three down to row 6.</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">You should get <strong>4, 12, 17, 19, 20</strong> and <strong>20%, 60%, 85%, 95%, 100%</strong>. Do not total these columns &mdash; they are already running totals, and the last row must equal n by definition.</p>
+      </td>
+    </tr>
+  </table>
+
+  <table style="border-collapse:collapse;width:100%;margin:26px 0 14px;">
+    <tr>
+      <td style="width:38px;vertical-align:top;padding:0 14px 0 0;">
+        <div style="width:32px;height:32px;background:#f4b425;color:#111a30;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;line-height:32px;">7</div>
+      </td>
+      <td style="vertical-align:top;">
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;line-height:1.3;color:#111a30;margin:3px 0 10px;">Histogram &mdash; and close the gaps</h2>
+        <ol style="margin:0 0 14px;padding:0 0 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:16.5px;line-height:1.75;color:#111a30;max-width:66ch;">
+          <li>Select any cell in the PivotTable.</li>
+          <li><strong>Insert</strong> tab &rarr; <strong>Charts</strong> group &rarr; <strong>Recommended Charts</strong> &rarr; <strong>OK</strong>.</li>
+          <li>Right-click any bar &rarr; <strong>Format Data Series</strong>.</li>
+          <li>Set <strong>Gap Width</strong> to <span style="font-family:Consolas,'Courier New',monospace;font-size:15px;">0%</span>.</li>
+        </ol>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0 0 12px;max-width:66ch;"><strong style="color:#111a30;">Step 4 is not cosmetic &mdash; it is what makes the chart a histogram.</strong> In 2.1 the gaps between bars were correct, because Coca-Cola and Sprite are separate categories with nothing between them. Here the classes are adjacent intervals on a continuous scale: 14 days and 15 days sit next to each other with no space in between, so the rectangles must touch.</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;color:#4a5570;margin:0;max-width:66ch;">Finish by adding a chart title and both axis titles &mdash; <em>Audit time (days)</em> across, <em>Frequency</em> up.</p>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin:38px 0 0;padding:18px 20px;background:#e7ebf4;border-left:3px solid #162960;">
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;
+      text-transform:uppercase;color:#4a5570;margin:0 0 8px;">Where this usually goes wrong</div>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:68ch;">
+      <strong style="color:#111a30;">Leaving it on Sum.</strong> If your Grand Total reads <strong>366</strong> instead of 20, Excel is adding the audit times rather than counting them. Value Field Settings &rarr; Count.
+    </p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:68ch;">
+      <strong style="color:#111a30;">Accepting Excel&rsquo;s grouping defaults.</strong> It offers 12 and 33 because those are your min and max. Type 10 and 34 instead, or you get classes nobody can read at a glance.
+    </p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:68ch;">
+      <strong style="color:#111a30;">No Group option in the right-click menu.</strong> Either you right-clicked a value rather than a row label, or the field is text. Numbers stored as text cannot be grouped &mdash; check that the audit times are right-aligned in column A.
+    </p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0 0 10px;max-width:68ch;">
+      <strong style="color:#111a30;">Anchoring both ends of the cumulative range.</strong> <span style="font-family:Consolas,'Courier New',monospace;font-size:14.5px;">=SUM($D$2:$D$2)</span> gives the same 4 in every row. Only the first reference gets dollar signs.
+    </p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#4a5570;margin:0;max-width:68ch;">
+      <strong style="color:#111a30;">Rounding the class width down.</strong> 4.2 rounds up to 5, never down to 4. Round down and your classes do not span the data.
+    </p>
+  </div>
+
+  <div style="margin:40px 0 0;padding:16px 0 0;border-top:1px solid #d5dae7;
+    font-family:Arial,Helvetica,sans-serif;font-size:12.5px;line-height:1.6;color:#66708c;">
+    Camm et al., <em>Essentials of Modern Business Statistics with Microsoft Excel</em>, 9e
+    &middot; Section 2.2, LO 2-3 &middot; DATAfile: audit &middot; BMGT 240IS, Section 002, Fall 2026
+  </div>
+
+</div>
+</div>
