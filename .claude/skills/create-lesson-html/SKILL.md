@@ -31,10 +31,15 @@ and do not start reading with only a chapter number.
 | **Minutes**, and whether there is a quiz | 75 minutes minus a 10-minute quiz is a materially different plan. |
 | **Anything already fixed** — a lab, a project launch, an activity the user wants | These are constraints, not suggestions. Build around them. |
 
-Then check what came before: `ls "Lesson Plans/"` and read the most recent session. It tells
-you what the room already knows, what was deferred into this session, and what house voice
-these plans use. **Deferred material from the previous session is a hard input** — if Session 1
-pushed the scale taxonomy to Session 2, Session 2 owes it.
+Then check what came before: `ls "Lesson Plans/"*/` — plans are filed by teaching week
+(`Lesson Plans/Week3/`), so list the folders, then read the highest-numbered session inside the
+latest one. It tells you what the room already knows, what was deferred into this session, and
+what house voice these plans use. **Deferred material from the previous session is a hard
+input** — if Session 1 pushed the scale taxonomy to Session 2, Session 2 owes it.
+
+The previous plan is also the only schedule fact you can verify. **Do not source the chapter,
+sections, session number, or date from a syllabus file** — the parameters above come from the
+user, and a stale syllabus will quietly contradict them.
 
 ---
 
@@ -45,7 +50,7 @@ written for a teacher rather than a reader — it is where "what is this chapter
 lives.
 
 ```bash
-python .agents/create_lesson_html/scripts/extract.py \
+python .claude/skills/create-lesson-html/scripts/extract.py \
   "Chapters/CAMM_EMBS_9e_IM/Camm_EMBS_9e_IM_CH02.docx" > "$SCRATCH/im_ch02.txt"
 grep -n '^##' "$SCRATCH/im_ch02.txt"      # section map first, then read what you need
 ```
@@ -75,10 +80,10 @@ The deck is what is physically on the screen, so it sets the **minute-by-minute 
 timing table with wrong slide numbers is worse than no timing table.
 
 ```bash
-python .agents/create_lesson_html/scripts/extract.py \
+python .claude/skills/create-lesson-html/scripts/extract.py \
   "Chapters/CAMM_EMBS_9e_PPTs/Camm_EMBS_9e_PPT_CH02.pptx" > "$SCRATCH/ppt_ch02.txt"
 grep -n '===== SLIDE' "$SCRATCH/ppt_ch02.txt"     # deck map
-python .agents/create_lesson_html/scripts/extract.py \
+python .claude/skills/create-lesson-html/scripts/extract.py \
   "Chapters/CAMM_EMBS_9e_PPTs/Camm_EMBS_9e_PPT_CH02.pptx" 6 19 --notes
 ```
 
@@ -154,15 +159,17 @@ ls DATAFiles/Ch02/DATAfiles/ | grep -iE 'softdrink|audit'
 ```
 
 Never write a path into the plan you have not listed. Related material: `Solutions/Chapter 02/`
-(worked answers), `Practice/` (existing student HTML), `Summaries/` (weekly recaps).
+(worked answers) and `Practice/Chapter 02/` (existing student HTML).
 
 ---
 
 ## Step 5 · Write the plan
 
 Only now do you write. Follow
-`Lesson Plans/Session_01_2026-08-27_Course_Launch_and_Data.md` — read it before drafting; it is
-the house standard.
+`Lesson Plans/Week3/Session_05_2026-09-10_Chapter_2_Excel_Lab.html` — read it before drafting;
+it is the house standard, for both structure and HTML. Its companion
+`Session_04_2026-09-08_Chapter_2_Concepts.html` is the same standard for a no-keyboards session,
+so read whichever matches the format you were asked for.
 
 **Sections, in order:**
 
@@ -184,15 +191,18 @@ recommendation and state the reason; do not hedge into a menu. This is a colleag
 
 **Teaching stance:** build the plan for *discovery* — questions before answers, small
 experiments before comprehensive explanation, "what do you notice?" before "here is what you
-should notice." That is [`teaching-guide.md`](../teaching-guide.md) applied to the classroom
+should notice." That is [`teaching-guide.md`](../../../.agents/teaching-guide.md) applied to the classroom
 rather than to this conversation.
 
 ### Output
 
-Write to **`Lesson Plans/Session_<NN>_<YYYY-MM-DD>_<Title_In_Snake_Case>.html`**.
+Write to **`Lesson Plans/Week<N>/Session_<NN>_<YYYY-MM-DD>_<Title_In_Snake_Case>.html`**,
+where `Week<N>` is the teaching week the date falls in — reuse the existing folder if the week
+already has one, create it if this session opens a new week.
 
 Match the house HTML style — copy the token block and layout from
-`Summaries/Week_01_Summary.html`. It is written as **Artifact source**: it begins at `<title>`
+`Lesson Plans/Week3/Session_05_2026-09-10_Chapter_2_Excel_Lab.html`. It is written as
+**Artifact source**: it begins at `<title>`
 with the `<style>` block inline, and carries no `<!doctype>`, `<html>`, `<head>`, or `<body>`
 wrapper. Keep the MSU palette (`--msu-blue: #162960`, `--msu-gold: #f4b425`), the complete light
 palette on bare `:root`, and both dark-mode blocks.
