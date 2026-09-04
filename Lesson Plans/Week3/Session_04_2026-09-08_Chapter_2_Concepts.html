@@ -1,0 +1,417 @@
+<title>Chapter 2 Without Excel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Archivo:wght@500;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
+
+<style>
+:root {
+  --msu-blue: #162960;
+  --msu-gold: #f4b425;
+
+  --bg:          #ffffff;
+  --surface:     #f3f5fa;
+  --surface-2:   #e7ebf4;
+  --sand:        #f7f0dc;
+  --sand-line:   #e0cfa0;
+  --sand-ink:    #7a5300;
+  --ink:         #111a30;
+  --ink-dim:     #4a5570;
+  --ink-faint:   #66708c;
+  --rule:        #d5dae7;
+  --rule-strong: #aab3c9;
+  --clay:        #94362b;
+  --clay-bg:     #f9eeec;
+  --accent:      #162960;
+  --on-accent:   #ffffff;
+  --gold:        #f4b425;
+  --gold-ink:    #8a5a00;
+
+  --measure: 68ch;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-ui:   "Archivo", Arial, Helvetica, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #0c1222;
+    --surface:     #141d33;
+    --surface-2:   #1e2942;
+    --sand:        #2a2415;
+    --sand-line:   #574a25;
+    --sand-ink:    #e0bb6a;
+    --ink:         #e6eaf4;
+    --ink-dim:     #a8b2ca;
+    --ink-faint:   #7f89a3;
+    --rule:        #2a3550;
+    --rule-strong: #465475;
+    --clay:        #e8938a;
+    --clay-bg:     #2b1a18;
+    --accent:      #6482d2;
+    --on-accent:   #ffffff;
+    --gold-ink:    #f0c46a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:          #0c1222;
+  --surface:     #141d33;
+  --surface-2:   #1e2942;
+  --sand:        #2a2415;
+  --sand-line:   #574a25;
+  --sand-ink:    #e0bb6a;
+  --ink:         #e6eaf4;
+  --ink-dim:     #a8b2ca;
+  --ink-faint:   #7f89a3;
+  --rule:        #2a3550;
+  --rule-strong: #465475;
+  --clay:        #e8938a;
+  --clay-bg:     #2b1a18;
+  --accent:      #6482d2;
+  --on-accent:   #ffffff;
+  --gold-ink:    #f0c46a;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 17.5px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 28px 96px; }
+.col  { max-width: var(--measure); }
+h1, h2, h3 { text-wrap: balance; margin: 0; font-family: var(--f-ui); }
+p { margin: 0; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+strong { color: var(--ink); font-weight: 600; }
+code, .mono { font-family: var(--f-mono); font-size: .88em; }
+
+.eyebrow {
+  font-family: var(--f-ui); font-weight: 700; font-size: 11px;
+  letter-spacing: .15em; text-transform: uppercase; color: var(--ink-faint);
+}
+
+/* masthead */
+.masthead { background: var(--msu-blue); color: #fff; padding: 38px 0 30px; border-bottom: 4px solid var(--gold); }
+.masthead .wrap { padding-bottom: 0; }
+.masthead .eyebrow { color: var(--gold); }
+.masthead h1 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 700; line-height: 1.1; color: #fff; margin: 12px 0 14px; max-width: 22ch; }
+.masthead .standfirst { font-family: var(--f-body); font-size: 19px; line-height: 1.55; color: #cdd6ea; max-width: 60ch; }
+
+/* fact strip */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border-top: 1px solid rgba(255,255,255,.18); margin-top: 26px; }
+.facts div { padding: 16px 20px 18px 0; }
+.facts dt { font-family: var(--f-ui); font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--gold); margin: 0 0 5px; }
+.facts dd { margin: 0; font-family: var(--f-body); font-size: 15.5px; line-height: 1.5; color: #dfe6f4; }
+.facts .mono { font-size: 13px; color: #c3cfe6; word-break: break-all; }
+
+section { padding-top: 44px; }
+h2.sec { font-size: 25px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+h3 { font-size: 18px; font-weight: 700; margin: 26px 0 9px; }
+.stack > * + * { margin-top: 14px; }
+
+/* objectives */
+ul.obj { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; max-width: var(--measure); }
+ul.obj li { display: grid; grid-template-columns: 58px 1fr; gap: 14px; align-items: baseline; }
+ul.obj .tag { font-family: var(--f-mono); font-size: 12.5px; font-weight: 700; color: var(--accent); background: var(--surface); padding: 3px 0; text-align: center; border: 1px solid var(--rule); }
+
+/* tables */
+.tablewrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--rule); }
+table { border-collapse: collapse; width: 100%; font-family: var(--f-body); font-size: 15.5px; }
+th { font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-align: left; color: var(--ink-faint); background: var(--surface); padding: 11px 14px; border-bottom: 1px solid var(--rule-strong); white-space: nowrap; }
+td { padding: 11px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-dim); }
+tr:last-child td { border-bottom: 0; }
+td.min, th.min { font-family: var(--f-mono); font-size: 13.5px; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink); }
+td.num { font-family: var(--f-mono); font-size: 14px; font-variant-numeric: tabular-nums; text-align: right; color: var(--ink); }
+th.num { text-align: right; }
+tr.protect td { background: color-mix(in srgb, var(--gold) 13%, transparent); }
+tr.protect td.min { box-shadow: inset 3px 0 0 var(--gold); font-weight: 700; }
+td strong { color: var(--ink); }
+
+/* callouts */
+.aside { background: var(--sand); border-left: 3px solid var(--sand-line); padding: 15px 19px; margin: 20px 0; max-width: var(--measure); }
+.aside .eyebrow { color: var(--sand-ink); margin-bottom: 7px; display: block; }
+.warn { background: var(--clay-bg); border-left: 3px solid var(--clay); padding: 15px 19px; margin: 20px 0; max-width: var(--measure); }
+.warn .eyebrow { color: var(--clay); margin-bottom: 7px; display: block; }
+.warn p, .aside p { font-size: 16px; color: var(--ink-dim); }
+
+/* say-this pull quote */
+blockquote { margin: 18px 0; padding: 0 0 0 20px; border-left: 3px solid var(--accent); max-width: 60ch; font-size: 18px; line-height: 1.55; color: var(--ink); font-style: italic; }
+blockquote .who { display: block; font-family: var(--f-ui); font-style: normal; font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+
+/* segments */
+.seg { border-top: 1px solid var(--rule); padding-top: 22px; margin-top: 30px; }
+.seg-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+.seg-head .clock { font-family: var(--f-mono); font-size: 13px; font-weight: 700; color: var(--on-accent); background: var(--accent); padding: 3px 9px; font-variant-numeric: tabular-nums; }
+.seg-head h3 { margin: 0; font-size: 20px; }
+.seg-head .slides { font-family: var(--f-mono); font-size: 12.5px; color: var(--ink-faint); }
+.seg > p, .seg > ol, .seg > ul { max-width: var(--measure); }
+.seg ol, .seg ul { padding-left: 22px; }
+.seg li { margin: 7px 0; color: var(--ink-dim); }
+.seg li strong { color: var(--ink); }
+
+.tier { display: grid; grid-template-columns: 90px 1fr; gap: 0 16px; border-top: 1px solid var(--rule); padding: 14px 0; max-width: var(--measure); align-items: start; }
+.tier:last-of-type { border-bottom: 1px solid var(--rule); }
+.tier .lbl { font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); padding-top: 3px; }
+.tier p { font-size: 16px; color: var(--ink-dim); }
+.tier p + p { margin-top: 6px; }
+
+footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--ink); font-family: var(--f-ui); font-size: 12.5px; color: var(--ink-faint); max-width: var(--measure); }
+</style>
+
+<div class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">BMGT 240IS · Session 4 · Tue, Sep 8, 2026</div>
+    <h1>Chapter 2 without Excel</h1>
+    <p class="standfirst">Five sections, twelve learning objectives, seventy-five minutes, and no keyboards. This is the concepts day — Thursday is the lab.</p>
+    <dl class="facts">
+      <div><dt>Scope</dt><dd>§2.2 – §2.6 · §2.1 was Session 3</dd></div>
+      <div><dt>Deck</dt><dd class="mono">Chapters/CAMM_EMBS_9e_PPTs/Camm_EMBS_9e_PPT_CH02.pptx</dd><dd>Slides 13–48, skipping every "Excel:" slide</dd></div>
+      <div><dt>Format</dt><dd>Lecture and discussion · no in-class Excel · no quiz</dd></div>
+      <div><dt>Next</dt><dd>Session 5, Thu Sep 10 — Excel lab, full period</dd></div>
+    </dl>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2 class="sec">Objectives</h2>
+  <p class="col">By the end of the period a student can:</p>
+  <ul class="obj" style="margin-top:14px">
+    <li><span class="tag">S4-1</span><span>Given a column of quantitative data, choose a number of classes, compute the class width, and set non-overlapping class limits — and say why the width is rounded <em>up</em> rather than to the nearest.</span></li>
+    <li><span class="tag">S4-2</span><span>Read the shape of a distribution off a histogram — skewed left, skewed right, symmetric — and name a kind of business data that produces each.</span></li>
+    <li><span class="tag">S4-3</span><span>Given a crosstabulation and a question, decide whether <strong>row</strong> percentages or <strong>column</strong> percentages answer it, and compute them.</span></li>
+    <li><span class="tag">S4-4</span><span>State what Simpson's paradox is, and name the condition that has to hold for aggregation to reverse a conclusion.</span></li>
+    <li><span class="tag">S4-5</span><span>Given a question about one or two variables, name a display that answers it and one that does not.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="sec">The design problem in this session</h2>
+  <div class="col stack">
+    <p><strong>Five sections do not fit in seventy-five minutes, and pretending otherwise is how the period ends with §2.5 and §2.6 unmentioned at a sprint.</strong> Here is the arithmetic. Chapter 2 carries twelve learning objectives. Strip the eight "Excel:" slides out of the deck — you are not touching Excel today — and §2.2 through the closing summary is still <strong>28 slides</strong>. That is 2.7 minutes a slide, with no time to ask a question, and the two ideas students actually get wrong take longer than that on their own.</p>
+
+    <p><strong>So sort the content into three tiers before you walk in, and teach accordingly.</strong> The test for Tier 1 is not "is this important" — all of it is in the book. It is: <em>does this have a mechanism a student can get wrong, and does Chapter 3 or the project depend on it?</em></p>
+  </div>
+
+  <div class="tier">
+    <div class="lbl">Tier 1<br>Teach</div>
+    <div>
+      <p><strong>Class construction (§2.2), cumulative distributions (§2.2), reading shape (§2.2), row vs. column percentages (§2.3), Simpson's paradox (§2.3), scatter diagrams (§2.4).</strong></p>
+      <p>Every one of these has a step students perform incorrectly, and every one is assumed by Chapter 3 or by the project. Slow down here.</p>
+    </div>
+  </div>
+  <div class="tier">
+    <div class="lbl">Tier 2<br>Name it</div>
+    <div>
+      <p><strong>Dot plot, stem-and-leaf, side-by-side vs. stacked bar, choropleth, cartogram.</strong></p>
+      <p>Show one example, say what it is for, move on. These are recognition items — a student needs to know the word and pick it off a list, not build one from scratch.</p>
+    </div>
+  </div>
+  <div class="tier">
+    <div class="lbl">Tier 3<br>Assign</div>
+    <div>
+      <p><strong>§2.6 best practices and data dashboards.</strong></p>
+      <p>§2.6 is a checklist, not a mechanism — clear title, labeled axes, distinct colors, a legend. It is the one section that reads perfectly well on its own, and lecturing a checklist out loud is the lowest-value thing you can do with these minutes. Give it three minutes at the close, hand them the display-chooser table, assign the section.</p>
+    </div>
+  </div>
+
+  <div class="warn">
+    <span class="eyebrow">If you run long, cut here first</span>
+    <p><strong>§2.5, geospatial, at minute 66.</strong> Choropleth maps and cartograms are self-explanatory on sight, appear in neither Chapter 3 nor the project, and Excel's map chart is a two-minute demo you can post to Canvas instead. Losing it costs a vocabulary word. Losing Simpson's paradox costs the only idea in this chapter a student will still be using in ten years.</p>
+  </div>
+
+  <div class="aside">
+    <span class="eyebrow">Why no Excel today is the right call, and worth saying out loud</span>
+    <p>Splitting concepts from the keyboard means nobody spends Tuesday watching a neighbor hunt for the Insert tab while you explain skewness. It also means Thursday's lab can assume the vocabulary instead of teaching it. Tell the room this on the way in — otherwise "we're not opening Excel today" reads as a period that does not count.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Timing</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th class="min">Min</th><th>Segment</th><th class="min">Slides</th></tr></thead>
+      <tbody>
+        <tr><td class="min">0–4</td><td><strong>Open</strong> — recall §2.1, frame the two days</td><td class="min">—</td></tr>
+        <tr><td class="min">4–20</td><td><strong>§2.2 · Building classes for quantitative data</strong> — the three decisions, audit times</td><td class="min">13, 14</td></tr>
+        <tr><td class="min">20–30</td><td><strong>§2.2 · Cumulative distributions and shape</strong> — dot plot, histogram, skewness, stem-and-leaf</td><td class="min">16–19, 21</td></tr>
+        <tr><td class="min">30–46</td><td><strong>§2.3 · Crosstabulation, row and column percentages</strong> — Zagat restaurants</td><td class="min">22–24</td></tr>
+        <tr class="protect"><td class="min">46–58</td><td><strong>§2.3 · Simpson's paradox</strong> — the two judges &nbsp;←&nbsp; <em>protected</em></td><td class="min">26, 27</td></tr>
+        <tr><td class="min">58–66</td><td><strong>§2.4 · Two variables, graphically</strong> — scatter and trendline, side-by-side vs. stacked</td><td class="min">28, 29, 31, 32</td></tr>
+        <tr><td class="min">66–71</td><td><strong>§2.5 · Geospatial</strong> — choropleth, cartogram &nbsp;<em>(cut first)</em></td><td class="min">35, 36, 39, 40</td></tr>
+        <tr><td class="min">71–74</td><td><strong>§2.6 · Choosing a display</strong> — the chooser table, assign the section</td><td class="min">43, 44</td></tr>
+        <tr><td class="min">74–75</td><td><strong>Close</strong> — Thursday is a lab, bring a laptop</td><td class="min">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="col" style="font-size:15.5px;color:var(--ink-faint)">Sums to 75. The slack is in §2.5 and §2.6 by design — those are the two blocks you can compress without breaking anything downstream.</p>
+</section>
+
+<section>
+  <h2 class="sec">Segments</h2>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">0–4</span><h3>Open</h3></div>
+    <p>Two sentences of framing, then one question.</p>
+    <blockquote><span class="who">Say</span>Last time we summarized one categorical variable — soft drinks, counts, a bar chart. Today is everything else in Chapter 2, and we are doing it without laptops. Thursday you get the whole period in Excel.</blockquote>
+    <p><strong>Cold-call opener:</strong> "In the soft drink data, why did we count instead of average?" You are listening for <em>because the values are labels, not amounts</em> — the §1.2 scale idea. If it does not come back, that is worth thirty seconds now, because §2.2 is defined entirely by the contrast.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">4–20</span><h3>§2.2 · Building the classes</h3><span class="slides">slides 13–14</span></div>
+    <p>This is the longest single block in the period and it earns it. Categorical data hands you the classes — Coca-Cola, Pepsi, Sprite. Quantitative data does not, and <strong>you have to invent them</strong>. That invention is the whole content of §2.2.</p>
+    <p><strong>Data on the board:</strong> the audit times, <code>DATAfile: audit</code>. Twenty clients, days to complete a year-end audit, smallest 12, largest 33.</p>
+    <p><strong>Do not present the answer.</strong> Ask the room for the number of classes first and let them argue. Then walk the three decisions:</p>
+    <ol>
+      <li><strong>Number of classes.</strong> Five for small data sets, up to twenty for large. With n = 20, use 5. There is no formula that makes this objective, and saying so is the point — this is a judgment call, and different analysts get different histograms from the same data.</li>
+      <li><strong>Class width.</strong> Range ÷ classes. 33 − 12 = 21, and 21 ÷ 5 = 4.2.</li>
+      <li><strong>Round up.</strong> 4.2 becomes <strong>5</strong>, giving limits 10–14, 15–19, 20–24, 25–29, 30–34.</li>
+    </ol>
+    <div class="aside">
+      <span class="eyebrow">The question that makes step 3 stick</span>
+      <p>"What happens if I round 4.2 <em>down</em> to 4?" Let them work it. Five classes of width 4 span 20 days, the data span 21, and <strong>the 33-day audit has nowhere to go</strong>. Rounding up is not a convention — it is the only way every observation lands somewhere. This is the single most common error on this material, and thirty seconds of discovery beats a rule they will misremember.</p>
+    </div>
+    <p><strong>Then the resulting distribution</strong> — frequencies 4, 8, 5, 2, 1. Relative frequency is the same arithmetic as §2.1: divide by 20. Percent frequency is that times 100. Note out loud that 40% of audits took 15–19 days and only 5% took 30 or more.</p>
+    <p><strong>Second cold call:</strong> "Could I have used classes 10–15, 15–20, 20–25?" You want someone to catch that 15 belongs to two classes. <em>Non-overlapping</em> is a defining property, not a stylistic preference.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">20–30</span><h3>§2.2 · Cumulative distributions and shape</h3><span class="slides">slides 16–19, 21</span></div>
+    <p><strong>Cumulative (slide 16), four minutes.</strong> Same classes, same widths, different question: how many observations fall at or below the upper limit of each class? Build the column live from 4, 8, 5, 2, 1:</p>
+    <div class="tablewrap" style="max-width:var(--measure)">
+      <table>
+        <thead><tr><th>Audit time</th><th class="num">Freq</th><th class="num">Cum. freq</th><th class="num">Cum. rel.</th></tr></thead>
+        <tbody>
+          <tr><td>≤ 14 days</td><td class="num">4</td><td class="num">4</td><td class="num">0.20</td></tr>
+          <tr><td>≤ 19 days</td><td class="num">8</td><td class="num">12</td><td class="num">0.60</td></tr>
+          <tr><td>≤ 24 days</td><td class="num">5</td><td class="num">17</td><td class="num">0.85</td></tr>
+          <tr><td>≤ 29 days</td><td class="num">2</td><td class="num">19</td><td class="num">0.95</td></tr>
+          <tr><td>≤ 34 days</td><td class="num">1</td><td class="num">20</td><td class="num">1.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Say the sentence the table produces: <strong>"85% of these audits were finished in 24 days or less."</strong> That is the form of claim a cumulative distribution exists to make, and it is exactly the question Thursday's first workbook asks.</p>
+
+    <p><strong>Shape (slides 17–19), five minutes.</strong> Dot plot first — Tier 2, thirty seconds, the three dots above 18 mean three audits took 18 days. Then the histogram, and the one distinction worth stating carefully: <strong>a histogram's bars touch and a bar chart's do not</strong>, because the horizontal axis is a continuous scale rather than a set of separate categories.</p>
+    <p>Slide 19 has four panels. Do not narrate them — put them up and ask <strong>"which of these is exam scores, and which is house prices?"</strong> Exam scores skew left (a ceiling at 100, a few very low scores). House prices skew right (a few expensive houses stretch the tail). Business data skews right constantly — salaries, purchase amounts, claim sizes — and that is worth flagging now because it is the reason Chapter 3 spends time on the gap between the mean and the median.</p>
+    <p><strong>Stem-and-leaf (slide 21), one minute.</strong> Tier 2. It shows rank order and shape at once, on paper, without software. Name it and move.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">30–46</span><h3>§2.3 · Crosstabulation and percentages</h3><span class="slides">slides 22–24</span></div>
+    <p><strong>The Zagat data:</strong> 300 Los Angeles restaurants, <code>DATAfile: restaurant</code>. Quality rating — good, very good, excellent — down the side. Meal price, grouped $10–19, $20–29, $30–39, $40–49, across the top. One categorical variable and one quantitative variable that has been binned by exactly the §2.2 procedure you just taught. Point that out; it is why §2.2 came first.</p>
+    <p>Read one cell out loud so the structure is unambiguous: <strong>42 restaurants are rated good and charge $10–19.</strong> Note the margins are just the two individual frequency distributions.</p>
+    <p><strong>Then the real content, and budget ten of these sixteen minutes for it.</strong> Row percentages and column percentages are computed from the same table and answer different questions, and students reliably compute one and interpret it as the other.</p>
+    <ul>
+      <li><strong>Row percentages</strong> divide by the row total. Each row becomes a percent frequency distribution of <em>meal price, for one quality rating</em>. Of restaurants rated good, 50% charge $10–19.</li>
+      <li><strong>Column percentages</strong> divide by the column total. Each column becomes a percent frequency distribution of <em>quality, for one price band</em>. Of restaurants charging $10–19, only 2.6% are rated excellent.</li>
+    </ul>
+    <div class="aside">
+      <span class="eyebrow">The discrimination question — put both questions up, do not label them</span>
+      <p>"If I open a cheap restaurant, how likely is it to be excellent?" and "Excellent restaurants — what do they charge?" Ask which percentages answer which, <em>before</em> showing the tables. The rule falls out of the answers: <strong>the variable you are conditioning on is the one you divide by.</strong> Give them the rule first and they memorize a direction and reverse it under pressure.</p>
+    </div>
+    <p>Close the segment with the interpretation on slide 24 — as meal price rises, the percent frequency distribution of quality shifts toward the higher ratings. That is a relationship between two variables read straight off a table, which is the thesis of the whole section.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">46–58</span><h3>§2.3 · Simpson's paradox &nbsp;— protected</h3><span class="slides">slides 26–27</span></div>
+    <p><strong>Protect these twelve minutes.</strong> If something has to give, it gives somewhere else. This is the most transferable idea in Chapter 2 and the one that most looks like a trick until a student works it themselves.</p>
+    <p><strong>Set it up as a decision, not a demonstration.</strong> Two judges, Luckett and Kendall, 275 appealed verdicts over three years. Aggregate results:</p>
+    <ul>
+      <li>Judge Kendall — <strong>88%</strong> of verdicts upheld.</li>
+      <li>Judge Luckett — <strong>86%</strong> of verdicts upheld.</li>
+    </ul>
+    <p>Ask the room to commit: <strong>who is the better judge?</strong> Get an actual show of hands. The commitment is what makes the next slide land.</p>
+    <p><strong>Then disaggregate by court</strong> and let them read it:</p>
+    <div class="tablewrap" style="max-width:var(--measure)">
+      <table>
+        <thead><tr><th>Verdicts upheld</th><th class="num">Luckett</th><th class="num">Kendall</th></tr></thead>
+        <tbody>
+          <tr><td>Common Pleas Court</td><td class="num">91%</td><td class="num">90%</td></tr>
+          <tr><td>Municipal Court</td><td class="num">85%</td><td class="num">80%</td></tr>
+          <tr><td><strong>Both courts combined</strong></td><td class="num">86%</td><td class="num">88%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Luckett wins in Common Pleas. Luckett wins in Municipal. Luckett loses overall.</strong> Sit in the silence. Do not rescue it.</p>
+    <div class="aside">
+      <span class="eyebrow">Lead them to the mechanism — do not state it</span>
+      <p>Two questions, in this order. <strong>"Which court is harder to get a verdict upheld in?"</strong> — Municipal: both judges do worse there, 85% and 80%. <strong>"So what must be true about the mix of cases each judge heard?"</strong> — Luckett must have heard proportionally more Municipal cases. His average is dragged down by <em>where</em> he worked, not by how he judged.</p>
+      <p>Then name it: the aggregate hides a third variable — the court — that is related to both the judge and the outcome. Reversal is possible whenever such a variable is hidden, and the fix is always the same: <strong>find the lurking variable and disaggregate.</strong></p>
+    </div>
+    <blockquote><span class="who">Say — this is the line that carries past the exam</span>Someone will show you a single percentage in a meeting and ask you to make a decision. The question that makes you useful is not "is that number right." It is "what did you group together to get it?"</blockquote>
+    <p><strong>If time is tight in this block, drop the second Zagat interpretation at minute 44 rather than shortening this.</strong></p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">58–66</span><h3>§2.4 · Two variables, graphically</h3><span class="slides">slides 28–29, 31–32</span></div>
+    <p><strong>Scatter diagram and trendline (28–29), five minutes.</strong> <code>DATAfile: electronics</code> — number of TV commercials on the horizontal axis, sales on the vertical, for a San Francisco electronics store. The points do not fall on a line; the pattern and the trendline still say the relationship is positive.</p>
+    <p>Slide 29 shows the three patterns — positive, negative, no apparent relationship. Put it up and ask for a business example of each before you narrate. Advertising and sales, price and units sold, shoe size and salary.</p>
+    <div class="aside">
+      <span class="eyebrow">Set up Thursday here</span>
+      <p>Say explicitly: "On Thursday you will build two of these, and the question I ask will be exactly the one on this slide — which pattern, and is there anything unusual." Both scatter workbooks in the lab ask them to pick a diagram and comment on outliers. Two sentences here make Thursday's second half read as continuation rather than a fresh task.</p>
+    </div>
+    <p><strong>Side-by-side and stacked bars (31–32), three minutes.</strong> Both display the Zagat column percentages you already built, which is why they belong here rather than in §2.1 — they are two-variable displays. Side-by-side clusters the bars so you compare heights; stacked runs every bar to 100% so you see composition. Ask <strong>"which one shows you that quality shifts as price rises?"</strong> Both do; side-by-side does it faster, stacked makes the shares easier to read. Tier 2 — do not adjudicate at length.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">66–71</span><h3>§2.5 · Geospatial</h3><span class="slides">slides 35–36, 39–40</span></div>
+    <p>Five minutes, Tier 2, and the first thing to cut. Two words and one caution.</p>
+    <ul>
+      <li><strong>Choropleth</strong> — shades a geographic region by the value of a variable. The daily weather map is one, and saying so gets you the concept for free.</li>
+      <li><strong>Cartogram</strong> — resizes regions to a variable instead of land area. States sized by population.</li>
+      <li><strong>Equal-area cartogram</strong> — the fix for a cartogram distorted past recognition: uniform tiles, geography roughly preserved.</li>
+    </ul>
+    <p>The caution worth thirty seconds: on a standard choropleth, <strong>large empty states shout and dense small ones whisper</strong>. Area is doing visual work that the data never asked for. That is the honest reason cartograms exist, and it is a §2.6 idea arriving early.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">71–74</span><h3>§2.6 · Choosing a display</h3><span class="slides">43–44</span></div>
+    <p>Do not read the best-practices checklist aloud — clear title, labeled axes with units, distinct colors, a legend. Put slide 42 up, say "this is on the exam and it reads fine on its own," and assign §2.6.</p>
+    <p>Spend the three minutes on the chooser instead, because <strong>S4-5 is the objective students are least likely to hit by reading</strong>:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Your question</th><th>Display</th></tr></thead>
+        <tbody>
+          <tr><td>How are one <strong>categorical</strong> variable's observations distributed?</td><td>Bar chart · pie chart (bar is usually better)</td></tr>
+          <tr><td>How is one <strong>quantitative</strong> variable distributed?</td><td>Histogram · dot plot · stem-and-leaf</td></tr>
+          <tr><td>Do two <strong>categorical</strong> variables relate?</td><td>Crosstabulation · side-by-side or stacked bar</td></tr>
+          <tr><td>Do two <strong>quantitative</strong> variables relate?</td><td>Scatter diagram, with a trendline</td></tr>
+          <tr><td>How does a variable vary <strong>by place</strong>?</td><td>Choropleth map · cartogram</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Then one exit question, answered out loud: <strong>"Advertising spend and revenue by month — which display?"</strong> Two quantitative variables, so a scatter diagram. If the room says bar chart, that is your opener on Thursday.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">74–75</span><h3>Close</h3></div>
+    <ul>
+      <li><strong>Read §2.6</strong> — it is assigned rather than lectured, and it is fair game.</li>
+      <li><strong>Thursday is a full-period lab.</strong> Bring a laptop with desktop Excel and the Analysis ToolPak enabled — the browser version will not do what we need. Anyone who missed the Session 2 setup should come to office hours before Thursday, not during the lab.</li>
+      <li><strong>Thursday's work is COUNTIF, crosstabulation with PivotTables, and scatter diagrams</strong> — the three things you just saw on paper.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Board plan</h2>
+  <p class="col">Three things go up and stay up for the whole period. Everything else can be erased.</p>
+  <ol class="col">
+    <li><strong>The three class decisions</strong> — number, width = range ÷ classes, round <em>up</em>. Referenced again in §2.3 when the meal prices turn out to be binned.</li>
+    <li><strong>Row ÷ row total. Column ÷ column total.</strong> Six words that prevent the most common §2.3 error.</li>
+    <li><strong>"What did you group together to get that number?"</strong> Write it during Simpson's paradox and leave it there.</li>
+  </ol>
+</section>
+
+<footer>
+  BMGT 240IS · Business Analytics · Fall 2026 · Session 4 of the Chapter 2 sequence<br>
+  Sources: Camm et al., <em>Essentials of Modern Business Statistics with Excel</em>, 9e, §2.2–2.6 · Cengage Instructor Manual, Chapter 2 · Chapter 2 lecture deck, slides 13–48
+</footer>
+
+</div>

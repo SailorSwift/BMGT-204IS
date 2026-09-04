@@ -1,0 +1,27 @@
+The Excel Online file below contains a table showing a portion of the data for a sample of 103 private colleges and universities. The data include the name of the college or university, the year the institution was founded, the tuition and fees (not including room and board) for the most recent academic year, and the percentage of full time, first-time bachelor’s degree-seeking undergraduate students who obtain their degree in six years or less. Use a spreadsheet to answer the following questions.
+
+Open spreadsheet
+
+a. Prepare a scatter diagram to show the relationship between Tuition & Fees (in $1000s, on the horizontal axis) and % Graduate (on the vertical axis).
+
+Choose the correct diagram.
+
+
+
+A.	
+% Graduate
+A scatter chart has the horizontal axis labeled Tuition and Fees, in dollars, with values from 0 to 50000, and the vertical axis labeled Graduate, in percentages, with values from 0 to 120. The scatter chart has a collection of 103 points. A pattern starts at approximately 6134 dollars and 91 percent then goes down and right to approximately 36428 dollars and 37 percent. The points are scattered moderately from the pattern. There is one outlier at 45440 dollars and 78 percent.
+B.	
+% Graduate
+A scatter chart has the horizontal axis labeled Tuition and Fees, in dollars, with values from 0 to 50000, and the vertical axis labeled Graduate, in percentages, with values from 0 to 120. The scatter chart has a collection of 103 points. A pattern starts at approximately 13572 dollars and 39 percent then goes up and right to approximately 43866 dollars and 95 percent. The points are scattered widely from the pattern. There is one outlier at 4560 dollars and 79 percent.
+C.	
+% Graduate
+A scatter chart has the horizontal axis labeled Tuition and Fees, in dollars, with values from 0 to 50000, and the vertical axis labeled Graduate, in percentages, with values from 0 to 120. The scatter chart has a collection of 103 points. A pattern starts at approximately 20044 dollars and 45 percent then goes up and right to approximately 42098 dollars and 97 percent. The points are scattered widely from the pattern. There is one outlier at 4560 dollars and 74 percent.
+D.	
+% Graduate
+A scatter chart has the horizontal axis labeled Tuition and Fees, in dollars, with values from 0 to 50000, and the vertical axis labeled Graduate, in percentages, with values from 0 to 120. The scatter chart has a collection of 103 points. A pattern starts at approximately 13572 dollars and 37 percent then goes up and right to approximately 43866 dollars and 91 percent. The points are scattered moderately from the pattern. There is one outlier at 4560 dollars and 78 percent.
+b. Comment on the type of relationship that exists between the variables.
+
+There is 
+ relationship between the variables.
+

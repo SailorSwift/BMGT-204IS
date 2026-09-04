@@ -1,0 +1,29 @@
+Sorting through unsolicited e-mail and spam affects the productivity of office workers. An InsightExpress survey monitored office workers to determine the unproductive time per day devoted to unsolicited e-mail and spam (USA Today, November 13, 2003). The data in the Microsoft Excel Online file below show a sample of time in minutes devoted to this task.
+
+Summarize the data by constructing the following items.
+
+
+Fill in the frequency (to the nearest whole number), the relative frequency (2 decimals), the cumulative frequency (to the nearest whole number), and the cumulative relative frequency (2 decimals) values below.
+
+
+Class (Minutes)	Frequency	Relative Frequency	Cumulative Frequency	Cumulative Relative Frequency
+1-5	
+6-10	
+11-15	
+16-20	
+21-25	
+26-30	
+31-35	
+(Total)	
+Use the graph below of these data to answer the following questions.
+
+
+The chart shows several points connected by linear segments. The horizontal axis is labeled Time and has values from 0 to 35 minutes. The vertical axis has values from 0 to 1. The values are as follows: 0 for 0, 0.6 for 5, 0.75 for 10, 0.85 for 15, 0.9 for 20, 0.95 for 25, 1 for 30, and 1 for 35.
+What percentage of office workers spend 5 minutes or less on unsolicited e-mail and spam?
+
+ %
+
+What percentage of office workers spend more than 10 minutes a day on this task?
+
+ %
+

@@ -1,0 +1,76 @@
+The following data are for  observations involving two categorical variables,  and . The categories for  are A, B, and C; the categories for  are  and .
+
+
+Observation	x	y		Observation	x	y
+1	A	2		16	C	1
+2	C	2		17	B	2
+3	C	2		18	C	2
+4	B	1		19	B	2
+5	C	2		20	C	2
+6	B	1		21	B	1
+7	C	2		22	C	2
+8	B	1		23	B	1
+9	A	1		24	A	1
+10	C	2		25	C	2
+11	A	1		26	B	1
+12	C	2		27	B	1
+13	B	1		28	A	1
+14	B	1		29	C	2
+15	B	1		30	C	1
+If your answer is zero, enter "0".
+
+a. Develop a crosstabulation for the data, with  as the row variable and  as the column variable.
+
+
+1	2	Total
+A	
+B	
+C	
+Total	
+b. Compute the row percentages (to 1 decimal).
+
+
+1	2	Total
+A	
+ 	
+ 	
+ 
+B	
+ 	
+ 	
+ 
+C	
+ 	
+ 	
+ 
+c. Compute the column percentages (to 1 decimal).
+
+
+1	2	
+A	
+ 	
+ 
+B	
+ 	
+ 
+C	
+ 	
+ 
+Total	
+ %	
+ %
+d. Describe the observed relationship between variables  and .
+
+Category A values for  are 
+- Select your answer -
+ associated with category 1 values for .
+
+Category B values for  are 
+- Select your answer -
+ associated with category 1 values for .
+
+Category C values for  are 
+- Select your answer -
+ associated with category 2 values for .
+
+

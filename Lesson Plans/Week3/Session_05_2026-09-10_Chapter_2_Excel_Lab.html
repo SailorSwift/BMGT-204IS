@@ -1,0 +1,431 @@
+<title>Chapter 2 Excel Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Archivo:wght@500;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
+
+<style>
+:root {
+  --msu-blue: #162960;
+  --msu-gold: #f4b425;
+
+  --bg:          #ffffff;
+  --surface:     #f3f5fa;
+  --surface-2:   #e7ebf4;
+  --sand:        #f7f0dc;
+  --sand-line:   #e0cfa0;
+  --sand-ink:    #7a5300;
+  --ink:         #111a30;
+  --ink-dim:     #4a5570;
+  --ink-faint:   #66708c;
+  --rule:        #d5dae7;
+  --rule-strong: #aab3c9;
+  --clay:        #94362b;
+  --clay-bg:     #f9eeec;
+  --accent:      #162960;
+  --on-accent:   #ffffff;
+  --gold:        #f4b425;
+  --key-bg:      #eef3ea;
+  --key-line:    #a8bf94;
+  --key-ink:     #3d5c2a;
+
+  --measure: 68ch;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-ui:   "Archivo", Arial, Helvetica, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #0c1222;
+    --surface:     #141d33;
+    --surface-2:   #1e2942;
+    --sand:        #2a2415;
+    --sand-line:   #574a25;
+    --sand-ink:    #e0bb6a;
+    --ink:         #e6eaf4;
+    --ink-dim:     #a8b2ca;
+    --ink-faint:   #7f89a3;
+    --rule:        #2a3550;
+    --rule-strong: #465475;
+    --clay:        #e8938a;
+    --clay-bg:     #2b1a18;
+    --accent:      #6482d2;
+    --on-accent:   #ffffff;
+    --key-bg:      #17241a;
+    --key-line:    #3f6b39;
+    --key-ink:     #9fd18c;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:          #0c1222;
+  --surface:     #141d33;
+  --surface-2:   #1e2942;
+  --sand:        #2a2415;
+  --sand-line:   #574a25;
+  --sand-ink:    #e0bb6a;
+  --ink:         #e6eaf4;
+  --ink-dim:     #a8b2ca;
+  --ink-faint:   #7f89a3;
+  --rule:        #2a3550;
+  --rule-strong: #465475;
+  --clay:        #e8938a;
+  --clay-bg:     #2b1a18;
+  --accent:      #6482d2;
+  --on-accent:   #ffffff;
+  --key-bg:      #17241a;
+  --key-line:    #3f6b39;
+  --key-ink:     #9fd18c;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 17.5px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 28px 96px; }
+.col  { max-width: var(--measure); }
+h1, h2, h3 { text-wrap: balance; margin: 0; font-family: var(--f-ui); }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+strong { color: var(--ink); font-weight: 600; }
+code, .mono { font-family: var(--f-mono); font-size: .88em; }
+code { background: var(--surface); padding: 1px 5px; border: 1px solid var(--rule); }
+
+.eyebrow { font-family: var(--f-ui); font-weight: 700; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-faint); }
+
+.masthead { background: var(--msu-blue); color: #fff; padding: 38px 0 30px; border-bottom: 4px solid var(--gold); }
+.masthead .wrap { padding-bottom: 0; }
+.masthead .eyebrow { color: var(--gold); }
+.masthead h1 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 700; line-height: 1.1; color: #fff; margin: 12px 0 14px; max-width: 22ch; }
+.masthead .standfirst { font-family: var(--f-body); font-size: 19px; line-height: 1.55; color: #cdd6ea; max-width: 60ch; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border-top: 1px solid rgba(255,255,255,.18); margin-top: 26px; }
+.facts div { padding: 16px 20px 18px 0; }
+.facts dt { font-family: var(--f-ui); font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--gold); margin: 0 0 5px; }
+.facts dd { margin: 0; font-family: var(--f-body); font-size: 15.5px; line-height: 1.5; color: #dfe6f4; }
+.facts .mono { font-size: 12.5px; color: #c3cfe6; word-break: break-all; }
+
+section { padding-top: 44px; }
+h2.sec { font-size: 25px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+h3 { font-size: 18px; font-weight: 700; margin: 26px 0 9px; }
+.stack > * + * { margin-top: 14px; }
+
+ul.obj { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; max-width: var(--measure); }
+ul.obj li { display: grid; grid-template-columns: 58px 1fr; gap: 14px; align-items: baseline; }
+ul.obj .tag { font-family: var(--f-mono); font-size: 12.5px; font-weight: 700; color: var(--accent); background: var(--surface); padding: 3px 0; text-align: center; border: 1px solid var(--rule); }
+
+.tablewrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--rule); }
+table { border-collapse: collapse; width: 100%; font-family: var(--f-body); font-size: 15.5px; }
+th { font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-align: left; color: var(--ink-faint); background: var(--surface); padding: 11px 14px; border-bottom: 1px solid var(--rule-strong); white-space: nowrap; }
+td { padding: 11px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-dim); }
+tr:last-child td { border-bottom: 0; }
+td.min, th.min { font-family: var(--f-mono); font-size: 13.5px; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink); }
+td.num { font-family: var(--f-mono); font-size: 14px; font-variant-numeric: tabular-nums; text-align: right; color: var(--ink); }
+th.num { text-align: right; }
+tr.protect td { background: color-mix(in srgb, var(--gold) 13%, transparent); }
+tr.protect td.min { box-shadow: inset 3px 0 0 var(--gold); font-weight: 700; }
+
+.aside { background: var(--sand); border-left: 3px solid var(--sand-line); padding: 15px 19px; margin: 20px 0; max-width: var(--measure); }
+.aside .eyebrow { color: var(--sand-ink); margin-bottom: 7px; display: block; }
+.warn { background: var(--clay-bg); border-left: 3px solid var(--clay); padding: 15px 19px; margin: 20px 0; max-width: var(--measure); }
+.warn .eyebrow { color: var(--clay); margin-bottom: 7px; display: block; }
+.key { background: var(--key-bg); border-left: 3px solid var(--key-line); padding: 15px 19px; margin: 20px 0; }
+.key .eyebrow { color: var(--key-ink); margin-bottom: 9px; display: block; }
+.key .tablewrap { margin: 0; border-color: var(--key-line); }
+.key table { background: var(--bg); }
+.aside p, .warn p, .key p { font-size: 16px; color: var(--ink-dim); }
+
+blockquote { margin: 18px 0; padding: 0 0 0 20px; border-left: 3px solid var(--accent); max-width: 60ch; font-size: 18px; line-height: 1.55; color: var(--ink); font-style: italic; }
+blockquote .who { display: block; font-family: var(--f-ui); font-style: normal; font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+
+.seg { border-top: 1px solid var(--rule); padding-top: 22px; margin-top: 30px; }
+.seg-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+.seg-head .clock { font-family: var(--f-mono); font-size: 13px; font-weight: 700; color: var(--on-accent); background: var(--accent); padding: 3px 9px; font-variant-numeric: tabular-nums; }
+.seg-head h3 { margin: 0; font-size: 20px; }
+.seg-head .file { font-family: var(--f-mono); font-size: 12px; color: var(--ink-faint); }
+.seg > p, .seg > ol, .seg > ul { max-width: var(--measure); }
+.seg ol, .seg ul { padding-left: 22px; }
+.seg li { margin: 7px 0; color: var(--ink-dim); }
+.seg li strong { color: var(--ink); }
+
+pre { font-family: var(--f-mono); font-size: 14px; line-height: 1.7; background: var(--surface); border: 1px solid var(--rule); border-left: 3px solid var(--accent); padding: 13px 16px; overflow-x: auto; margin: 14px 0; color: var(--ink); max-width: var(--measure); }
+pre .cmt { color: var(--ink-faint); }
+
+footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--ink); font-family: var(--f-ui); font-size: 12.5px; color: var(--ink-faint); max-width: var(--measure); }
+</style>
+
+<div class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">BMGT 240IS · Session 5 · Thu, Sep 10, 2026</div>
+    <h1>Chapter 2 Excel lab</h1>
+    <p class="standfirst">Four activities, seventy-five minutes, no new concepts. You drive and the room follows — but the decisions stay with them, and the last one they do alone.</p>
+    <dl class="facts">
+      <div><dt>Materials</dt><dd class="mono">Chapters/Chapter_examples/chapter_02/</dd><dd>Three student workbooks plus one you build</dd></div>
+      <div><dt>Covers</dt><dd>§2.2 COUNTIF · §2.3 crosstabulation · §2.4 scatter diagrams</dd></div>
+      <div><dt>Format</dt><dd>Led lockstep — predict, then type, then check</dd></div>
+      <div><dt>Requires</dt><dd>Desktop Excel on every machine · concepts from Session 4</dd></div>
+    </dl>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2 class="sec">Before the period — two things to do</h2>
+  <div class="warn">
+    <span class="eyebrow">There is no workbook for the §2.3 exercise</span>
+    <p><code>2.3 Practice.txt</code> is the only Chapter 2 activity with no matching <code>.xlsx</code>. It holds 30 observations of two categorical variables (x ∈ A, B, C and y ∈ 1, 2) and asks for a crosstabulation with row and column percentages. <strong>Thirty students typing 30 rows by hand is eight minutes of the period gone and thirty different sets of typos.</strong> Build a one-sheet workbook from the text file and post it to Canvas with the other two. Ten minutes of your time buys back eight minutes of class and makes the PivotTable step actually reachable.</p>
+  </div>
+  <div class="warn">
+    <span class="eyebrow">A lock file is sitting in the folder</span>
+    <p><code>~$2.4 Excel Activity 1b - Scatter Diagram and Relationship (Structured).xlsx</code> is an Excel lock file — that workbook is open somewhere right now. Close it before you distribute or commit anything; <code>~$</code> files should never reach students or the repository.</p>
+  </div>
+  <div class="aside">
+    <span class="eyebrow">Also worth doing</span>
+    <p>Post all four workbooks to Canvas <strong>before</strong> class rather than distributing in the room, and open all four on the projector machine at the start. Under lockstep a file-distribution scramble is worse than usual — the room cannot start until the last person has the file open.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Objectives</h2>
+  <p class="col">By the end of the period a student can:</p>
+  <ul class="obj" style="margin-top:14px">
+    <li><span class="tag">S5-1</span><span>Write a <code>COUNTIFS</code> formula that counts observations falling in a stated class, and explain why two conditions are needed rather than one.</span></li>
+    <li><span class="tag">S5-2</span><span>Extend a frequency column into relative, cumulative, and cumulative relative frequency using cell references and an absolute total — and check the result sums to 1.</span></li>
+    <li><span class="tag">S5-3</span><span>Build a crosstabulation with a PivotTable, and switch it between counts, row percentages, and column percentages.</span></li>
+    <li><span class="tag">S5-4</span><span>Construct a scatter diagram from two quantitative columns, add a trendline, and describe the relationship and any unusual points.</span></li>
+  </ul>
+  <p class="col" style="margin-top:16px">Notice what is <em>not</em> here: no new statistical content. Tuesday carried the concepts. Today is entirely S5-1 through S5-4 as motor skills — which is why the whole period can be hands on keys, and why the decisions have to be handed back deliberately rather than left to happen on their own.</p>
+</section>
+
+<section>
+  <h2 class="sec">The design problem in this session</h2>
+  <div class="col stack">
+    <p><strong>You are leading every exercise and the room follows in real time.</strong> That is the right call for a first Excel lab with a full section: nobody strands, nobody spends twelve minutes stuck on a missing dollar sign, and all four activities actually happen. It also removes the thing that usually kills a lab — the fifteen-minute independent block where a third of the room quietly stops.</p>
+    <p><strong>It costs one thing, and the whole plan below is built to buy it back.</strong> Lockstep's failure mode is students executing keystrokes without deciding anything. They leave with four correct workbooks and no ability to reproduce a single one. It bites hardest on COUNTIF, because the learning in that activity <em>is</em> choosing the formula — if you type it and they copy it, that choice never happens to them.</p>
+    <p><strong>So: lead every click, but stop before every decision.</strong> Do not type a formula until the room has told you what goes in it. The pause is twenty seconds, not a work block, and it costs almost nothing in time. The rhythm for every step in this period is <strong>predict → type → check</strong>.</p>
+    <p><strong>Then one solo activity at the end.</strong> Activity 2.4b is the same skill as 2.4a with the sign flipped, which makes it the natural transfer check — the only honest way to find out whether the led work landed. If it goes badly, that is information you want before Chapter 3, not after.</p>
+  </div>
+  <div class="aside">
+    <span class="eyebrow">Four mechanics that make lockstep work</span>
+    <p><strong>Say cell references out loud, always.</strong> Students are switching between your screen and theirs; "click here" is invisible to anyone not already looking up. "In E4" works, "here" does not.</p>
+    <p><strong>Establish the hand rule in minute one — and honor it visibly the first time.</strong> Hand up means stop, I am behind. The first time someone uses it, stop mid-sentence and wait. If you brush past it once, nobody uses it again and you lose your only feedback channel.</p>
+    <p><strong>Give a checkpoint number at every stage.</strong> "Your E4 should read 12 — thumbs up if it does." That detects drift across thirty machines in three seconds without circulating. Checkpoints are listed in each segment below.</p>
+    <p><strong>Give fast finishers the formula log.</strong> Columns J–M of the COUNTIF workbook exist for recording formulas. Anyone ahead writes theirs down while the room catches up — real work, not busywork.</p>
+  </div>
+  <div class="warn">
+    <span class="eyebrow">If you run long, cut here first</span>
+    <p><strong>Activity 2.4b at minute 62 — it becomes homework.</strong> Under lockstep you cannot cut an activity mid-period without stranding the room in a half-built workbook, so the solo block is the only real release valve. Protect the close at 70–75: a lab with no close is an hour of clicking that nobody connects back to Tuesday.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Timing</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th class="min">Min</th><th>Segment</th><th>Mode</th></tr></thead>
+      <tbody>
+        <tr><td class="min">0–5</td><td><strong>Open and triage</strong> — files open, laptops checked, pairs formed, hand rule set</td><td>Setup</td></tr>
+        <tr class="protect"><td class="min">5–26</td><td><strong>Activity 2.2 · COUNTIFS</strong> — led, four decision pauses &nbsp;←&nbsp; <em>protected</em></td><td>Led</td></tr>
+        <tr><td class="min">26–30</td><td><strong>2.2 wrap</strong> — the two questions at the bottom of the sheet</td><td>Whole room</td></tr>
+        <tr><td class="min">30–45</td><td><strong>Activity 2.3 · Crosstabulation</strong> — led, PivotTable, row then column %</td><td>Led</td></tr>
+        <tr><td class="min">45–48</td><td><strong>2.3 wrap</strong> — part (d), which percentage did you read and why</td><td>Whole room</td></tr>
+        <tr><td class="min">48–62</td><td><strong>Activity 2.4a · Scatter</strong> — led, temperature and snowfall</td><td>Led</td></tr>
+        <tr><td class="min">62–70</td><td><strong>Activity 2.4b · Colleges</strong> — on their own, hands off &nbsp;<em>(→ homework if late)</em></td><td>Solo</td></tr>
+        <tr class="protect"><td class="min">70–75</td><td><strong>Close</strong> — both scatter answers, the causation question, MindTap Ch 2 due</td><td>Whole room</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="col" style="font-size:15.5px;color:var(--ink-faint)">Sums to 75. Fifty minutes led, eight solo, seventeen in whole-room discussion. Led blocks run long because you are moving at the room's pace, not yours — assume every step takes roughly twice what it takes you alone.</p>
+</section>
+
+<section>
+  <h2 class="sec">Segments</h2>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">0–5</span><h3>Open and triage</h3></div>
+    <p>Do the triage before the framing — a student without a working file hears nothing you say.</p>
+    <ol>
+      <li><strong>"Hands up if Excel is open with all four files."</strong> Everyone else pairs, now, with a neighbor whose hand is up. Do not troubleshoot installs during the period; send those students to office hours.</li>
+      <li><strong>Set the hand rule.</strong> This is the one piece of setup lockstep cannot run without.</li>
+      <li><strong>Frame the day in two sentences.</strong></li>
+    </ol>
+    <blockquote><span class="who">Say — the hand rule</span>We are doing this together, one step at a time. If your screen stops matching mine, put your hand up and I stop. You are not slowing anyone down — if you are lost, four other people are too and you are the only one being useful about it.</blockquote>
+    <blockquote><span class="who">Say — the framing</span>Nothing today is new. Every number you produce this period, you already know how to compute on paper — Tuesday you did. The only question today is how to make Excel do it, and where Excel will quietly do something else instead.</blockquote>
+    <div class="aside">
+      <span class="eyebrow">One more sentence worth saying</span>
+      <p>"I am going to keep asking you what to type before I type it. If nobody answers, we all sit here." Said once, lightly, at minute four, it sets the expectation that the pauses are real. Otherwise the first pause reads as rhetorical and the room waits you out.</p>
+    </div>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">5–26</span><h3>Activity 2.2 · COUNTIFS — led &nbsp;— protected</h3><span class="file">2.2 Excel Activity 1 — COUNTIF Function (Structured).xlsx</span></div>
+    <p><strong>The scenario:</strong> an InsightExpress survey of office workers, minutes per day lost to unsolicited email and spam. Twenty observations in column A. The classes are already given in columns C and D — 1–5, 6–10, 11–15, 16–20, 21–25, 26–30, 31–35 — and the room fills in columns E through H with you.</p>
+    <p><strong>Twenty-one minutes for one workbook is not generous, it is realistic.</strong> This is the only genuinely new formula in the period and the only place the room will actually get stuck. The four pauses below are what separates following along from learning it — do not skip them to save time. Take the time out of 2.4a instead.</p>
+
+    <h3>Pause 1 · Where did the classes come from? <span style="font-weight:400;color:var(--ink-faint)">(~min 6)</span></h3>
+    <p>Before anyone types anything, point at columns C and D and ask <strong>"where did 1–5, 6–10 come from?"</strong> Answer: a class width of 5, starting at 1 — the exact procedure they ran on the audit data Tuesday. Ten seconds, and it stops the workbook from feeling disconnected from the concepts day. The limits being pre-filled is a gift; say so.</p>
+
+    <h3>Pause 2 · What formula counts the first class? <span style="font-weight:400;color:var(--ink-faint)">(~min 8)</span></h3>
+    <p><strong>Ask before you type, and type exactly what they say — including when it is wrong.</strong> The room will offer <code>COUNTIF</code> with one condition. Take it:</p>
+    <pre>E4  =COUNTIF($A$4:$A$23,"&lt;=5")      <span class="cmt">→ 12.  Looks right.</span></pre>
+    <p>It <em>is</em> right, which is the trap. Say "great, fill it down" and change the 5 to a 10 for the second class:</p>
+    <pre>E5  =COUNTIF($A$4:$A$23,"&lt;=10")     <span class="cmt">→ 15.  But class 6–10 has 3.</span></pre>
+
+    <h3>Pause 3 · Why 15? <span style="font-weight:400;color:var(--ink-faint)">(~min 10) — the one that matters</span></h3>
+    <p><strong>Stop here and let it sit.</strong> Ask what <code>&lt;=10</code> actually counted. You want someone to say: everything at or below 10, not just the values between 6 and 10. Then push once more — <strong>"so what did we just accidentally compute?"</strong></p>
+    <div class="aside">
+      <span class="eyebrow">This is the best thirty seconds in the period</span>
+      <p>The wrong answer is the <strong>cumulative frequency</strong> — column G, arriving two columns early. Do not erase it. Say "hold onto that formula, you need it again in a minute." A mistake that turns out to be the next step is the kind students remember; a mistake you delete is one they repeat.</p>
+    </div>
+    <p>Then the fix — and let them tell you why it needs two conditions. <em>A class has two edges.</em></p>
+    <pre>E4  =COUNTIFS($A$4:$A$23,"&gt;="&amp;C4, $A$4:$A$23,"&lt;="&amp;D4)</pre>
+    <p><strong>Checkpoint:</strong> "E4 should read 12. Thumbs up." Wait for the thumbs before moving.</p>
+
+    <h3>Pause 4 · Which references need the dollar signs? <span style="font-weight:400;color:var(--ink-faint)">(~min 14)</span></h3>
+    <p>Before filling down, ask <strong>"when I drag this down seven rows, what has to stay put and what has to move?"</strong> The data range stays, the class limits move. Then fill down and check.</p>
+    <ul>
+      <li><strong>The <code>&amp;</code> is doing real work.</strong> <code>"&gt;="&amp;C4</code> glues the operator to the value in the cell. <code>"&gt;=C4"</code> inside the quotes searches for that literal text — Excel will not warn you, it returns 0.</li>
+      <li><strong><code>$A$4:$A$23</code> anchored, <code>C4</code> and <code>D4</code> free.</strong> This is the difference between filling down once and typing seven formulas.</li>
+    </ul>
+    <p><strong>Checkpoint:</strong> E4:E10 reads <span class="mono">12, 3, 2, 1, 1, 1, 0</span>, and <code>=SUM(E4:E10)</code> gives <strong>20</strong>. Say the numbers out loud and wait. If someone's frequencies trail off toward zero at the bottom, they lost a dollar sign — have them click E9 and read the range back to you.</p>
+
+    <h3>Columns F, G, H <span style="font-weight:400;color:var(--ink-faint)">(~min 17–26)</span></h3>
+    <p>Same rhythm, quicker. Ask what to divide by before typing each one.</p>
+    <pre>F4  =E4/$E$11        <span class="cmt">relative frequency — ask: does the total move?  No. Anchor it.</span>
+G4  =SUM($E$4:E4)    <span class="cmt">cumulative — the formula from Pause 3, done properly</span>
+H4  =G4/$E$11        <span class="cmt">cumulative relative frequency</span></pre>
+    <p><strong>The <code>$E$4:E4</code> pattern in G4 earns its own pause.</strong> One end anchored, one end free, so filling down grows the range and produces a running total. Ask <strong>"what happens if I anchor both ends?"</strong> Every row shows the same number. Twenty seconds.</p>
+    <p><strong>Checkpoint:</strong> F sums to <strong>1.00</strong>, G10 reads <strong>20</strong>, H10 reads <strong>1.00</strong>. Tell the room these three numbers are how they check their own work all semester — no answer key required.</p>
+    <p>Finally, point at columns J through M, the <strong>"Formulas Used"</strong> block currently showing <code>#N/A</code>. Everyone records their formulas there before you move on. Say why it is graded: <em>you can get a right number with a wrong formula, and a formula that is right for row 4 and wrong for the next six is the most common way this goes bad.</em> This is also the job for anyone running ahead.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">26–30</span><h3>2.2 wrap · the two questions</h3></div>
+    <p>Four minutes, whole room, nobody typing. The workbook's last two questions are the reason the cumulative columns exist — ask both before revealing either.</p>
+    <div class="key">
+      <span class="eyebrow">Answer key · n = 20</span>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Class (min)</th><th class="num">Freq</th><th class="num">Rel. freq</th><th class="num">Cum. freq</th><th class="num">Cum. rel. freq</th></tr></thead>
+          <tbody>
+            <tr><td>1–5</td><td class="num">12</td><td class="num">0.60</td><td class="num">12</td><td class="num">0.60</td></tr>
+            <tr><td>6–10</td><td class="num">3</td><td class="num">0.15</td><td class="num">15</td><td class="num">0.75</td></tr>
+            <tr><td>11–15</td><td class="num">2</td><td class="num">0.10</td><td class="num">17</td><td class="num">0.85</td></tr>
+            <tr><td>16–20</td><td class="num">1</td><td class="num">0.05</td><td class="num">18</td><td class="num">0.90</td></tr>
+            <tr><td>21–25</td><td class="num">1</td><td class="num">0.05</td><td class="num">19</td><td class="num">0.95</td></tr>
+            <tr><td>26–30</td><td class="num">1</td><td class="num">0.05</td><td class="num">20</td><td class="num">1.00</td></tr>
+            <tr><td>31–35</td><td class="num">0</td><td class="num">0.00</td><td class="num">20</td><td class="num">1.00</td></tr>
+            <tr><td><strong>Total</strong></td><td class="num"><strong>20</strong></td><td class="num"><strong>1.00</strong></td><td class="num">—</td><td class="num">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:12px"><strong>5 minutes or less → 60%.</strong> Read straight off the cumulative relative frequency for class 1–5.</p>
+      <p><strong>More than 10 minutes → 25%.</strong> This one is <em>1 − 0.75</em> — not a number in the table. Make the room do the subtraction out loud; it is the only answer all period that is not already on their screen.</p>
+    </div>
+    <p><strong>Two things to say before moving on.</strong> First, the empty class: 31–35 has a frequency of zero and <strong>it stays in the table</strong>. A class with no observations is information — nobody in this sample lost more than half an hour. Excel's PivotTable silently drops that row; COUNTIFS does not, and that is a real reason to prefer it. Second, the last cumulative value must be 20 and the last cumulative relative must be 1.00 — the self-check from the checkpoint, said once more so it sticks.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">30–45</span><h3>Activity 2.3 · Crosstabulation — led</h3><span class="file">2.3 Practice — workbook you build beforehand</span></div>
+    <p>Fifteen minutes. The concept is entirely Tuesday's; the mechanic is dragging two fields instead of one. This one moves faster than 2.2 because nothing here is a formula — but keep the same rhythm, because the two decision points are what the activity is actually testing.</p>
+
+    <h3>Build the PivotTable together <span style="font-weight:400;color:var(--ink-faint)">(~min 30–37)</span></h3>
+    <ol>
+      <li><strong>Insert ▸ PivotTable</strong> on the 30 observations. Everyone lands on an empty field list — say so, because a blank PivotTable looks broken the first time you see one.</li>
+      <li><strong>x into Rows, y into Columns.</strong> Pause: <strong>"we want counts in the middle. What do I drag into Values?"</strong> The answer surprises people — <em>x again</em>. You are counting rows, so the Values field can be any field at all.</li>
+      <li><strong>Check it says Count, not Sum.</strong> Both variables here are categorical, so Excel will almost certainly count on its own. Say the rule anyway: <em>drop a number in and Excel sums it.</em> They will need that in Chapter 3, where it will not be so forgiving.</li>
+    </ol>
+    <p><strong>Checkpoint:</strong> the grand total in the bottom-right corner reads <strong>30</strong>. If someone has 29 or 31 they selected the header row or missed a row when inserting.</p>
+
+    <h3>The toggle — row % then column % <span style="font-weight:400;color:var(--ink-faint)">(~min 37–45)</span></h3>
+    <p><strong>Right-click a value ▸ Show Values As ▸ % of Row Total</strong>, then <strong>% of Column Total</strong>. Do it slowly, and have the room do it with you rather than watching.</p>
+    <div class="aside">
+      <span class="eyebrow">This toggle is the whole point of the segment</span>
+      <p>Tuesday you told them row and column percentages answer different questions. Here they can watch the same table become two different claims with two clicks. Flip back and forth twice, then ask <strong>"which of these tells me whether x = A tends to come with y = 1?"</strong> — you are conditioning on x, so <em>row</em> percentages. The menu makes it a two-second experiment instead of an arithmetic exercise. Use that; it is the one advantage the software has over the whiteboard.</p>
+    </div>
+    <p><strong>Checkpoint:</strong> with % of Row Total on, every row reads 100.0%. With % of Column Total on, every column does. If someone's percentages all look tiny, they are on % of Grand Total — the third option in that menu and the most common misfire.</p>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">45–48</span><h3>2.3 wrap · part (d)</h3></div>
+    <p>Three minutes, hands off keyboards. Part (d) asks whether A, B, and C are associated with y = 1 or y = 2 — and it is the part that gets rushed because it has no formula in it.</p>
+    <p><strong>Do not accept the word without the reasoning.</strong> The question to press is <strong>"which percentage did you read, and why that one?"</strong> A student who read the row percentages and a student who read the column percentages can both be right and are answering different questions — surfacing that is the entire §2.3 objective.</p>
+    <div class="warn">
+      <span class="eyebrow">If someone says "there is no relationship"</span>
+      <p>Check which total they divided by before you check their reasoning. Reading off the <strong>grand</strong> total makes every cell look small and flattens any pattern into nothing. It is almost always the menu, not the thinking.</p>
+    </div>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">48–62</span><h3>Activity 2.4a · Scatter — led</h3><span class="file">2.4 Excel Activity 1 a — Scatter Diagram and Relationship (Structured).xlsx</span></div>
+    <p>Fourteen minutes. 51 U.S. cities, average annual low temperature against average annual snowfall. Chart-building is the least error-prone thing they will do today, so this is the block to borrow from if COUNTIFS ran long.</p>
+    <ol>
+      <li><strong>Select the two quantitative columns — and pause on the order.</strong> Ask <strong>"which variable goes on the horizontal axis, and how does Excel know?"</strong> Answer: the left column of your selection. Here that means <strong>columns C and D</strong>, Average Low Temp and Average Snowfall — not A through D.</li>
+      <li><strong>Insert ▸ Charts ▸ Scatter</strong>, plain markers. Ask why not the one with connecting lines: <em>lines imply a sequence, and these are 51 independent cities.</em></li>
+      <li><strong>Chart Elements ▸ Axis Titles</strong>, with units — "Average Low Temperature (°F)" and "Average Snowfall (inches)." This is a §2.6 best practice arriving in the hands rather than on a slide; name it as such.</li>
+      <li><strong>Chart Elements ▸ Trendline ▸ Linear.</strong></li>
+    </ol>
+    <p><strong>Show the failure once, deliberately.</strong> Select all four columns first and let Excel plot the year and the state as series. It produces something instantly, confidently wrong. Ten seconds here saves five hands later, because it is unmistakable when it happens to them.</p>
+    <p><strong>Checkpoint:</strong> the cloud slopes down left-to-right, and there are two points sitting near the top of the vertical axis. Ask the room to find them — that is part (c) starting early, and it is the question they are most likely to skip.</p>
+    <div class="aside">
+      <span class="eyebrow">Then stop leading</span>
+      <p>Once the chart is on every screen, have them answer (a), (b) and (c) themselves before you say anything. Two or three minutes. This is the handoff into the solo block — do not walk them through the multiple choice.</p>
+    </div>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">62–70</span><h3>Activity 2.4b · on their own</h3><span class="file">2.4 Excel Activity 1b — Scatter Diagram and Relationship (Structured).xlsx</span></div>
+    <p><strong>Eight minutes, hands off. This is the only block where you do not lead, and it is deliberate.</strong> 103 private colleges, tuition and fees against six-year graduation rate — the same skill as 2.4a with the sign flipped. Everything they need, they just did with you.</p>
+    <blockquote><span class="who">Say</span>Same thing you just built, different data, and I am not driving this one. If you can do it alone, you learned it. If you cannot, that is worth knowing now rather than on the project.</blockquote>
+    <p><strong>Circulate now</strong> — this is the first moment all period where circulating tells you anything, because it is the first work that is theirs. What you are looking for is not the chart; it is whether they select the right two columns without being told. That single step is the whole transfer test.</p>
+    <div class="warn">
+      <span class="eyebrow">Running late?</span>
+      <p>Assign it as homework and go straight to the close. It works perfectly well at home, and the close is where the two days get tied together. <strong>Do not cut the close to save this block</strong> — a lab that ends on a half-built chart teaches nothing.</p>
+    </div>
+    <div class="aside">
+      <span class="eyebrow">Part (c) is where the thinking is</span>
+      <p>Both workbooks ask for unusual points, and that question is not decoration — it is the habit the project will grade. A student who answers "no outliers" has not looked at the edges of the chart. Nudge with <strong>"what is the leftmost point, and which school is it?"</strong></p>
+    </div>
+  </div>
+
+  <div class="seg">
+    <div class="seg-head"><span class="clock">70–75</span><h3>Close &nbsp;— protected</h3></div>
+    <div class="key">
+      <span class="eyebrow">Answer key · scatter activities</span>
+      <p><strong>2.4a — cities, n = 51. Answer C.</strong> The relationship is <strong>negative</strong>: colder cities get more snow. It is a real but loose pattern, not a tight line — the correlation is about <strong>−0.70</strong>, which is worth putting a number on because Chapter 3 will make them compute it.</p>
+      <p style="margin-top:8px"><strong>There are two outliers, not one</strong> — and that is exactly what separates option C from option A. <strong>Buffalo, NY (42°F, 97.2 in)</strong> and <strong>Rochester, NY (36°F, 97.0 in)</strong>. Anyone who chose A found only Buffalo. Worth naming the mechanism: both sit downwind of a Great Lake, so a third variable neither column records is doing the work — the same shape of reasoning as Tuesday's Simpson's paradox.</p>
+      <p style="margin-top:12px"><strong>2.4b — colleges, n = 103. Answer D.</strong> The relationship is <strong>positive</strong>: higher tuition goes with higher graduation rates, correlation about <strong>+0.72</strong>, scattered moderately. The pattern runs from roughly <strong>($13,572, 37%)</strong> up to <strong>($43,866, 91%)</strong>, with one clear outlier at <strong>($4,560, 78%)</strong> — Brigham Young University, which charges far less than its graduation rate would predict.</p>
+    </div>
+    <p><strong>Close with the question that connects the two days</strong>, and take an answer rather than answering it yourself:</p>
+    <blockquote><span class="who">Ask</span>Higher tuition, higher graduation rate. Does paying more <em>cause</em> you to graduate?</blockquote>
+    <p>You want someone to reach for a lurking variable — expensive schools admit better-prepared students, have more money per student, are more selective. Tuesday it was a hidden court; today it is hidden selectivity. <strong>Two quantitative variables moving together is a fact about the data, not a fact about the world.</strong> That sentence is the bridge into Chapter 3 and it is worth the last ninety seconds of the period.</p>
+    <p><strong>Administrative, on the way out:</strong> MindTap Chapter 2 quiz and assignment are due; anyone who did not finish 2.4b does it at home; Session 6 opens Chapter 3, numerical measures.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Materials checklist</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>File</th><th>Status</th><th>Used at</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">2.2 Excel Activity 1 — COUNTIF Function (Structured).xlsx</td><td>Ready</td><td class="min">5–26 &middot; led</td></tr>
+        <tr><td class="mono">2.3 Practice.txt</td><td><strong style="color:var(--clay)">Needs a workbook built</strong></td><td class="min">30–45 &middot; led</td></tr>
+        <tr><td class="mono">2.4 Excel Activity 1 a — Scatter Diagram (Structured).xlsx</td><td>Ready</td><td class="min">48–62 &middot; led</td></tr>
+        <tr><td class="mono">2.4 Excel Activity 1b — Scatter Diagram (Structured).xlsx</td><td>Ready — close the lock file</td><td class="min">62–70 &middot; solo</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  BMGT 240IS · Business Analytics · Fall 2026 · Session 5 of the Chapter 2 sequence<br>
+  Activities from <span class="mono">Chapters/Chapter_examples/chapter_02/</span> · answer keys computed from the workbook data · concepts established in Session 4, Sep 8
+</footer>
+
+</div>

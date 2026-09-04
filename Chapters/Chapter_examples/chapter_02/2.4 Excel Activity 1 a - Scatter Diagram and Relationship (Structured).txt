@@ -1,0 +1,26 @@
+The Current Results website lists the average annual high and low temperatures (degrees Fahrenheit) and average annual snowfall (inches) for fifty-one major U.S. cities, based on data collected over several years. The corresponding data are contained in the Excel Online file below. Use the spreadsheet to answer the following questions. NOTE: The axes below may be slightly different than in Excel.
+
+Open spreadsheet
+
+a. Construct a scatter diagram with the average annual low temperature on the horizontal axis and the average annual snowfall on the vertical axis.
+
+Choose the correct graph.
+
+
+
+A.	
+A scatter chart shows the relationship between temperature and snowfall. The horizontal axis labeled Average Low Temperature has values from 0 to 120 degrees. The vertical axis labeled Average Snowfall has values from 0 to 120 inches. The scatter chart has a collection of 51 points. One part of the points is distributed in the area between approximately 30 and 50 degrees on the horizontal axis and between 0 to 65 inches on the vertical axis. Another part of the points is distributed in the area between approximately 50 and 75 degrees on the horizontal axis and between 0 to 50 inches on the vertical axis. There is one outlier: (42, 97).
+B.	
+A scatter chart shows the relationship between temperature and snowfall. The horizontal axis labeled Average Low Temperature has values from 0 to 120 degrees. The vertical axis labeled Average Snowfall has values from 0 to 120 inches. The scatter chart has a collection of 51 points. There are points on the 45 degree line distributed in the area between approximately 0 and 100 degrees on the horizontal axis and between 0 to 100 inches on the vertical axis. One part of the points is above the 45 degree line and another part of the points is below the 45 degree line.
+C.	
+A scatter chart shows the relationship between temperature and snowfall. The horizontal axis labeled Average Low Temperature has values from 0 to 120 degrees. The vertical axis labeled Average Snowfall has values from 0 to 120 inches. The scatter chart has a collection of 51 points. One part of the points is distributed in the area between approximately 30 and 55 degrees on the horizontal axis and between 0 to 65 inches on the vertical axis. Another part of the points is distributed in the area between approximately 55 and 75 degrees on the horizontal axis and between 0 to 10 inches on the vertical axis. There are two outliers: (42, 97) and (36, 97).
+D.	
+A scatter chart shows the relationship between temperature and snowfall. The horizontal axis labeled Average Low Temperature has values from 0 to 120 degrees. The vertical axis labeled Average Snowfall has values from 0 to 120 inches. The scatter chart has a collection of 51 points. There are points on the 45 degree line distributed in the area between approximately 30 and 70 degrees on the horizontal axis and between 30 to 70 inches on the vertical axis. One part of the points is above the 45 degree line and another part of the points is below the 45 degree line.
+b. Does there appear to be any relationship between these two variables?
+
+
+
+c. Based on the scatter diagram, comment on any data points that seem to be unusual.
+
+
+ an average snowfall of nearly 100 inches.
