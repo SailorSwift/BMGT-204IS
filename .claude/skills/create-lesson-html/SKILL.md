@@ -20,6 +20,14 @@ should be on at minute 40. That is the content of a lesson plan.
 
 ## Step 0 · Settle the parameters before reading anything
 
+**First, read the calendar.** Session numbers and dates come from there, never from the Tue/Thu
+pattern — Fall Break and the finals-week boundary delete sessions, so counting forward from the
+last plan silently drifts.
+
+```bash
+cat Course_Facts/Fall_2026_Calendar.md      # 29-session map, S01 Aug 27 -> S29 Dec 10
+```
+
 You need these. Ask for whatever the user did not give, in one message — not one at a time,
 and do not start reading with only a chapter number.
 
@@ -40,6 +48,41 @@ input** — if Session 1 pushed the scale taxonomy to Session 2, Session 2 owes 
 The previous plan is also the only schedule fact you can verify. **Do not source the chapter,
 sections, session number, or date from a syllabus file** — the parameters above come from the
 user, and a stale syllabus will quietly contradict them.
+
+### When the invocation carries no parameters
+
+This is the normal case — the user types the slash command and nothing else. **Do not answer it
+with a multiple-choice question.** Read the previous plan first, then print the block below
+*already filled in* with your best reading of it, and ask the user to correct what is wrong:
+
+```
+Session 06 · Tue, Sep 15, 2026 · Chapter 3, §3.1
+Minutes: 75 · Quiz: none
+Format: concepts day — mean, median, mode, weighted and geometric mean, percentiles, quartiles
+
+Fixed constraints:
+- <a lab, a project launch, a deadline announcement, an activity already decided>
+- <what the NEXT session owns, so this plan knows what may not slide into it>
+
+Carried in from Session 05:
+- <what the previous plan deferred or promised — read its closing section>
+
+Watch out for:
+- <room dynamics, pacing that failed last time, a topic that ate 20 minutes>
+```
+
+Fill the top three lines yourself and say where each value came from. The previous plan gives you
+the session number, the Tue/Thu cadence gives you the date, and its closing paragraph usually
+names the next chapter outright ("Session 6 opens Chapter 3, numerical measures"). Fill the
+**Carried in** line from that closing section too — that one is your job, not the user's.
+
+Leave the **Fixed constraints** and **Watch out for** placeholders empty. Those are the two things
+no file records: what the user has already decided, and what actually happened in the room. Say
+plainly that those are the lines worth their typing, and that everything else is a correction to
+what you already filled in.
+
+One message, one block, then stop and wait. A wrong guess in a printed block costs the user four
+words to fix; a question with four options costs them a decision they did not need to make.
 
 ---
 
