@@ -1,0 +1,70 @@
+The average waiting time for a patient at an El Paso physician’s office is just over 29 minutes, well above the national average of 21 minutes. In fact, El Paso has the longest physician’s office waiting times in the United States. In order to address the issue of long patient wait times, some physician’s offices are using wait tracking systems to notify patients of expected wait times. Patients can adjust their arrival times based on this information and spend less time in waiting rooms. The Excel Online file below contains the data showing wait times (minutes) for a sample of patients at offices that do not have an office tracking system and wait times for a sample of patients at offices with an office tracking system. Construct a spreadsheet to answer the following questions.
+
+Open spreadsheet
+
+a. What are the mean and median patient wait times for offices with a wait tracking system? What are the mean and median patient wait times for offices without a wait tracking system? Round your answers to 1 decimal place.
+
+Without Wait
+Tracking System	With Wait
+Tracking System
+Mean	
+Median	
+b. What are the variance and standard deviation of patient wait times for offices with a wait tracking system? What are the variance and standard deviation of patient wait times for visits to offices without a wait tracking system? Please round the answers to 2 decimal place.
+
+Without Wait
+Tracking System	With Wait
+Tracking System
+Variance	
+Standard deviation	
+c. Do offices with a wait tracking system have shorter patient wait times than offices without a wait tracking system?
+
+(i) Offices with a wait tracking system have substantially longer patient wait times than offices without a wait tracking system.
+
+(ii) Offices with a wait tracking system have substantially shorter patient wait times than offices without a wait tracking system.
+
+(iii) Offices with a wait tracking system have about the same patient wait times as offices without a wait tracking system.
+
+Choose the correct option.
+
+
+
+d. Considering only offices without a wait tracking system, what is the -score for the tenth patient in the sample (to 2 decimals)?
+
+
+e. Considering only offices with a wait tracking system, what is the -score for the sixth patient in the sample (to 2 decimals)?
+
+
+How does this -score compare with the -score you calculated for part (d)?
+
+(i) The -score for the sixth patient in the sample who visited an office with a wait tracking system could not be compared with the -score calculated for part (d).
+
+(ii) The -score for the sixth patient in the sample who visited an office with a wait tracking system is much larger only because that patient is part of a sample with a smaller mean.
+
+(iii) The -score for the sixth patient in the sample who visited an office with a wait tracking system is much larger only because that patient is part of a sample with a smaller standard deviation.
+
+(iv) The -score for the sixth patient in the sample who visited an office with a wait tracking system is much larger because that patient is part of a sample with a smaller mean and a smaller standard deviation.
+
+Choose the correct answer.
+
+
+
+f. Based on -scores, do the data for offices without a wait tracking system contain any outliers? Round your answers to 2 decimal places.
+
+Patient's
+-scores	Without Wait
+Tracking System	With Wait
+Tracking System
+1st	
+2nd	
+3rd	
+4th	
+5th	
+6th	
+7th	
+8th	
+9th	
+10th	
+Based on -scores, do the data for offices with a wait tracking system contain any outliers?
+
+
+

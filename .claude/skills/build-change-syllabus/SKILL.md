@@ -21,9 +21,10 @@ Non-negotiable, and first, every single time — a full build or a one-line date
 ```bash
 cat Course_Facts/Fall_2026_Calendar.md      # every date, plus the 29-session map
 cat Course_Facts/Grading.md                 # every point value, weight, and count
+cat Course_Facts/Course_Catalog.md          # description, prerequisites, the eight outcomes
 ```
 
-These two files outrank the existing syllabus, any prior draft, your memory, and anything the
+These files outrank the existing syllabus, any prior draft, your memory, and anything the
 user said in an earlier session. If the document and a source of truth disagree, **the source of
 truth wins and you say so out loud.**
 
@@ -96,7 +97,8 @@ stale one. Only the user knows which.
 5. **Grading** — the category table and the project-parts table, straight from `Grading.md`.
    Include the attendance bonus and state plainly that it sits outside the 1000.
 6. **Course Schedule** — the session table: session number, date, topic, sections, what is due.
-   Every date from the calendar file. Mark Fall Break as a gap, not a session.
+   Every date from the calendar file. Mark Fall Break as a gap, not a session. See the schedule
+   pattern below.
 7. **Important Dates** — the registrar deadlines students act on: add, drop, drop with a "W",
    break, finals.
 8. **Core Perspective: Inquiry — Social Sciences (IS)** — the Core designation and its qualities.
@@ -108,6 +110,37 @@ reason for it — a policy whose purpose is visible gets argued with less than o
 arbitrary. Do not hedge a rule into a suggestion; if there is discretion, say where it lives.
 
 ---
+
+### The schedule pattern
+
+Sessions 1–3 are as the retired syllabus had them. From Session 4 the course runs in **paired
+sessions per chapter**: a **lecture day** (concepts, no keyboards) followed by a **lab day**
+(Excel, hands on keys). Session 4 is Chapter 2 lecture, Session 5 is Chapter 2 lab. Continue that
+pairing — and the lesson plans in `Lesson Plans/Week3/` show what each half looks like in practice.
+
+The pattern does not survive the whole term unmodified, and the schedule must say so honestly
+rather than laying down pairs until it runs out of December:
+
+- **Chapters 5 and 6 have no lab.** `DATAFiles/` has folders for Ch01–04 and Ch07–15 and none for
+  Ch05 or Ch06 — probability and probability distributions are board-work chapters with no dataset
+  to lab with. Schedule them as lecture-only.
+- **Presentations are sessions, not footnotes.** The **final project** presents in class —
+  ~8 groups is about 2 sessions. Put those in the table as their own rows. The **small project
+  does not present**; it is submitted, so it costs no session time.
+- **Exams are sessions.** Two of them.
+
+**The catalog decides what the schedule may drop.** `Course_Facts/Course_Catalog.md` names
+confidence intervals, hypothesis testing, correlation, and **multiple regression** — so the term
+must reach Ch 15, not merely run until December ends. ANOVA, chi-square, and inference about
+variances (Ch 11–13) appear nowhere in the description or outcomes: those are the chapters to cut
+when the calendar runs short. Cutting regression to preserve sequential order would leave the
+course not matching its own catalog entry.
+
+Before writing the table, **do the subtraction out loud**: 29 sessions, minus what is already
+spent, minus exams and presentation days, leaves N for chapter content, which at two per chapter
+reaches Chapter X. State where the term actually ends in the book. A schedule that quietly assumes
+the whole textbook fits is the syllabus equivalent of a lesson plan that pretends everything fits
+in 75 minutes — and it fails in week 12, when there is no room left to recover.
 
 ## Step 4 · Output
 

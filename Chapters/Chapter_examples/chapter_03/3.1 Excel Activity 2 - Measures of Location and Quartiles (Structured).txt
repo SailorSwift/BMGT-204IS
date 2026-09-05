@@ -1,0 +1,20 @@
+The Big Bang Theory, a situation comedy featuring Johnny Galecki, Jim Parsons, and Kaley Cuoco-Sweeting, is one of the most watched programs on network television. The first two episodes for the 2011–2012 season premiered on September 22, 2011; the first episode attracted 14.1 million viewers and the second episode attracted 14.7 million viewers. The data on the number of viewers in millions for the first 21 episodes of the 2011–2012 season are contained in the Excel Online file below. Use the spreadsheet to answer the following questions.
+
+Open spreadsheet
+
+a. Compute the minimum and maximum number of viewers. Round your answer to 1 decimal place.
+
+Minimum	
+Maximum	
+b. Compute the mean, median, and mode.
+
+Mean (to 2 decimals)	
+Median (to 1 decimal)	
+Mode	
+c. Compute the first and third quartiles. Round your answers to 2 decimal places if necessary.
+
+Q1	
+Q3	
+d. Has viewership grown or declined over the 2011–2012 season?
+
+

@@ -1,0 +1,44 @@
+Question 10/3.57
+Submit
+ 
+Video
+Question Content Area
+The Russell 1000 is a stock market index consisting of the largest U.S. companies. The Dow Jones industrial Average is based on 30 large companies. The data giving the annual percentage returns for each of these stock indexes for 25 years are contained in the Excel Online file below. Construct a spreadsheet to answer the following questions.
+
+Open spreadsheet
+
+a. Which of the following scatter diagrams accurately represents the data set?
+
+#1	
+ 
+Russell 1000DJIA
+A scatter chart has the horizontal axis labeled D J I A with values from negative 50 to 50 and the vertical axis labeled Russell 1000 with values from negative 50 to 50. The scatter chart has a collection of 25 points. The scatter plot shows a varied distribution of data points across the chart.
+#2	
+ 
+Russell 1000DJIA
+A scatter chart has the horizontal axis labeled D J I A with values from negative 50 to 50 and the vertical axis labeled Russell 1000 with values from negative 50 to 50. The scatter chart has a collection of 25 points. Their pattern starts at approximately (negative 32, negative 39) and then goes up and right to approximately (30, 34). The points are scattered moderately from the pattern.
+#3	
+ 
+Russell 1000DJIA
+A scatter chart has the horizontal axis labeled D J I A with values from negative 50 to 50 and the vertical axis labeled Russell 1000 with values from negative 50 to 50. The scatter chart has a collection of 25 points. Their pattern starts at approximately (negative 32, 39) and then goes down and right to approximately (30, negative 34). The points are scattered moderately from the pattern.
+#4	
+ 
+Russell 1000DJIA
+A scatter chart has the horizontal axis labeled D J I A with values from negative 50 to 50 and the vertical axis labeled Russell 1000 with values from negative 50 to 50. The scatter chart has a collection of 25 points. The scatter plot shows a varied distribution of data points across the chart.
+
+
+b. Compute the sample mean and standard deviation for each index (to 2 decimals).
+
+sample mean	standard deviation
+DJIA:	
+Russell 1000:	
+c. Compute the sample correlation coefficient for these data (to 3 decimals).
+
+
+d. Discuss similarities and differences in these two indexes.
+
+
+
+The variance of the Russell 1000 is slightly 
+ than that of the DJIA.
+

@@ -1,0 +1,30 @@
+dvertising Age annually compiles a list of the 100 companies that spend the most on advertising. Consumer-goods company Procter & Gamble has often topped the list, spending billions of dollars annually. The data on annual advertising expenditures for a sample of 20 companies in the automotive sector and 20 companies in the department store sector are contained in the Excel Online file below. Construct a spreadsheet to answer the following questions.
+
+Open spreadsheet
+
+a. What is the mean advertising spent for each sector? Round your answers to 2 decimal places, if necessary.
+
+Automotive	Department Store
+Mean	$ 
+$ 
+b. What is the standard deviation for each sector? Round your answers to 2 decimal places.
+
+Automotive	Department Store
+Standard deviation	$ 
+$ 
+c. What is the range of advertising spent for each sector? Round your answers to 1 decimal place, if necessary.
+
+Automotive	Department Store
+Range	$ 
+$ 
+d. What is the interquartile range for each sector. Round your answers to 2 decimal places.
+
+Automotive	Department Store
+IQR	$ 
+$ 
+e. Based on this sample and your answers to parts (a) to (d), comment on any differences in the advertising spending in the automotive companies versus the department store companies.
+
+Automotive spends 
+ on average, has a 
+ standard deviation, and 
+ range than Department Store.

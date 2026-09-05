@@ -9,7 +9,10 @@ gradebook, or an answer in chat.
 - [`Course_Facts/Fall_2026_Calendar.md`](Course_Facts/Fall_2026_Calendar.md) — term dates,
   registrar deadlines, holidays, and the 29-session map (S01 Aug 27 → S29 Dec 10).
 - [`Course_Facts/Grading.md`](Course_Facts/Grading.md) — categories, points, weights, project
-  parts, attendance bonus. 1000 points, 100%, 1% = 10 points.
+  parts, attendance bonus, Canvas group setup. 1000 points, 100%, 1% = 10 points.
+- [`Course_Facts/Course_Catalog.md`](Course_Facts/Course_Catalog.md) — catalog description,
+  prerequisites, and the eight course outcomes. The description names multiple regression, so the
+  schedule must reach Ch 15.
 
 These outrank any document in the repo, any earlier draft, and memory. If a document disagrees
 with them, the source of truth wins — say so rather than quietly reconciling.

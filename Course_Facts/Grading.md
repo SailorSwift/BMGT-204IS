@@ -18,20 +18,44 @@ Settled with the instructor 2026-09-04. Arithmetic verified: weights sum to 100%
 | Final project (group) | 1 | 1 | 300 | 300 | 30% |
 | **Total** | | | | **1000** | **100%** |
 
+## Exams
+
+Two exams, **125 points each**, 250 points, 25% of the grade.
+
+| | |
+| --- | --- |
+| Length | **45 minutes**, in class |
+| Format | Concepts only — **no Excel** |
+| Exam 1 coverage | **Chapters 1–3** |
+| Exam 2 coverage | `TODO` |
+
+**A 45-minute exam does not consume a 75-minute session.** Roughly 30 minutes remain, so an exam
+day still carries content or review. Do not budget exam days as lost sessions in the schedule.
+
+Exam 1 covering Ch 1–3 places it immediately after the Chapter 3 lab, in **September** — not at
+mid-term. The schedule must follow the coverage, not the calendar's midpoint.
+
 ## Project structure
 
-Both projects use the same four parts. The small project is **individual**; the final project is
-a **group** project.
+The small project is **individual**; the final project is a **group** project.
+
+**The small project has no presentation.** It is submitted, not delivered — 40 individual
+presentations would cost 2–3 class sessions for 2.5% of the grade. Slides remain a graded
+deliverable so students rehearse building a deck before the group project, without spending the
+class time on live delivery.
 
 | Part | Small (150) | Final (300) |
 | --- | --- | --- |
 | Topic proposal | 15 | 25 |
-| Report + workbook | 85 | 175 |
+| Report + workbook | 110 | 175 |
 | Slides | 25 | 50 |
-| Presentation | 25 | 50 |
+| Presentation | — | 50 |
 
 The small project's proposal is 15 points deliberately — one assignment, the atomic unit of the
-whole scheme, so "a proposal costs one assignment" is sayable out loud.
+whole scheme, so "a proposal costs one assignment" is sayable out loud. The 25 points freed by
+dropping the presentation went to report + workbook, which is the analysis the project exists to
+assess. If you would rather they went to slides (85/50) or fold slides in entirely (135, two
+parts), that is a one-line change here — but change it here first, not in the syllabus.
 
 ## Attendance bonus
 
@@ -65,7 +89,7 @@ percentage. Five groups:
 | Assignments | 15% | 150 (11 × 15, 10 counted) | Drop lowest 1 |
 | Quizzes | 15% | 150 (11 × 15, 10 counted) | Drop lowest 1 |
 | Exams | 25% | 250 (2 × 125) | — |
-| Projects | 45% | 450 (8 items) | — |
+| Projects | 45% | 450 (7 items) | — |
 | Bonus Credit | 1.5% | 15 | — |
 | **Total** | **101.5%** | | |
 
@@ -88,7 +112,7 @@ points possible the tiers map exactly onto the weight:
 | 5 | 5/15 | +0.50% |
 | 0 | 0/15 | +0.00% |
 
-**The Projects group needs no subdivision.** All eight project items — four small, four final —
+**The Projects group needs no subdivision.** All seven project items — three small, four final —
 live in it and split it by their own point values: 150/450 of the group is 33.3%, which is 15% of
 the final grade, and 300/450 is 66.7%, which is 30%. The weights come out right without separate
 groups.

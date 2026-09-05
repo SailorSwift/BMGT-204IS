@@ -20,13 +20,16 @@ should be on at minute 40. That is the content of a lesson plan.
 
 ## Step 0 · Settle the parameters before reading anything
 
-**First, read the calendar.** Session numbers and dates come from there, never from the Tue/Thu
-pattern — Fall Break and the finals-week boundary delete sessions, so counting forward from the
-last plan silently drifts.
+**First, read the course facts.** Both files, before anything else.
 
 ```bash
+cat Course_Facts/Course_Catalog.md          # the eight course outcomes — read these first
 cat Course_Facts/Fall_2026_Calendar.md      # 29-session map, S01 Aug 27 -> S29 Dec 10
 ```
+
+The **catalog** tells you what this session is *for*. The **calendar** tells you when it happens —
+session numbers and dates come from there, never from the Tue/Thu pattern, because Fall Break and
+the finals-week boundary delete sessions and counting forward from the last plan silently drifts.
 
 You need these. Ask for whatever the user did not give, in one message — not one at a time,
 and do not start reading with only a chapter number.
@@ -114,6 +117,46 @@ Pull out and keep:
 
 **Do not paste IM prose into the plan.** It is copyrighted instructor material written in
 publisher voice. Use it to decide *what to teach*; write the plan yourself.
+
+---
+
+## Step 1b · Rank the chapter against the course outcomes
+
+Do this immediately after the Instructor Manual, before you look at a single slide. It is what
+turns a chapter summary into a lesson plan.
+
+A publisher chapter is written for completeness — every topic a business statistics course
+*might* want. Your course has eight outcomes, and they are narrower than the book. So for each
+learning objective you pulled from the IM, ask which course outcome it serves:
+
+| | Course outcome (from `Course_Facts/Course_Catalog.md`) |
+| --- | --- |
+| 1 | Identify, code and summarize data using Excel |
+| 2 | Collect samples and estimate unknown parameters |
+| 3 | Use discrete and continuous probability distributions |
+| 4 | Formulate and test hypotheses |
+| 5 | Use regression to analyze data |
+| 6 | Complete research projects |
+| 7 | Design and conduct research in the future |
+| 8 | Use sound quantitative reasoning to analyze business problems |
+
+Sort the chapter's material into three tiers:
+
+- **Load-bearing** — serves a named outcome directly, and later chapters are built on it. This is
+  what the session is actually about.
+- **Supporting** — serves an outcome, but a later chapter re-teaches it or the project exercises
+  it anyway. Teach it, but it yields when time is short.
+- **Publisher completeness** — serves no outcome in the list. Name it explicitly as such. This is
+  the first thing to cut, and cutting it is not a compromise.
+
+Then say, in one sentence, **what the single most important idea in this session is** — the one
+concept that, if a student leaves with nothing else, still moved an outcome forward. Everything
+downstream follows from that sentence: it goes first in the objectives, it gets the protected
+block in the timing table, and it is the last thing you would cut.
+
+**Do not rank by how much space the book gives a topic, or how many slides the deck spends on
+it.** Publisher decks routinely spend a third of a chapter on material that serves no outcome
+here. The whole value of this step is that it disagrees with the deck.
 
 ---
 
@@ -218,10 +261,15 @@ so read whichever matches the format you were asked for.
 
 1. **Header** — session number, date, course/section/room/time, textbook sections, deck path
    **with slide range**, data file paths.
-2. **Objectives** — 3–5, tagged `S<n>-<n>`, each an observable student behavior.
+2. **Objectives** — 3–5, tagged `S<n>-<n>`, each an observable student behavior, **ordered by
+   outcome alignment with the load-bearing one first**. Name which course outcome each serves.
+   The order is a teaching instruction, not a formality: it is the order to teach them in, so the
+   session that runs short still delivered the thing that mattered.
 3. **The design problem in this session** — *the section that makes these plans worth having.*
    State honestly what does not fit in the time available, do the arithmetic out loud, make a
-   recommendation, and name **what to cut first if the session runs long**. A plan that pretends
+   recommendation, and name **what to cut first if the session runs long** — which is the Step 1b
+   ranking read backwards: publisher-completeness material goes first, supporting material next,
+   and the load-bearing concept is never the thing that gets dropped. A plan that pretends
    everything fits is useless at minute 60.
 4. **Timing table** — minute ranges summing to the period length, with the protected content
    block marked. Offer a second table only when there is a genuine fork in the road.

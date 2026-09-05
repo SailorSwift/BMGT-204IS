@@ -1,0 +1,82 @@
+Question 10/3.57
+Submit
+ 
+Video
+Question Content Area
+A magazine provided overall customer satisfaction scores for AT&T, Sprint, T-Mobile, and Verizon cell-phone services in major metropolitan areas throughout the United States. The rating for each service reflects the overall customer satisfaction considering a variety of factors such as cost, connectivity problems, dropped calls, static interference, and customer support. A satisfaction scale from 0 to 100 was used with 0 indicating completely dissatisfied and 100 indicating completely satisfied. The ratings for the four cell-phone services in 20 metropolitan areas are contained in the Excel Online file below. Construct a spreadsheet to answer the following questions.
+
+Open spreadsheet
+
+a. Consider T-Mobile first. What is the median rating (to 1 decimal)?
+
+
+b. Develop a five-number summary for the T-Mobile service.
+
+
+Smallest value	
+First quartile (to 2 decimals)	
+Median (to 1 decimal)	
+Third quartile (to 2 decimals)	
+Largest value	
+c. Are there outliers for T-Mobile?
+
+
+
+d. Repeat parts (b) and (c) for the other three cell-phone services.
+
+
+ 	AT&T	Sprint	Verizon
+Smallest value	
+First quartile (to 2 decimals)	
+Median (to 1 decimal)	
+Third quartile (to 2 decimals)	
+Largest value	
+Are there outliers for AT&T?
+
+
+
+Are there outliers for Sprint?
+
+
+
+Are there outliers for Verizon?
+
+
+
+e. Which of the following box plots accurately displays the data set?
+
+
+#1	
+Rating
+Four boxplots show overall customer satisfaction scores for cell-phone services. The horizontal axis has four categories: Sprint, T-Mobile, Verizon, and A T and T. The vertical axis labeled Rating has values from 60 to 90.
+For Sprint, the first quartile is at 68, the median is at 71, and the third quartile is at 73. One whisker extends from 66 to 68. The other whisker extends from 73 to 75.
+For T-Mobile, the first quartile is at 62, the median is at 63, and the third quartile is at 65. One whisker extends from 60 to 62. The other whisker extends from 65 to 66.
+For Verizon, the first quartile is at 75, the median is at 78, and the third quartile is at 79. One whisker extends from 72 to 75. The other whisker extends from 79 to 81.
+For A T and T, the first quartile is at 78, the median is at 80, and the third quartile is at 81. One whisker extends from 76 to 78. The other whisker extends from 81 to 82.
+#2	
+Rating
+Four boxplots show overall customer satisfaction scores for cell-phone services. The horizontal axis has four categories: T-Mobile, Verizon, A T and T, and Sprint. The vertical axis labeled Rating has values from 60 to 90.
+For T-Mobile, the first quartile is at 68, the median is at 71, and the third quartile is at 73. One whisker extends from 66 to 68. The other whisker extends from 73 to 75.
+For Verizon, the first quartile is at 62, the median is at 63, and the third quartile is at 65. One whisker extends from 60 to 62. The other whisker extends from 65 to 66.
+For A T and T, the first quartile is at 75, the median is at 78, and the third quartile is at 79. One whisker extends from 72 to 75. The other whisker extends from 79 to 81.
+For Sprint, the first quartile is at 78, the median is at 80, and the third quartile is at 81. One whisker extends from 76 to 78. The other whisker extends from 81 to 82.
+#3	
+Rating
+Four boxplots show overall customer satisfaction scores for cell-phone services. The horizontal axis has four categories: A T and T, Sprint, T-Mobile, and Verizon. The vertical axis labeled Rating has values from 60 to 90.
+For A T and T, the first quartile is at 68, the median is at 71, and the third quartile is at 73. One whisker extends from 66 to 68. The other whisker extends from 73 to 75.
+For Sprint, the first quartile is at 62, the median is at 63, and the third quartile is at 65. One whisker extends from 60 to 62. The other whisker extends from 65 to 66.
+For T-Mobile, the first quartile is at 75, the median is at 78, and the third quartile is at 79. One whisker extends from 72 to 75. The other whisker extends from 79 to 81.
+For Verizon, the first quartile is at 78, the median is at 80, and the third quartile is at 81. One whisker extends from 76 to 78. The other whisker extends from 81 to 82.
+#4	
+Rating
+Four boxplots show overall customer satisfaction scores for cell-phone services. The horizontal axis has four categories: Verizon, A T and T, Sprint, and T-Mobile. The vertical axis labeled Rating has values from 60 to 90.
+For Verizon, the first quartile is at 68, the median is at 71, and the third quartile is at 73. One whisker extends from 66 to 68. The other whisker extends from 73 to 75.
+For A T and T, the first quartile is at 62, the median is at 63, and the third quartile is at 65. One whisker extends from 60 to 62. The other whisker extends from 65 to 66.
+For Sprint, the first quartile is at 75, the median is at 78, and the third quartile is at 79. One whisker extends from 72 to 75. The other whisker extends from 79 to 81.
+For T-Mobile, the first quartile is at 78, the median is at 80, and the third quartile is at 81. One whisker extends from 76 to 78. The other whisker extends from 81 to 82.
+
+
+Which service did the magazine recommend as being best in terms of overall customer satisfaction?
+
+
+
